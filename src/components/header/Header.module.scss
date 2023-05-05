@@ -1,0 +1,230 @@
+@import "styles/common";
+
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  background: #fff;
+  border-bottom-width: 1px;
+  border-color: rgb(229 231 235);
+  z-index: 20;
+  overflow: hidden;
+  transition: all 0.25s;
+
+  .container {
+    max-width: 1280px;
+    @extend .alignCen;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0 auto;
+    padding: 1rem;
+
+    .logo {
+      @extend .alignCen;
+
+      .img {
+        height: 2rem;
+        margin-right: 12px;
+      }
+
+      .logoName {
+        align-self: center;
+        font-size: 1.5rem;
+        line-height: 2rem;
+        font-weight: 600;
+        white-space: nowrap;
+      }
+    }
+
+    .right {
+      display: flex;
+
+      .contactBtn {
+        outline: none;
+        border: none;
+        padding: 8px 1rem;
+        color: #fff;
+        background-color: rgb(29 78 216);
+        text-align: center;
+        font-weight: 500;
+        border-radius: 8px;
+        font-size: 14px;
+        line-height: 1.25rem;
+        margin-right: 12px;
+        cursor: pointer;
+
+        &:hover {
+          background-color: rgb(30 64 175);
+        }
+      }
+
+      .expandBtn {
+        outline: none;
+        border: none;
+        display: inline-flex;
+        align-items: center;
+        padding: 8px;
+        font-size: 14px;
+        line-height: 1.25rem;
+        color: rgb(107 114 128);
+        border-radius: 8px;
+
+        .srOnly {
+          @extend .srOnly;
+        }
+
+        .icon {
+          width: 1.5rem;
+          height: 1.5rem;
+        }
+
+        &:hover {
+          background-color: rgb(243 244 246);
+        }
+      }
+    }
+
+    .navList {
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+
+      ul {
+        @extend .flexCol;
+        padding: 1rem;
+        margin-top: 1rem;
+        font-weight: 500;
+        border: 1px solid rgb(243 244 246);
+        border-radius: 8px;
+        background-color: rgb(249 250 251);
+        list-style: none;
+
+        li {
+          .link {
+            display: block;
+            padding: 8px 1rem 8px 12px;
+            color: rgb(17 24 39);
+            border-radius: 4px;
+
+            &:hover {
+              background-color: rgb(243 244 246);
+            }
+
+            &:active {
+              background-color: rgb(243 244 246);
+            }
+          }
+
+          .active {
+            color: #1d4ed8;
+          }
+        }
+      }
+    }
+  }
+}
+
+.expandNav {
+  height: 258px;
+}
+
+.darkNav {
+  background: #111827;
+  border-color: rgb(75 85 99);
+
+  .container {
+    .logo .logoName {
+      color: #fff;
+    }
+
+    .right {
+      .contactBtn {
+        background-color: rgb(37 99 235);
+
+        &:hover {
+          background-color: rgb(29 78 216);
+        }
+      }
+
+      .expandBtn {
+        color: rgb(156 163 175);
+
+        &:hover {
+          background-color: rgb(55 65 81);
+        }
+      }
+    }
+
+    .navList ul {
+      background-color: rgb(31 41 55);
+      border-color: rgb(55 65 81);
+
+      .link {
+        color: #fff;
+        border-color: rgb(55 65 81);
+
+        &:hover {
+          background-color: rgb(55 65 81);
+          color: #fff;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 640px) {
+  .nav .container {
+    .right {
+      order: 2;
+
+      .contactBtn {
+        margin-right: 0;
+      }
+
+      .expandBtn {
+        display: none;
+      }
+    }
+
+    .navList {
+      display: flex;
+      width: auto;
+      order: 1;
+
+      ul {
+        padding: 0;
+        flex-direction: row;
+        margin-left: 2rem;
+        margin-top: 0;
+        border: none;
+        background: #fff;
+
+        .link {
+          padding: 0;
+
+          &:hover {
+            background: transparent;
+
+            color: rgb(29 78 216);
+          }
+        }
+      }
+    }
+  }
+
+  .darkNav .container {
+    .navList ul {
+      background-color: rgb(17 24 39);
+
+      .link {
+        color: rgb(59 130 246);
+
+        &:hover {
+          background: transparent;
+        }
+      }
+    }
+  }
+}

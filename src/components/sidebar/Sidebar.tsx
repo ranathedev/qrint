@@ -20,7 +20,7 @@ const Sidebar = () => {
   }, [collapse]);
 
   return (
-    <div className={clsx(stl.sidebar, collapse ? stl.collapse : undefined)}>
+    <div className={clsx(stl.sidebar, collapse ? stl.collapse : "")}>
       <div id="header" className={stl.header}>
         <span className={stl.icon} onClick={() => setCollapse(!collapse)}>
           {collapse ? <ExpandIcon /> : <CollapseIcon />}

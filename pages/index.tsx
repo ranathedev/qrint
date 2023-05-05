@@ -1,6 +1,8 @@
+import Head from "next/head";
+
+import Header from "components/header";
 import Sidebar from "components/sidebar";
 import SidebarItem from "components/sidebar-item";
-import Head from "next/head";
 
 export default function Home() {
   return (
@@ -14,7 +16,8 @@ export default function Home() {
       </Head>
       <main>
         {/* <SidebarItem /> */}
-        <Sidebar />
+        {/* <Sidebar /> */}
+        <Header />
       </main>
     </>
   );

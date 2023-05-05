@@ -1,3 +1,4 @@
+import Sidebar from "components/sidebar";
 import SidebarItem from "components/sidebar-item";
 import Head from "next/head";
 
@@ -12,7 +13,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <SidebarItem />
+        {/* <SidebarItem /> */}
+        <Sidebar />
       </main>
     </>
   );

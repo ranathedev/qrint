@@ -1,4 +1,5 @@
 import React, { ReactNode } from "react";
+import clsx from "clsx";
 
 import TextIcon from "assets/text.svg";
 
@@ -8,13 +9,17 @@ interface Props {
   icon: ReactNode;
   title: string;
   handleOnClick: (arg: string) => void;
+  customClass?: string;
 }
 
-const SidebarItem = ({ icon, title, handleOnClick }: Props) => {
+const SidebarItem = ({ icon, title, handleOnClick, customClass }: Props) => {
   return (
-    <div className={stl.sidebarItem} onClick={() => handleOnClick(title)}>
-      {icon}
-      {title}
+    <div
+      className={clsx(stl.sidebarItem, customClass)}
+      onClick={() => handleOnClick(title)}
+    >
+      <span className={stl.icon}>{icon}</span>
+      <span className={stl.text}>{title}</span>
     </div>
   );
 };

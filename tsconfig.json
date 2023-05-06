@@ -17,9 +17,15 @@
     "paths": {
       "components/*": ["./src/components/*"],
       "assets/*": ["./src/assets/*"],
+      "lib/*": ["./src/lib/*"],
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "src/lib/useClickOutside.js"
+  ],
   "exclude": ["node_modules"]
 }

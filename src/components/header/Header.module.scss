@@ -8,7 +8,7 @@
   height: 70px;
   background: #fff;
   border-bottom-width: 1px;
-  border-color: rgb(229 231 235);
+  border-color: #e5e7eb;
   z-index: 20;
   overflow: hidden;
   transition: all 0.25s;
@@ -46,7 +46,7 @@
         border: none;
         padding: 8px 1rem;
         color: #fff;
-        background-color: rgb(29 78 216);
+        background-color: #1d4ed8;
         text-align: center;
         font-weight: 500;
         border-radius: 8px;
@@ -56,7 +56,7 @@
         cursor: pointer;
 
         &:hover {
-          background-color: rgb(30 64 175);
+          background-color: #1e40af;
         }
       }
 
@@ -68,7 +68,7 @@
         padding: 8px;
         font-size: 14px;
         line-height: 1.25rem;
-        color: rgb(107 114 128);
+        color: #6b7280;
         border-radius: 8px;
 
         .srOnly {
@@ -81,7 +81,7 @@
         }
 
         &:hover {
-          background-color: rgb(243 244 246);
+          background-color: #f3f4f6;
         }
       }
     }
@@ -96,24 +96,24 @@
         padding: 1rem;
         margin-top: 1rem;
         font-weight: 500;
-        border: 1px solid rgb(243 244 246);
+        border: 1px solid #f3f4f6;
         border-radius: 8px;
-        background-color: rgb(249 250 251);
+        background-color: #f9fafb;
         list-style: none;
 
         li {
           .link {
             display: block;
             padding: 8px 1rem 8px 12px;
-            color: rgb(17 24 39);
+            color: #111827;
             border-radius: 4px;
 
             &:hover {
-              background-color: rgb(243 244 246);
+              background-color: #f3f4f6;
             }
 
             &:active {
-              background-color: rgb(243 244 246);
+              background-color: #f3f4f6;
             }
           }
 
@@ -132,7 +132,7 @@
 
 .darkNav {
   background: #111827;
-  border-color: rgb(75 85 99);
+  border-color: #4b5563;
 
   .container {
     .logo .logoName {
@@ -141,32 +141,32 @@
 
     .right {
       .contactBtn {
-        background-color: rgb(37 99 235);
+        background-color: #2563eb;
 
         &:hover {
-          background-color: rgb(29 78 216);
+          background-color: #1d4ed8;
         }
       }
 
       .expandBtn {
-        color: rgb(156 163 175);
+        color: #9ca3af;
 
         &:hover {
-          background-color: rgb(55 65 81);
+          background-color: #374151;
         }
       }
     }
 
     .navList ul {
-      background-color: rgb(31 41 55);
-      border-color: rgb(55 65 81);
+      background-color: #1f2937;
+      border-color: #374151;
 
       .link {
         color: #fff;
-        border-color: rgb(55 65 81);
+        border-color: #374151;
 
         &:hover {
-          background-color: rgb(55 65 81);
+          background-color: #374151;
           color: #fff;
         }
       }
@@ -207,7 +207,7 @@
           &:hover {
             background: transparent;
 
-            color: rgb(29 78 216);
+            color: #1d4ed8;
           }
         }
       }
@@ -216,10 +216,10 @@
 
   .darkNav .container {
     .navList ul {
-      background-color: rgb(17 24 39);
+      background-color: #111827;
 
       .link {
-        color: rgb(59 130 246);
+        color: #3b82f6;
 
         &:hover {
           background: transparent;

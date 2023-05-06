@@ -1,0 +1,15 @@
+@import "styles/common";
+
+.btn {
+  min-width: 120px;
+  outline: none;
+  border: none;
+  @extend .flexCenter;
+  gap: 5px;
+  background: #1e90ff;
+  color: #fff;
+  padding: 10px 1rem;
+  font-size: 1.1rem;
+  border-radius: 6px;
+  cursor: pointer;
+}

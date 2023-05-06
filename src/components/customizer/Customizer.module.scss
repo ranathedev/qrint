@@ -1,0 +1,32 @@
+@import "styles/common";
+
+.customizer {
+  @extend .flexCol;
+  align-items: center;
+  gap: 1rem;
+  width: 400px;
+  height: 75vh;
+  padding: 2rem 1rem;
+  border-radius: 2rem;
+  background: #fff;
+
+  .preview {
+    height: 40%;
+    @extend .flexCenter;
+  }
+
+  .container {
+    @extend .flexCol;
+    justify-content: flex-start;
+    gap: 10px;
+    height: 46%;
+    padding-top: 1rem;
+  }
+
+  .btnContainer {
+    @extend .alignCen;
+    justify-content: space-evenly;
+    width: 100%;
+    padding: 10px 1rem;
+  }
+}

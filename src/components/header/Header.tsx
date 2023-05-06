@@ -1,12 +1,17 @@
 import React, { useEffect } from "react";
 import { useRouter } from "next/router";
+import Link from "next/link";
 import clsx from "clsx";
 
 import MenuIcon from "assets/menu.svg";
 
 import stl from "./Header.module.scss";
 
-const Header = ({ list }: any) => {
+interface Props {
+  list: Array<any>;
+}
+
+const Header = ({ list }: Props) => {
   const [isVisible, setIsVisible] = React.useState(false);
   const [width, setWidth] = React.useState(1000);
 
@@ -28,10 +33,10 @@ const Header = ({ list }: any) => {
   return (
     <nav className={clsx(stl.nav, isVisible ? stl.expandNav : "")}>
       <div className={stl.container}>
-        <a href="/" className={stl.logo}>
+        <Link href="/" className={stl.logo}>
           <img src="/logo.png" className={stl.img} alt="QRzar Logo" />
           <span className={stl.logoName}>QRzar</span>
-        </a>
+        </Link>
         <div className={stl.right}>
           <button
             className={stl.contactBtn}
@@ -51,7 +56,7 @@ const Header = ({ list }: any) => {
           <ul>
             {list.map((item: any, i: number) => (
               <li key={i}>
-                <a
+                <Link
                   href={item.link}
                   className={clsx(
                     stl.link,
@@ -59,7 +64,7 @@ const Header = ({ list }: any) => {
                   )}
                 >
                   {item.title}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>

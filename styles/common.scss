@@ -14,9 +14,20 @@
   flex-direction: column;
 }
 
+.flexColCen {
+  @extend .flexCol;
+  justify-content: center;
+  align-items: center;
+}
+
 .alignCen {
   display: flex;
   align-items: center;
+}
+
+.justifyEven {
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .srOnly {

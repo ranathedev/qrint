@@ -3,6 +3,9 @@ import Head from "next/head";
 import Header from "components/header";
 import Sidebar from "components/sidebar";
 import SidebarItem from "components/sidebar-item";
+import Customizer from "components/customizer";
+import Dropdown from "components/dropdown";
+import Button from "components/button";
 
 export default function Home() {
   return (
@@ -17,7 +20,10 @@ export default function Home() {
       <main>
         {/* <SidebarItem /> */}
         {/* <Sidebar /> */}
-        <Header />
+        {/* <Header /> */}
+        {/* <Dropdown /> */}
+        <Customizer />
+        {/* <Button /> */}
       </main>
     </>
   );

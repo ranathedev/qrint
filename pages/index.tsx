@@ -6,6 +6,7 @@ import SidebarItem from "components/sidebar-item";
 import Customizer from "components/customizer";
 import Dropdown from "components/dropdown";
 import Button from "components/button";
+import Dropbox from "components/dropbox";
 
 export default function Home() {
   return (
@@ -22,8 +23,9 @@ export default function Home() {
         {/* <Sidebar /> */}
         {/* <Header /> */}
         {/* <Dropdown /> */}
-        <Customizer />
+        {/* <Customizer /> */}
         {/* <Button /> */}
+        <Dropbox />
       </main>
     </>
   );

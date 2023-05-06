@@ -1,0 +1,51 @@
+@import "styles/common";
+
+.dropbox {
+  @extend .flexColCen;
+  gap: 1rem;
+  max-width: 600px;
+  width: 100%;
+  box-sizing: border-box;
+  height: 500px;
+  background: #fff;
+  border-radius: 12px;
+  color: #999;
+
+  &::before {
+    content: "Drag and drop file to Upload";
+    font-size: 1.1rem;
+  }
+
+  .inputContainer {
+    @extend .alignCen;
+
+    .label {
+      padding: 12.4px 10px;
+      background: #1e90ff;
+      color: #fff;
+      border-radius: 8px 0 0 8px;
+    }
+
+    .input {
+      border: none;
+      outline: none;
+      max-width: 400px;
+      width: 100%;
+      padding: 9px;
+      color: #999;
+      font-size: 1.2rem;
+      border-width: 1px 1px 1px;
+      border-style: solid;
+      border-color: #1e90ff;
+      border-radius: 0 8px 8px 0;
+    }
+  }
+}
+
+.draggedOver {
+  border: 3px dashed #1e90ff;
+
+  &::before {
+    content: "Drop file here";
+  }
+}

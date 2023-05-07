@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useRouter } from "next/router";
+import Image from "next/image";
 import Link from "next/link";
 import clsx from "clsx";
 
@@ -34,7 +35,13 @@ const Header = ({ list }: Props) => {
     <nav className={clsx(stl.nav, isVisible ? stl.expandNav : "")}>
       <div className={stl.container}>
         <Link href="/" className={stl.logo}>
-          <img src="/logo.png" className={stl.img} alt="QRzar Logo" />
+          <Image
+            src="/logo.png"
+            width={85}
+            height={32}
+            alt="QRzar logo"
+            className={stl.img}
+          />
           <span className={stl.logoName}>QRzar</span>
         </Link>
         <div className={stl.right}>

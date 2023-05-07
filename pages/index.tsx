@@ -7,6 +7,7 @@ import Customizer from "components/customizer";
 import Dropdown from "components/dropdown";
 import Button from "components/button";
 import Dropbox from "components/dropbox";
+import Scanner from "components/scanner";
 
 export default function Home() {
   return (
@@ -26,6 +27,7 @@ export default function Home() {
         {/* <Customizer /> */}
         {/* <Button /> */}
         <Dropbox />
+        {/* <Scanner /> */}
       </main>
     </>
   );

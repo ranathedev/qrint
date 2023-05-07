@@ -2,10 +2,14 @@ import React from "react";
 
 import Button from "components/button";
 import UploadIcon from "assets/upload.svg";
+import Scanner from "components/scanner";
 
 import stl from "./Dropbox.module.scss";
 
 const Dropbox = () => {
+  const [selectedFile, setSelectedFile] = React.useState({});
+  const [isLoading, setIsLoading] = React.useState(false);
+
   const handleDragOver = (e: any) => {
     e.preventDefault();
     const ele = e.target;
@@ -38,11 +42,14 @@ const Dropbox = () => {
   };
 
   const handleFile = (e: any) => {
-    const files = e.target.files;
-    console.log(files[0]);
+    const file = e.target.files[0];
+    setSelectedFile(file);
+    setIsLoading(true);
   };
 
-  return (
+  return isLoading ? (
+    <Scanner file={selectedFile} />
+  ) : (
     <div
       id="dropbox"
       className={stl.dropbox}

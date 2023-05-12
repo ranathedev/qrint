@@ -6,7 +6,13 @@ import Button from "components/button";
 
 import stl from "./Form.module.scss";
 
-const CustomForm = ({ initialVals, fields, formName }: any) => {
+interface Props {
+  initialVals: Object;
+  fields: Array<Object>;
+  formName: string;
+}
+
+const CustomForm = ({ initialVals, fields, formName }: Props) => {
   return (
     <div className={stl.form}>
       <span className={stl.formTitle}>{formName}</span>

@@ -15,31 +15,6 @@
     content: "Drag and drop file to Upload";
     font-size: 1.1rem;
   }
-
-  .inputContainer {
-    @extend .alignCen;
-
-    .label {
-      padding: 12.4px 10px;
-      background: #1e90ff;
-      color: #fff;
-      border-radius: 8px 0 0 8px;
-    }
-
-    .input {
-      border: none;
-      outline: none;
-      max-width: 400px;
-      width: 100%;
-      padding: 9px;
-      color: #555;
-      font-size: 1.1rem;
-      border-width: 1px 1px 1px;
-      border-style: solid;
-      border-color: #1e90ff;
-      border-radius: 0 8px 8px 0;
-    }
-  }
 }
 
 .draggedOver {

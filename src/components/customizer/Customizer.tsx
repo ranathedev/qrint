@@ -3,6 +3,7 @@ import Image from "next/image";
 
 import Dropdown from "components/dropdown";
 import Button from "components/button";
+import DownloadIcon from "assets/download.svg";
 
 import stl from "./Customizer.module.scss";
 
@@ -46,8 +47,8 @@ const Customizer = () => {
         />
       </div>
       <div className={stl.btnContainer}>
-        <Button />
-        <Button title="SVG/EPS" />
+        <Button icon={<DownloadIcon />} width="120px" />
+        <Button title="SVG/EPS" icon={<DownloadIcon />} />
       </div>
     </div>
   );

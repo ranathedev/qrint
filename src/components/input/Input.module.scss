@@ -1,0 +1,29 @@
+@import "styles/common";
+
+.input {
+  @extend .flexCol;
+  gap: 5px;
+
+  label {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #666;
+    margin-left: 5px;
+  }
+
+  input {
+    box-sizing: border-box;
+    padding: 8px 10px;
+    outline: none;
+    border: 2px solid #ccc;
+    color: #555;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+
+    &:focus {
+      border-radius: 8px;
+      border-color: #1e90ff;
+    }
+  }
+}

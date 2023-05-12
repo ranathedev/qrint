@@ -8,6 +8,8 @@ import Dropdown from "components/dropdown";
 import Button from "components/button";
 import Dropbox from "components/dropbox";
 import Scanner from "components/scanner";
+import InputContainer from "components/input-container";
+import CustomForm from "components/form";
 
 export default function Home() {
   return (
@@ -26,8 +28,10 @@ export default function Home() {
         {/* <Dropdown /> */}
         {/* <Customizer /> */}
         {/* <Button /> */}
-        <Dropbox />
+        {/* <Dropbox /> */}
         {/* <Scanner /> */}
+        <InputContainer />
+        {/* <CustomForm /> */}
       </main>
     </>
   );

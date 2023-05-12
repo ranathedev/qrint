@@ -16,7 +16,10 @@ const Scanner = ({ file }: any) => {
     <div className={stl.scanner}>
       <div className={stl.container}>
         <Image
-          src={URL.createObjectURL(file)}
+          src={
+            (file && URL.createObjectURL(file)) ||
+            "https://i.postimg.cc/Mp7gnttP/default-Pic.jpg"
+          }
           width={330}
           height={340}
           alt="image"

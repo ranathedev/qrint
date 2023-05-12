@@ -1,27 +1,31 @@
 import React, { ReactNode } from "react";
 
-import DownloadIcon from "assets/download.svg";
-
 import stl from "./Button.module.scss";
 
 interface Props {
   title: string;
-  icon: ReactNode;
+  icon?: ReactNode;
+  width?: string;
+  type?: "submit" | "reset";
   handleOnClick: () => void;
 }
 
-const Button = ({ title, icon, handleOnClick }: Props) => {
+const Button = ({ title, icon, type, handleOnClick, width }: Props) => {
   return (
-    <button onClick={handleOnClick} className={stl.btn}>
-      {title} {icon}
+    <button
+      style={{ width }}
+      type={type}
+      onClick={handleOnClick}
+      className={stl.btn}
+    >
+      {title} {icon && icon}
     </button>
   );
 };
 
 Button.defaultProps = {
   title: "JPG",
-  icon: <DownloadIcon />,
-  handleOnClick: () => console.log("Downloading..."),
+  handleOnClick: () => console.log("Clicked..."),
 };
 
 export default Button;

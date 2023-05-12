@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import clsx from "clsx";
 
+import Button from "components/button";
 import MenuIcon from "assets/menu.svg";
 
 import stl from "./Header.module.scss";
@@ -45,12 +46,7 @@ const Header = ({ list }: Props) => {
           <span className={stl.logoName}>QRzar</span>
         </Link>
         <div className={stl.right}>
-          <button
-            className={stl.contactBtn}
-            onClick={() => router.push("/contact")}
-          >
-            Contact
-          </button>
+          <Button title="Contact" />
           <button
             className={stl.expandBtn}
             onClick={() => setIsVisible(!isVisible)}

@@ -9,7 +9,6 @@ import Button from "components/button";
 import Dropbox from "components/dropbox";
 import Scanner from "components/scanner";
 import InputContainer from "components/input-container";
-import CustomForm from "components/form";
 import FileUploader from "components/fileUploader";
 
 export default function Home() {
@@ -31,9 +30,9 @@ export default function Home() {
         {/* <Button /> */}
         {/* <Dropbox /> */}
         {/* <Scanner /> */}
-        {/* <InputContainer /> */}
+        <InputContainer />
         {/* <CustomForm /> */}
-        <FileUploader />
+        {/* <FileUploader /> */}
       </main>
     </>
   );

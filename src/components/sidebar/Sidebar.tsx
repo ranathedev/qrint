@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import clsx from "clsx";
 
+import SidebarItem from "components/sidebar-item";
 import CollapseIcon from "assets/collapse.svg";
 import ExpandIcon from "assets/expand.svg";
 
 import stl from "./Sidebar.module.scss";
-import SidebarItem from "components/sidebar-item";
 
 const Sidebar = () => {
   const [collapse, setCollapse] = React.useState(false);

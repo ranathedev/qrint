@@ -14,14 +14,18 @@ interface Props {
 const Input = ({ placeholder, label, id, type, width }: Props) => {
   return (
     <div style={{ width }} className={stl.input}>
-      <label>{label + ":"}</label>
-      <Field
-        id={id}
-        className={stl.input}
-        name={id}
-        placeholder={placeholder}
-        type={type}
-      />
+      <label>{label + " :"}</label>
+      {type === "textarea" ? (
+        <textarea id={id} placeholder={placeholder} />
+      ) : (
+        <Field
+          id={id}
+          className={stl.input}
+          name={id}
+          placeholder={placeholder}
+          type={type}
+        />
+      )}
     </div>
   );
 };
@@ -30,7 +34,7 @@ Input.defaultProps = {
   placeholder: "SSID",
   label: "Network Name",
   id: "ssid",
-  width: "350px",
+  width: "300px",
   type: "text",
 };
 

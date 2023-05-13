@@ -7,7 +7,7 @@ import stl from "./InputContainer.module.scss";
 const InputContainer = () => {
   return (
     <div className={stl.inputContainer}>
-      <CustomForm />
+      <CustomForm title="VCARD" />
     </div>
   );
 };

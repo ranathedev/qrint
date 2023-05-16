@@ -1,3 +1,5 @@
+import React from "react";
+
 import Header from "components/header";
 import Sidebar from "components/sidebar";
 
@@ -7,13 +9,15 @@ import Customizer from "components/customizer";
 import stl from "./index.module.scss";
 
 const Homepage = () => {
+  const [title, setTitle] = React.useState("Text");
+
   return (
     <div className={stl.homepage}>
       <Header />
       <div className={stl.home}>
-        <Sidebar />
+        <Sidebar setTitle={setTitle} />
         <div className={stl.row}>
-          <InputContainer title="Text" />
+          <InputContainer title={title} />
           <Customizer />
         </div>
       </div>

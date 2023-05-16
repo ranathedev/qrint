@@ -7,7 +7,11 @@ import ExpandIcon from "assets/expand.svg";
 
 import stl from "./Sidebar.module.scss";
 
-const Sidebar = () => {
+interface Props {
+  setTitle: (arg: any) => void;
+}
+
+const Sidebar = ({ setTitle }: Props) => {
   const [collapse, setCollapse] = React.useState(false);
 
   useEffect(() => {
@@ -19,6 +23,18 @@ const Sidebar = () => {
     }
   }, [collapse]);
 
+  const types = [
+    "Text",
+    "URL",
+    "GeoLoc",
+    "SMS",
+    "WiFi",
+    "VCARD",
+    "Email",
+    "Calendar",
+    "Call",
+  ];
+
   return (
     <div className={clsx(stl.sidebar, collapse ? stl.collapse : "")}>
       <div id="header" className={stl.header}>
@@ -28,15 +44,14 @@ const Sidebar = () => {
         </span>
       </div>
       <div className={stl.container}>
-        <SidebarItem customClass={stl.item} />
-        <SidebarItem customClass={stl.item} title="URL" />
-        <SidebarItem customClass={stl.item} title="GeoLoc" />
-        <SidebarItem customClass={stl.item} title="SMS" />
-        <SidebarItem customClass={stl.item} title="WiFi" />
-        <SidebarItem customClass={stl.item} title="VCARD" />
-        <SidebarItem customClass={stl.item} title="Email" />
-        <SidebarItem customClass={stl.item} title="Calendar" />
-        <SidebarItem customClass={stl.item} title="Call" />
+        {types.map((type: string, i: number) => (
+          <SidebarItem
+            key={i}
+            customClass={stl.item}
+            title={type}
+            handleOnClick={(item) => setTitle(item)}
+          />
+        ))}
       </div>
     </div>
   );

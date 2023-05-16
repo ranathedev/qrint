@@ -1,5 +1,6 @@
 import React from "react";
 
+import getInitVals from "lib/initialVals";
 import CustomForm from "components/form";
 
 import stl from "./InputContainer.module.scss";
@@ -11,7 +12,7 @@ interface Props {
 const InputContainer = ({ title }: Props) => {
   return (
     <div className={stl.inputContainer}>
-      <CustomForm title={title} />
+      <CustomForm title={title} initialVals={getInitVals(title)} />
     </div>
   );
 };

@@ -1,9 +1,8 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import clsx from "clsx";
 import { Formik, Form } from "formik";
 
 import getForms from "lib/forms";
-import getInitVals from "lib/initialVals";
 import getIcons from "lib/getIcons";
 import Button from "components/button";
 import Input from "components/input";
@@ -12,9 +11,21 @@ import stl from "./Form.module.scss";
 
 interface Props {
   title: string;
+  initialVals: Object;
 }
 
-const CustomForm = ({ title }: Props) => {
+const CustomForm = ({ title, initialVals }: Props) => {
+  console.log(initialVals, "this");
+
+  const formikRef = useRef(null);
+
+  useEffect(() => {
+    //@ts-ignore
+    console.log(formikRef.current.values, "this is you are looking for.");
+    //@ts-ignore
+    formikRef.current.resetForm();
+  }, [initialVals]);
+
   return (
     <div className={stl.formContainer}>
       <div className={stl.title}>
@@ -22,11 +33,13 @@ const CustomForm = ({ title }: Props) => {
         <span className={stl.text}>{title}</span>
       </div>
       <Formik
-        initialValues={getInitVals(title)}
+        innerRef={formikRef}
+        initialValues={{ ...initialVals }}
         validateOnBlur={true}
         onSubmit={(values, actions) => {
           actions.resetForm();
-          console.log(values);
+          console.log(initialVals);
+          console.log(values, "this");
         }}
       >
         {(props: any) => (
@@ -43,7 +56,12 @@ const CustomForm = ({ title }: Props) => {
               />
             ))}
             <div className={stl.btnContainer}>
-              <Button title="Submit" type="submit" width="120px" />
+              <Button
+                title="Submit"
+                type="submit"
+                width="120px"
+                handleOnClick={() => props.submitForm()}
+              />
             </div>
           </Form>
         )}

@@ -1,7 +1,7 @@
 const getInitVals = (title) => {
   const textVals = { text: "" };
   const urlVals = { url: "" };
-  const geolocVals = { lat: "", lat: "" };
+  const geolocVals = { lat: "", long: "" };
   const smsVals = { tel: "", message: "" };
   const wifiVals = { security: "", ssid: "", password: "" };
   const vcardVals = {

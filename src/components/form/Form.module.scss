@@ -30,6 +30,7 @@
   .vcardForm {
     flex-direction: row;
     justify-content: space-between;
+    justify-content: center;
     flex-wrap: wrap;
     gap: 2.5rem 1rem;
     overflow-y: scroll;
@@ -37,5 +38,12 @@
     &::-webkit-scrollbar {
       display: none;
     }
+  }
+}
+
+@media screen and (max-width: 515px) {
+  .formContainer .form {
+    height: calc(100% - 2rem);
+    margin-top: 10px;
   }
 }

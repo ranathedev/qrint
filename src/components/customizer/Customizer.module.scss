@@ -9,7 +9,6 @@
   padding: 2rem 1rem;
   border-radius: 2rem;
   background: #fff;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 
   .preview {
     height: 40%;
@@ -29,5 +28,11 @@
     justify-content: space-evenly;
     width: 100%;
     padding: 10px 1rem;
+  }
+}
+
+@media screen and (max-width: 510px) {
+  .customizer {
+    width: 350px;
   }
 }

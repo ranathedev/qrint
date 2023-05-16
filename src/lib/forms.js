@@ -110,7 +110,7 @@ const getForms = (title) => {
     {
       id: "telfax",
       placeholder: "Enter Fax No ...",
-      label: "Fox No",
+      label: "Fax No",
       type: "number",
     },
     {

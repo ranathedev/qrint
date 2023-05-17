@@ -4,6 +4,7 @@ import clsx from "clsx";
 import SidebarItem from "components/sidebar-item";
 import CollapseIcon from "assets/collapse.svg";
 import ExpandIcon from "assets/expand.svg";
+import Tooltip from "components/tooltip";
 
 import stl from "./Sidebar.module.scss";
 
@@ -13,6 +14,7 @@ interface Props {
 
 const Sidebar = ({ setTitle }: Props) => {
   const [collapse, setCollapse] = React.useState(true);
+  const [showTooltip, setShowTooltip] = React.useState(false);
 
   useEffect(() => {
     const ele = document.getElementById("header");
@@ -39,9 +41,20 @@ const Sidebar = ({ setTitle }: Props) => {
     <div className={clsx(stl.sidebar, collapse ? stl.collapse : "")}>
       <div id="header" className={stl.header}>
         {collapse ? "" : <span className={stl.title}>Types</span>}
-        <span className={stl.icon} onClick={() => setCollapse(!collapse)}>
+        <span
+          onMouseOver={() => setShowTooltip(true)}
+          onMouseOut={() => setShowTooltip(false)}
+          className={stl.icon}
+          onClick={() => setCollapse(!collapse)}
+        >
           {collapse ? <ExpandIcon /> : <CollapseIcon />}
         </span>
+        <Tooltip
+          isVisible={showTooltip}
+          text={collapse ? "Expand" : "Collapse"}
+          top="5%"
+          left={collapse ? "110%" : "103%"}
+        />
       </div>
       <div className={stl.container}>
         {types.map((type: string, i: number) => (
@@ -50,11 +63,16 @@ const Sidebar = ({ setTitle }: Props) => {
             customClass={stl.item}
             title={type}
             handleOnClick={(item) => setTitle(item)}
+            isCollapsed={collapse}
           />
         ))}
       </div>
     </div>
   );
+};
+
+Sidebar.defaultProps = {
+  setTitle: (item: string) => console.log(item),
 };
 
 export default Sidebar;

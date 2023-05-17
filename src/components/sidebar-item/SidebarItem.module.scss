@@ -1,6 +1,7 @@
 @import "styles/common";
 
 .sidebarItem {
+  position: relative;
   @extend .alignCen;
   justify-content: flex-start;
   width: 100%;

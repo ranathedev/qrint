@@ -26,7 +26,7 @@ const getForms = (title) => {
     {
       id: "long",
       placeholder: "Enter Longitude here ...",
-      label: "Longtude",
+      label: "Longitude",
       type: "text",
     },
   ];

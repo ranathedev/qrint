@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import clsx from "clsx";
 import { Formik, Form } from "formik";
 
@@ -15,31 +15,27 @@ interface Props {
 }
 
 const CustomForm = ({ title, initialVals }: Props) => {
-  console.log(initialVals, "this");
-
-  const formikRef = useRef(null);
+  const [isLoading, setIsLoading] = React.useState(false);
 
   useEffect(() => {
-    //@ts-ignore
-    console.log(formikRef.current.values, "this is you are looking for.");
-    //@ts-ignore
-    formikRef.current.resetForm();
+    setIsLoading(true);
+    setTimeout(() => setIsLoading(false), 500);
   }, [initialVals]);
 
-  return (
+  return isLoading ? (
+    <div>Loading...</div>
+  ) : (
     <div className={stl.formContainer}>
       <div className={stl.title}>
         {getIcons(title)}
         <span className={stl.text}>{title}</span>
       </div>
       <Formik
-        innerRef={formikRef}
-        initialValues={{ ...initialVals }}
+        initialValues={initialVals}
         validateOnBlur={true}
         onSubmit={(values, actions) => {
           actions.resetForm();
-          console.log(initialVals);
-          console.log(values, "this");
+          console.log(values);
         }}
       >
         {(props: any) => (
@@ -56,12 +52,7 @@ const CustomForm = ({ title, initialVals }: Props) => {
               />
             ))}
             <div className={stl.btnContainer}>
-              <Button
-                title="Submit"
-                type="submit"
-                width="120px"
-                handleOnClick={() => props.submitForm()}
-              />
+              <Button title="Submit" type="submit" width="120px" />
             </div>
           </Form>
         )}

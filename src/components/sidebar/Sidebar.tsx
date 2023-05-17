@@ -12,7 +12,7 @@ interface Props {
 }
 
 const Sidebar = ({ setTitle }: Props) => {
-  const [collapse, setCollapse] = React.useState(false);
+  const [collapse, setCollapse] = React.useState(true);
 
   useEffect(() => {
     const ele = document.getElementById("header");

@@ -11,6 +11,7 @@ import Scanner from "components/scanner";
 import InputContainer from "components/input-container";
 import FileUploader from "components/fileUploader";
 import Homepage from "./Home";
+import Spinner from "components/spinner";
 
 export default function Home() {
   return (
@@ -35,6 +36,7 @@ export default function Home() {
         {/* <CustomForm /> */}
         {/* <FileUploader /> */}
         <Homepage />
+        {/* <Spinner /> */}
       </main>
     </>
   );

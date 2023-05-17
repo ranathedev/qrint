@@ -6,6 +6,7 @@ import getForms from "lib/forms";
 import getIcons from "lib/getIcons";
 import Button from "components/button";
 import Input from "components/input";
+import Spinner from "components/spinner";
 
 import stl from "./Form.module.scss";
 
@@ -19,11 +20,11 @@ const CustomForm = ({ title, initialVals }: Props) => {
 
   useEffect(() => {
     setIsLoading(true);
-    setTimeout(() => setIsLoading(false), 500);
+    setTimeout(() => setIsLoading(false), 1500);
   }, [initialVals]);
 
   return isLoading ? (
-    <div>Loading...</div>
+    <Spinner />
   ) : (
     <div className={stl.formContainer}>
       <div className={stl.title}>

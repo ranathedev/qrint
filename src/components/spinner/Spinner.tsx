@@ -13,14 +13,14 @@ const Spinner = () => {
     >
       <defs>
         <linearGradient id="grad1" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#000" />
-          <stop offset="40%" stop-color="#fff" />
-          <stop offset="100%" stop-color="#fff" />
+          <stop offset="0%" stopColor="#000" />
+          <stop offset="40%" stopColor="#fff" />
+          <stop offset="100%" stopColor="#fff" />
         </linearGradient>
         <linearGradient id="grad2" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#000" />
-          <stop offset="60%" stop-color="#000" />
-          <stop offset="100%" stop-color="#fff" />
+          <stop offset="0%" stopColor="#000" />
+          <stop offset="60%" stopColor="#000" />
+          <stop offset="100%" stopColor="#fff" />
         </linearGradient>
         <mask id="mask1">
           <rect x="0" y="0" width="128" height="128" fill="url(#grad1)" />
@@ -29,21 +29,21 @@ const Spinner = () => {
           <rect x="0" y="0" width="128" height="128" fill="url(#grad2)" />
         </mask>
       </defs>
-      <g fill="none" stroke-linecap="round" stroke-width="16">
+      <g fill="none" strokeLinecap="round" strokeWidth="16">
         <circle className={stl.sp__ring} r="56" cx="64" cy="64" stroke="#ddd" />
         <g stroke="hsl(223,90%,50%)">
           <path
             className={stl.sp__worm1}
             d="M120,64c0,30.928-25.072,56-56,56S8,94.928,8,64"
             stroke="hsl(343,90%,50%)"
-            stroke-dasharray="43.98 307.87"
+            strokeDasharray="43.98 307.87"
           />
           <g transform="translate(42,42)">
             <g className={stl.sp__worm2} transform="translate(-42,0)">
               <path
                 className={stl.sp__worm2_1}
                 d="M8,22c0-7.732,6.268-14,14-14s14,6.268,14,14"
-                stroke-dasharray="43.98 175.92"
+                strokeDasharray="43.98 175.92"
               />
             </g>
           </g>
@@ -52,14 +52,14 @@ const Spinner = () => {
           <path
             className={stl.sp__worm1}
             d="M120,64c0,30.928-25.072,56-56,56S8,94.928,8,64"
-            stroke-dasharray="43.98 307.87"
+            strokeDasharray="43.98 307.87"
           />
           <g transform="translate(42,42)">
             <g className={stl.sp__worm2} transform="translate(-42,0)">
               <path
                 className={stl.sp__worm2_1}
                 d="M8,22c0-7.732,6.268-14,14-14s14,6.268,14,14"
-                stroke-dasharray="43.98 175.92"
+                strokeDasharray="43.98 175.92"
               />
             </g>
           </g>
@@ -68,14 +68,14 @@ const Spinner = () => {
           <path
             className={stl.sp__worm1}
             d="M120,64c0,30.928-25.072,56-56,56S8,94.928,8,64"
-            stroke-dasharray="43.98 307.87"
+            strokeDasharray="43.98 307.87"
           />
           <g transform="translate(42,42)">
             <g className={stl.sp__worm2} transform="translate(-42,0)">
               <path
                 className={stl.sp__worm2_1}
                 d="M8,22c0-7.732,6.268-14,14-14s14,6.268,14,14"
-                stroke-dasharray="43.98 175.92"
+                strokeDasharray="43.98 175.92"
               />
             </g>
           </g>

@@ -7,17 +7,16 @@
   .container {
     position: relative;
     @extend .flexCenter;
-    width: 420px;
-    height: 420px;
+    width: 360px;
+    height: 360px;
     background: #ccc;
     border-radius: 12px;
 
     .border {
       position: absolute;
       inset: 0;
-      transform: translate(5%, 5%);
       background: url(/border.png);
-      background-size: 380px;
+      background-size: 360px;
       background-repeat: no-repeat;
     }
 

@@ -22,10 +22,13 @@ const Dropbox = ({ setSelectedFile }: any) => {
     const files = e.dataTransfer.files;
     files.length > 1 && console.log("Please drop only one file at a time.");
     const file = files[0];
-    if (file.type.includes("image")) {
+
+    if (file.type === "image/png" || "image/jpeg" || "image/gif") {
       setSelectedFile(file);
+    } else if (file.size > 1048576) {
+      console.log("File size exceeds 1 MiB");
     } else {
-      console.log("Not an Image");
+      console.log("Not supported");
     }
   };
 

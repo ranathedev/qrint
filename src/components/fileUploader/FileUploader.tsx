@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+import axios from "axios";
 
 import Dropbox from "components/dropbox";
 import Button from "components/button";
@@ -10,6 +11,60 @@ import stl from "./FileUploader.module.scss";
 const FileUploader = () => {
   const [selectedFile, setSelectedFile] = React.useState(null);
   const [src, setSrc] = React.useState(null);
+
+  const formData = new FormData();
+
+  useEffect(() => {
+    if (selectedFile !== null) {
+      console.log("Starting File Scan...");
+    }
+    scanWithFile();
+  }, [selectedFile]);
+
+  useEffect(() => {
+    if (src !== null) {
+      console.log("Starting URL Scan...");
+      scanWithURL();
+    }
+  }, [src]);
+
+  const scanWithFile = async () => {
+    //@ts-ignore
+    formData.append("file", selectedFile);
+
+    await axios
+      .post(`http://api.qrserver.com/v1/read-qr-code/`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
+      .then((response) => {
+        const data = response.data[0].symbol[0].data;
+        console.log(data);
+        if (data === null) {
+          console.log("No QR-Code Found in the Image.");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+    setSelectedFile(null);
+  };
+
+  const scanWithURL = async () => {
+    //@ts-ignore
+    const encodedURL = encodeURI(src);
+    await axios
+      .post(`http://api.qrserver.com/v1/read-qr-code/?fileurl=${encodedURL}`)
+      .then((response) => {
+        console.log(response.data[0].symbol[0].data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+    setSrc(null);
+  };
 
   const handleKeyDown = (e: any) => {
     if (e.key === "Enter")
@@ -29,7 +84,7 @@ const FileUploader = () => {
 
   const handleFile = (e: any) => {
     const file = e.target.files[0];
-    if (file.type.includes("image")) {
+    if (file.size < 1048576) {
       setSelectedFile(file);
     } else {
       console.log("Not an Image");
@@ -72,6 +127,7 @@ const FileUploader = () => {
             type="file"
             id="fileInput"
             style={{ display: "none" }}
+            accept="image/png, image/jpeg, image/gif"
             onChange={handleFile}
           />
           <Button

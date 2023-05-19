@@ -25,17 +25,7 @@ const Sidebar = ({ setTitle }: Props) => {
     }
   }, [collapse]);
 
-  const types = [
-    "Text",
-    "URL",
-    "GeoLoc",
-    "SMS",
-    "WiFi",
-    "VCARD",
-    "Email",
-    "Calendar",
-    "Call",
-  ];
+  const types = ["Text", "GeoLoc", "SMS", "WiFi", "VCARD", "Email", "Call"];
 
   return (
     <div className={clsx(stl.sidebar, collapse ? stl.collapse : "")}>

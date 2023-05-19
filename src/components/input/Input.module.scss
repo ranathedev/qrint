@@ -61,3 +61,13 @@
     }
   }
 }
+
+.checkbox {
+  flex-direction: row;
+  gap: 1rem;
+  align-items: center;
+
+  input {
+    cursor: pointer;
+  }
+}

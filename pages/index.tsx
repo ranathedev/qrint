@@ -38,7 +38,7 @@ export default function Home() {
         {/* <FileUploader /> */}
         <Homepage />
         {/* <Spinner /> */}
-        {/* <ReaderRes /> */}
+        {/* <ReaderRes data="https://ranaintizar.com" /> */}
       </main>
     </>
   );

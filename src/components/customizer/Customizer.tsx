@@ -1,9 +1,9 @@
 import React from "react";
 import Image from "next/image";
 
-import Dropdown from "components/dropdown";
 import Button from "components/button";
 import DownloadIcon from "assets/download.svg";
+import Dropdown from "components/dropdown";
 
 import stl from "./Customizer.module.scss";
 

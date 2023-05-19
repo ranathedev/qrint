@@ -1,7 +1,7 @@
 import React from "react";
 
-import getInitVals from "lib/initialVals";
 import CustomForm from "components/form";
+import getInitVals from "lib/initialVals";
 
 import stl from "./InputContainer.module.scss";
 

@@ -1,7 +1,7 @@
 import React from "react";
 
-import Header from "components/header";
 import FileUploader from "components/fileUploader";
+import Header from "components/header";
 
 import stl from "./index.module.scss";
 

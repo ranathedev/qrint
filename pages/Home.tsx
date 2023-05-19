@@ -1,10 +1,9 @@
 import React from "react";
 
-import Header from "components/header";
-import Sidebar from "components/sidebar";
-
-import InputContainer from "components/input-container";
 import Customizer from "components/customizer";
+import Header from "components/header";
+import InputContainer from "components/input-container";
+import Sidebar from "components/sidebar";
 
 import stl from "./index.module.scss";
 

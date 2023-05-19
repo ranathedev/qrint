@@ -18,7 +18,36 @@
     right: 100%;
     margin-top: -5px;
     border: 7px solid transparent;
-    border-right-color: #000;
+    border-color: transparent #000 transparent transparent;
+  }
+}
+
+.right {
+  transform: translateX(40px);
+
+  &::after {
+    left: 100%;
+    border-color: transparent transparent transparent #000;
+  }
+}
+
+.top {
+  transform: translateY(-30px);
+
+  &::after {
+    left: 46%;
+    top: -20%;
+    border-color: transparent transparent #000 transparent;
+  }
+}
+
+.bottom {
+  transform: translateY(30px);
+
+  &::after {
+    left: 46%;
+    top: 112%;
+    border-color: #000 transparent transparent transparent;
   }
 }
 

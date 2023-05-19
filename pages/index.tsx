@@ -12,6 +12,7 @@ import InputContainer from "components/input-container";
 import FileUploader from "components/fileUploader";
 import Homepage from "./Home";
 import Spinner from "components/spinner";
+import ReaderRes from "components/reader-result";
 
 export default function Home() {
   return (
@@ -37,6 +38,7 @@ export default function Home() {
         {/* <FileUploader /> */}
         <Homepage />
         {/* <Spinner /> */}
+        {/* <ReaderRes /> */}
       </main>
     </>
   );

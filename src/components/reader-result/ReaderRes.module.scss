@@ -1,0 +1,46 @@
+@import "styles/common";
+
+.result {
+  @extend .flexColCen;
+  max-width: 700px;
+  width: 100%;
+  height: 500px;
+  padding: 1rem;
+  background: #fff;
+  border-radius: 1rem;
+
+  h2 {
+    font-weight: 500;
+    color: #666;
+  }
+
+  .data {
+    @extend .flexColCen;
+    width: 100%;
+    height: 100%;
+    padding: 10px 0;
+    font-size: 1.2rem;
+    color: #444;
+    white-space: pre-wrap;
+
+    .link {
+      position: relative;
+      @extend .alignCen;
+      gap: 10px;
+      border-radius: 8px;
+      padding: 5px 10px;
+      background: #ddd;
+      bor svg {
+        transition: all 0.2s;
+      }
+
+      &:hover {
+        background: #ccc;
+
+        svg {
+          transform: scale(1.1);
+        }
+      }
+    }
+  }
+}

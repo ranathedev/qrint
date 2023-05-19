@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
 import axios from "axios";
 
-import Dropbox from "components/dropbox";
 import Button from "components/button";
+import Dropbox from "components/dropbox";
+import ReaderRes from "components/reader-result";
 import Scanner from "components/scanner";
 import UploadIcon from "assets/upload.svg";
 
@@ -11,24 +12,24 @@ import stl from "./FileUploader.module.scss";
 const FileUploader = () => {
   const [selectedFile, setSelectedFile] = React.useState(null);
   const [src, setSrc] = React.useState(null);
+  const [data, setData] = React.useState(null);
 
   const formData = new FormData();
 
   useEffect(() => {
-    if (selectedFile !== null) {
-      console.log("Starting File Scan...");
+    if (selectedFile) {
+      scanWithFile();
     }
-    scanWithFile();
   }, [selectedFile]);
 
   useEffect(() => {
-    if (src !== null) {
-      console.log("Starting URL Scan...");
+    if (src) {
       scanWithURL();
     }
   }, [src]);
 
   const scanWithFile = async () => {
+    console.log("Starting File Scan...");
     //@ts-ignore
     formData.append("file", selectedFile);
 
@@ -43,6 +44,10 @@ const FileUploader = () => {
         console.log(data);
         if (data === null) {
           console.log("No QR-Code Found in the Image.");
+          //@ts-ignore
+          setData("No QR-Code Found in the Image.");
+        } else {
+          setData(data);
         }
       })
       .catch((error) => {
@@ -53,12 +58,21 @@ const FileUploader = () => {
   };
 
   const scanWithURL = async () => {
+    console.log("Starting URL Scan...");
     //@ts-ignore
     const encodedURL = encodeURI(src);
     await axios
       .post(`http://api.qrserver.com/v1/read-qr-code/?fileurl=${encodedURL}`)
       .then((response) => {
-        console.log(response.data[0].symbol[0].data);
+        const data = response.data[0].symbol[0].data;
+        console.log(data);
+        if (data === null) {
+          console.log("No QR-Code Found in the Image.");
+          //@ts-ignore
+          setData("No QR-Code Found in the Image.");
+        } else {
+          setData(data);
+        }
       })
       .catch((error) => {
         console.error(error);
@@ -119,6 +133,7 @@ const FileUploader = () => {
   };
 
   return (
+    (data !== null && <ReaderRes data={data} />) ||
     (selectedFile !== null && <Scanner file={selectedFile} />) ||
     (src !== null && <Scanner src={src} />) || (
       <div className={stl.fileUploader}>

@@ -5,7 +5,7 @@
   align-items: center;
   gap: 1rem;
   width: 400px;
-  height: 75vh;
+  height: 80vh;
   padding: 2rem 1rem;
   border-radius: 2rem;
   background: #fff;
@@ -19,8 +19,9 @@
     @extend .flexCol;
     justify-content: flex-start;
     gap: 10px;
-    height: 46%;
+    height: 50%;
     padding-top: 1rem;
+    overflow: visible;
   }
 
   .btnContainer {

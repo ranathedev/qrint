@@ -19,6 +19,26 @@
     color: #fff;
     cursor: pointer;
     user-select: none;
+
+    .colorPicker {
+      @extend .alignCen;
+      gap: 1rem;
+      position: relative;
+
+      .input {
+        width: 80px;
+        outline: none;
+        border: none;
+        padding: 0 5px;
+        border-radius: 5px;
+      }
+
+      .tooltip {
+        width: 135px;
+        padding: 10px 5px;
+        font-size: 1.1rem;
+      }
+    }
   }
 
   .container {
@@ -46,10 +66,13 @@
 
 .expand {
   height: 170px;
+  overflow: visible !important;
 
-  .header .icon {
-    transform: rotate(-180deg);
-    transition: all 0.25s;
+  .header {
+    .icon {
+      transform: rotate(-180deg);
+      transition: all 0.25s;
+    }
   }
 
   .container {

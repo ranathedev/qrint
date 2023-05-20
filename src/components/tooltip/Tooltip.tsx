@@ -11,6 +11,7 @@ interface Props {
   left: string;
   isVisible: Boolean;
   text: string;
+  customClass?: string;
 }
 
 const Tooltip = ({
@@ -21,6 +22,7 @@ const Tooltip = ({
   left,
   isVisible,
   text,
+  customClass,
 }: Props) => {
   return (
     <span
@@ -30,7 +32,8 @@ const Tooltip = ({
         (arrowPos === "right" && stl.right) ||
           (arrowPos === "top" && stl.top) ||
           (arrowPos === "bottom" && stl.bottom),
-        isVisible ? stl.visible : ""
+        isVisible ? stl.visible : "",
+        customClass
       )}
     >
       {text}

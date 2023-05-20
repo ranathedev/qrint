@@ -25,6 +25,12 @@
   }
 
   &:hover {
+    color: #7a7c87;
     background: #f1f2f5;
   }
+}
+
+.active {
+  background: #1e90ff;
+  color: #fff;
 }

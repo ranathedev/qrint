@@ -10,9 +10,10 @@ import stl from "./Sidebar.module.scss";
 
 interface Props {
   setTitle: (arg: any) => void;
+  title: string;
 }
 
-const Sidebar = ({ setTitle }: Props) => {
+const Sidebar = ({ setTitle, title }: Props) => {
   const [collapse, setCollapse] = React.useState(true);
   const [showTooltip, setShowTooltip] = React.useState(false);
 
@@ -54,6 +55,7 @@ const Sidebar = ({ setTitle }: Props) => {
             title={type}
             handleOnClick={(item) => setTitle(item)}
             isCollapsed={collapse}
+            isActive={title === type}
           />
         ))}
       </div>

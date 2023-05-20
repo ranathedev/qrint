@@ -53,19 +53,24 @@
     }
 
     .imgContainer {
+      @extend .flexCenter;
+      min-width: 70px;
+      height: 70px;
       padding: 10px;
       border-radius: 5px;
       cursor: pointer;
+      background: #fff;
+      overflow: hidden;
 
       &:hover {
-        background: #1e90ff;
+        outline: 5px solid #1e90ff;
       }
     }
   }
 }
 
 .expand {
-  height: 170px;
+  height: 150px;
   overflow: visible !important;
 
   .header {

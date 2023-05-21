@@ -13,10 +13,12 @@ import stl from "./Form.module.scss";
 interface Props {
   title: string;
   initialVals: Object;
+  setValue: (arg: string) => void;
 }
 
-const CustomForm = ({ title, initialVals }: Props) => {
+const CustomForm = ({ title, initialVals, setValue }: Props) => {
   const [isLoading, setIsLoading] = React.useState(false);
+  const [message, setMessage] = React.useState("");
 
   useEffect(() => {
     setIsLoading(true);
@@ -34,9 +36,10 @@ const CustomForm = ({ title, initialVals }: Props) => {
       <Formik
         initialValues={initialVals}
         validateOnBlur={true}
-        onSubmit={(values, actions) => {
-          actions.resetForm();
-          console.log(values);
+        onSubmit={(values) => {
+          //@ts-ignore
+          setValue(values?.text);
+          console.log(values, message);
         }}
       >
         {(props: any) => (
@@ -50,10 +53,17 @@ const CustomForm = ({ title, initialVals }: Props) => {
                 placeholder={field.placeholder}
                 label={field.label}
                 type={field.type}
+                message={message}
+                setMessage={setMessage}
               />
             ))}
             <div className={stl.btnContainer}>
-              <Button title="Submit" type="submit" width="120px" />
+              <Button
+                title="Generate"
+                type="submit"
+                width="120px"
+                handleOnClick={() => setMessage("")}
+              />
             </div>
           </Form>
         )}

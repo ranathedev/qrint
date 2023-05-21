@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Image from "next/image";
 import clsx from "clsx";
 
@@ -26,6 +26,11 @@ const Dropdown = ({
 }: Props) => {
   const [showTooltip, setShowTooltip] = React.useState(false);
   const [color, setColor] = React.useState("#000000");
+  const [shape, setShape] = React.useState("default");
+
+  useEffect(() => {
+    handleItemClick(shape, color);
+  }, [color, shape]);
 
   return (
     <div
@@ -64,9 +69,7 @@ const Dropdown = ({
             id={`${i}`}
             className={stl.imgContainer}
             key={i}
-            onClick={() =>
-              handleItemClick(item.name, (item.icon && color) || item.src)
-            }
+            onClick={() => setShape(item.name)}
           >
             {(item.icon && item.icon) || (
               <Image

@@ -36,10 +36,10 @@ const CustomForm = ({ title, initialVals, setValue }: Props) => {
       <Formik
         initialValues={initialVals}
         validateOnBlur={true}
-        onSubmit={(values) => {
+        onSubmit={(values, actions) => {
+          actions.resetForm();
           //@ts-ignore
           setValue(values?.text);
-          console.log(values, message);
         }}
       >
         {(props: any) => (

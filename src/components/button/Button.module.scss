@@ -5,16 +5,35 @@
   border: none;
   @extend .flexCenter;
   gap: 5px;
-  background: #1e90ff;
   color: #fff;
   padding: 10px 1rem;
   font-size: 1rem;
   font-weight: 600;
   border-radius: 6px;
   cursor: pointer;
+}
+
+.primary {
+  background: #1e90ff;
 
   &:hover {
-    background-color: #0774e2;
+    background: #1976d2;
+  }
+}
+
+.secondary {
+  background: #059862;
+
+  &:hover {
+    background: #048051;
+  }
+}
+
+.danger {
+  background: #ff000099;
+
+  &:hover {
+    background: #ff0000;
   }
 }
 

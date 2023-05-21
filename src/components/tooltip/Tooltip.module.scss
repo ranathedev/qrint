@@ -10,16 +10,16 @@
   transform: translateX(-40px);
   transition: all 0.3s;
   opacity: 0;
+}
 
-  &::after {
-    content: "";
-    position: absolute;
-    top: 46%;
-    right: 100%;
-    margin-top: -5px;
-    border: 7px solid transparent;
-    border-color: transparent #000 transparent transparent;
-  }
+.showHook::after {
+  content: "";
+  position: absolute;
+  top: 46%;
+  right: 100%;
+  margin-top: -5px;
+  border: 7px solid transparent;
+  border-color: transparent #000 transparent transparent;
 }
 
 .right {

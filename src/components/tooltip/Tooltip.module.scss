@@ -1,11 +1,11 @@
 .tooltip {
   visibility: hidden;
-  width: 110px;
+  width: max-content;
   background-color: #000;
   color: #fff;
   text-align: center;
   border-radius: 6px;
-  padding: 10px;
+  padding: 10px !important;
   position: absolute;
   transform: translateX(-40px);
   transition: all 0.3s;

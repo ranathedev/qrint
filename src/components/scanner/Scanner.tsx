@@ -12,8 +12,8 @@ const Scanner = ({ file, src }: Props) => {
   const [isLoading, setIsLoading] = React.useState(true);
 
   useEffect(() => {
-    setTimeout(() => setIsLoading(false), 500);
-  });
+    isLoading && setTimeout(() => setIsLoading(false), 500);
+  }, [isLoading]);
 
   return isLoading ? (
     <div>Loading...</div>

@@ -1,17 +1,20 @@
 import React, { useEffect } from "react";
 
-import Icon from "assets/goto-link.svg";
 import Tooltip from "components/tooltip";
+import Icon from "assets/goto-link.svg";
+import BackIcon from "assets/arrow-left.svg";
 
 import stl from "./ReaderRes.module.scss";
 
 interface Props {
   data: string;
+  handleBackBtn: () => void;
 }
 
-const ReaderRes = ({ data }: Props) => {
+const ReaderRes = ({ data, handleBackBtn }: Props) => {
   const [showURL, setShowURL] = React.useState(false);
   const [showTooltip, setShowTooltip] = React.useState(false);
+  const [showBtnTooltip, setShowBtnTooltip] = React.useState(false);
 
   const isURL = (str: string) => {
     const urlPattern = /^(https?:\/\/)?([\w.-]+)\.([a-z]{2,})(\/.*)?$/i;
@@ -30,6 +33,21 @@ const ReaderRes = ({ data }: Props) => {
 
   return (
     <div className={stl.result}>
+      <button
+        onMouseOver={() => setShowBtnTooltip(true)}
+        onMouseOut={() => setShowBtnTooltip(false)}
+        className={stl.backBtn}
+        onClick={handleBackBtn}
+      >
+        <BackIcon />
+        <Tooltip
+          isVisible={showBtnTooltip}
+          text="Scan Another"
+          top="5%"
+          left="120%"
+          customClass={stl.tooltip}
+        />
+      </button>
       <h2>Result</h2>
       <div className={stl.data}>
         {showURL ? (

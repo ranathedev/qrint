@@ -13,7 +13,7 @@ import stl from "./FileUploader.module.scss";
 const FileUploader = () => {
   const [selectedFile, setSelectedFile] = React.useState(null);
   const [src, setSrc] = React.useState(null);
-  const [data, setData] = React.useState("null");
+  const [data, setData] = React.useState(null);
   const [showCamera, setShowCamera] = React.useState(false);
 
   const formData = new FormData();
@@ -29,6 +29,19 @@ const FileUploader = () => {
       scanWithURL();
     }
   }, [src]);
+
+  const dataURLtoFile = (dataurl: string) => {
+    var arr = dataurl.split(","),
+      bstr = atob(arr[arr.length - 1]),
+      n = bstr.length,
+      u8arr = new Uint8Array(n);
+    while (n--) {
+      u8arr[n] = bstr.charCodeAt(n);
+    }
+    const file = new File([u8arr], "image", { type: "image/png" });
+    //@ts-ignore
+    setSelectedFile(file);
+  };
 
   const scanWithFile = async () => {
     console.log("Starting File Scan...");
@@ -167,8 +180,7 @@ const FileUploader = () => {
           isCameraOn={showCamera}
           handleClick={(src) => {
             setShowCamera(false);
-            //@ts-ignore
-            setSrc(src);
+            dataURLtoFile(src);
           }}
           handleCancel={() => setShowCamera(false)}
         />

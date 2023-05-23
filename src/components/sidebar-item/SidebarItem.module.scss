@@ -1,0 +1,29 @@
+@import "styles/common";
+
+.sidebarItem {
+  @extend .alignCen;
+  justify-content: flex-start;
+  width: 100%;
+  gap: 1.2rem;
+  color: #7a7c87;
+  font-size: 1.2rem;
+  padding: 10px 5px;
+  border-radius: 10px;
+  cursor: pointer;
+  max-width: 300px;
+  user-select: none;
+
+  .icon {
+    padding: 5px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .text {
+    min-width: max-content;
+  }
+
+  &:hover {
+    background: #f1f2f5;
+  }
+}

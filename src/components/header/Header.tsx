@@ -81,6 +81,7 @@ Header.defaultProps = {
   list: [
     { title: "Home", link: "/" },
     { title: "Reader", link: "/reader" },
+    { title: "Generator", link: "/generator" },
     { title: "About", link: "/about" },
   ],
 };

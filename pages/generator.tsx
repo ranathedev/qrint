@@ -8,7 +8,7 @@ import Sidebar from "components/sidebar";
 
 import stl from "./index.module.scss";
 
-const Homepage = () => {
+const Generator = () => {
   const [title, setTitle] = React.useState("Text");
   const [value, setValue] = React.useState("");
   const [styles, setStyles] = React.useState({
@@ -59,17 +59,19 @@ const Homepage = () => {
   };
 
   return (
-    <div className={stl.homepage}>
-      <Header />
-      <div className={stl.home}>
-        <Sidebar title={title} setTitle={setTitle} />
-        <div className={stl.row}>
-          <InputContainer title={title} setValue={setValue} />
-          <Customizer setStyles={setStyles} />
+    <div className={stl.wrapper}>
+      <div className={stl.homepage}>
+        <Header />
+        <div className={stl.home}>
+          <Sidebar title={title} setTitle={setTitle} />
+          <div className={stl.row}>
+            <InputContainer title={title} setValue={setValue} />
+            <Customizer setStyles={setStyles} />
+          </div>
         </div>
       </div>
     </div>
   );
 };
 
-export default Homepage;
+export default Generator;

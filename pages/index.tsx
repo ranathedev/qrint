@@ -15,6 +15,7 @@ import Spinner from "components/spinner";
 import ReaderRes from "components/reader-result";
 import CaptureImg from "components/captureImage";
 import Homepage from "./home";
+import FAQ from "components/faq";
 
 export default function Home() {
   return (
@@ -43,6 +44,7 @@ export default function Home() {
         {/* <ReaderRes data="https://ranaintizar.com" /> */}
         {/* <CaptureImg /> */}
         <Homepage />
+        {/* <FAQ /> */}
       </main>
     </>
   );

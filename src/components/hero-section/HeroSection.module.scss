@@ -1,0 +1,85 @@
+@import "styles/common";
+
+.section {
+  @extend .flexWrap;
+  justify-content: center;
+  gap: 5rem;
+  min-height: 650px;
+  height: max-content;
+  width: 100%;
+  padding: 0 2rem;
+
+  .text {
+    @extend .flexCol;
+    justify-content: space-evenly;
+    width: 45%;
+    padding: 1rem;
+
+    .desc {
+      font-size: 1.3rem;
+      color: rgba(0, 0, 0, 0.6);
+    }
+  }
+
+  .imgContainer {
+    @extend .flexCenter;
+    padding: 2rem 0;
+    width: 45%;
+
+    .img {
+      width: 100%;
+      height: auto;
+      border-radius: 1rem;
+    }
+  }
+}
+
+@media screen and (max-width: 1250px) {
+  .section {
+    gap: 3rem;
+    padding: 0 2rem;
+
+    .text {
+      width: 40%;
+    }
+
+    .imgContainer {
+      width: 55%;
+    }
+  }
+}
+
+@media screen and (max-width: 1010px) {
+  .section {
+    .text,
+    .imgContainer {
+      width: 70%;
+    }
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .section {
+    .text,
+    .imgContainer {
+      width: 95%;
+    }
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .section {
+    padding: 0 10px;
+
+    .text,
+    .imgContainer {
+      width: 100%;
+    }
+
+    .text {
+      .desc {
+        padding: 1rem 0;
+      }
+    }
+  }
+}

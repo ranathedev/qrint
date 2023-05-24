@@ -19,6 +19,11 @@
   flex-direction: column;
 }
 
+.justifyBtw {
+  display: flex;
+  justify-content: space-between;
+}
+
 .flexColCen {
   @extend .flexCol;
   justify-content: center;

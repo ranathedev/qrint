@@ -1,5 +1,6 @@
 import React from "react";
 
+import FAQSection from "components/faq-section";
 import Header from "components/header";
 import HeroSection from "components/hero-section";
 import Intro from "components/intro";
@@ -23,6 +24,7 @@ const Homepage = () => {
         desc="Make your QR codes stand out and reflect your unique style. Customize the appearance of your codes with various styles, colors, and patterns. Add logos, brand colors, and custom designs to make your codes visually appealing and aligned with your brand identity. Create eye-catching codes that leave a lasting impression."
         imgSrc="/styles.png"
       />
+      <FAQSection />
     </div>
   );
 };

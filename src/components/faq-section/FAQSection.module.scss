@@ -1,0 +1,13 @@
+@import "styles/common";
+
+.faqSection {
+  @extend .flexColCen;
+  padding: 3rem 1rem 4rem;
+  font-size: 1.5rem;
+  border-top: 2px solid #3333;
+  margin-top: 1rem;
+
+  h2 {
+    margin-bottom: 4rem;
+  }
+}

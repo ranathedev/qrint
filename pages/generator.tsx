@@ -60,9 +60,9 @@ const Generator = () => {
 
   return (
     <div className={stl.wrapper}>
-      <div className={stl.homepage}>
+      <div className={stl.generator}>
         <Header />
-        <div className={stl.home}>
+        <div className={stl.container}>
           <Sidebar title={title} setTitle={setTitle} />
           <div className={stl.row}>
             <InputContainer title={title} setValue={setValue} />

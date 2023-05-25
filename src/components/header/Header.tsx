@@ -46,7 +46,10 @@ const Header = ({ list }: Props) => {
           <span className={stl.logoName}>QRzar</span>
         </Link>
         <div className={stl.right}>
-          <Button title="Contact" />
+          <Button
+            title="Contact"
+            handleOnClick={() => (location.href = "/contact")}
+          />
           <button
             className={stl.expandBtn}
             onClick={() => setIsVisible(!isVisible)}

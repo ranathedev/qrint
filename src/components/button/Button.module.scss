@@ -1,8 +1,7 @@
 @import "styles/common";
 
 .btn {
-  outline: none;
-  border: none;
+  @extend .clearStl;
   @extend .flexCenter;
   gap: 5px;
   color: #fff;

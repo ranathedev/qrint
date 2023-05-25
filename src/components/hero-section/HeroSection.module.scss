@@ -1,11 +1,10 @@
 @import "styles/common";
 
 .section {
-  @extend .flexWrap;
-  justify-content: center;
+  @extend .flexCenter;
+  flex-wrap: wrap;
   gap: 5rem;
-  min-height: 650px;
-  height: max-content;
+  height: 700px;
   width: 100%;
   padding: 0 2rem;
 
@@ -14,6 +13,7 @@
     justify-content: space-evenly;
     width: 45%;
     padding: 1rem;
+    height: 80%;
 
     .desc {
       font-size: 1.3rem;
@@ -25,10 +25,10 @@
     @extend .flexCenter;
     padding: 2rem 0;
     width: 45%;
+    height: 100%;
 
     .img {
-      width: 100%;
-      height: auto;
+      @extend .full;
       border-radius: 1rem;
     }
   }

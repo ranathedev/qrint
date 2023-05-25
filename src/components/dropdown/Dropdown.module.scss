@@ -26,9 +26,8 @@
       position: relative;
 
       .input {
+        @extend .clearStl;
         width: 80px;
-        outline: none;
-        border: none;
         padding: 0 5px;
         border-radius: 5px;
       }

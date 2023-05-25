@@ -1,0 +1,153 @@
+@import "styles/common";
+
+.contact {
+  @extend .flexCol;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 800px;
+  width: 100%;
+  min-height: 800px;
+  background: #fff;
+  border-radius: 10px;
+  padding: 4.5rem 2rem 2rem;
+  box-shadow: 0 3px 20px 0 rgba(0, 0, 0, 0.1);
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #212529;
+
+  .form {
+    max-width: 700px;
+    width: 100%;
+    @extend .flexCol;
+
+    .title {
+      font-size: 30px;
+      color: #333;
+      line-height: 1.2;
+      padding-bottom: 2rem;
+    }
+
+    .inputContainer {
+      position: relative;
+      width: 100%;
+      background: #fff;
+      border-radius: 1rem;
+      margin-bottom: 30px;
+
+      .input {
+        @extend .clearStl;
+        width: 100%;
+        padding: 1.3rem;
+        font-size: 1rem;
+        color: #4b2354;
+      }
+
+      textarea {
+        @extend .clearStl;
+        min-height: 250px;
+        resize: none;
+      }
+
+      .focusInput {
+        position: absolute;
+        top: 0;
+        left: 0;
+        @extend .full;
+        border-radius: 20px;
+        box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.05);
+        pointer-events: none;
+      }
+    }
+
+    .btnContainer {
+      @extend .justifyCen;
+      padding-top: 10px;
+      padding-bottom: 2.8rem;
+
+      button {
+        outline: none;
+        @extend .flexCenter;
+        padding: 0 1.25rem;
+        height: 42px;
+        min-width: 160px;
+        background: #1e90ff;
+        border-radius: 21px;
+        font-size: 1rem;
+        color: #fff;
+        padding-top: 5px;
+        box-shadow: 0 10px 30px 0 rgba(30, 144, 255, 0.5);
+        border: 2px solid transparent;
+        transition: all 0.3s;
+        cursor: pointer;
+
+        &:hover {
+          border-color: #1e90ff;
+          color: #1e90ff;
+          background: #fff;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+  .contactMore {
+    font-size: 1rem;
+    color: #999;
+    line-height: 1.5;
+    @extend .justifyCen;
+    gap: 1rem;
+
+    .item {
+      @extend .alignCen;
+      gap: 5px;
+
+      .icon {
+        @extend .flexCenter;
+        height: 50px;
+        width: 50px;
+        background: #fff;
+        border-radius: 50%;
+        cursor: pointer;
+        color: #353c4a;
+        box-shadow: 0 0 8px 0 rgba(50, 50, 50, 0.15);
+      }
+
+      .phone:hover {
+        color: #32cd32;
+        box-shadow: 0 0 8px 0 #32cd32;
+      }
+
+      .email:hover {
+        color: #e32636;
+        box-shadow: 0 0 8px 0 #e32636;
+      }
+
+      .facebook:hover {
+        color: blue;
+        box-shadow: 0 0 8px 0 blue;
+      }
+
+      .twitter:hover {
+        color: #00aced;
+        box-shadow: 0 0 8px 0 #00aced;
+      }
+
+      .linkedIn:hover {
+        color: #6cb4ee;
+        box-shadow: 0 0 8px 0 #6cb4ee;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .contact {
+    padding: 4.5rem 1rem 1.5rem;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .contact .contactMore {
+    gap: 0.5rem;
+  }
+}

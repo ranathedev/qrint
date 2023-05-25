@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useRef } from "react";
 import Webcam from "react-webcam";
+import Image from "next/image";
 import { motion } from "framer-motion";
 
 import Button from "components/button";
@@ -80,8 +81,7 @@ const CaptureImg = ({ isCameraOn, handleClick, handleCancel }: Props) => {
         </>
       ) : (
         <>
-          {/* @ts-ignore */}
-          <img src={img} alt="screenshot" />
+          <Image src={img || ""} width={400} height={400} alt="screenshot" />
           <div className={stl.btnContainer}>
             <Button
               // @ts-ignore

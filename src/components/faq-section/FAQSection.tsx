@@ -10,7 +10,7 @@ const FAQSection = () => {
 
   return (
     <div className={stl.faqSection}>
-      <h2>FAQ's</h2>
+      <h2>FAQ&apos;s</h2>
       {FAQs.map((item, i) => (
         <FAQ
           title={item.q}

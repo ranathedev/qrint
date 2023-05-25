@@ -8,7 +8,7 @@ interface Props {
   imgAlt: string;
   heading: string;
   desc: string;
-  imgPosition: "left" | "right";
+  imgPosition: string;
 }
 
 const UpperSection = ({

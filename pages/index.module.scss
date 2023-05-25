@@ -2,6 +2,8 @@
 
 .wrapper {
   @extend .fullView;
+  @extend .flexCol;
+  gap: 4rem;
 
   .generator {
     position: relative;
@@ -36,8 +38,15 @@
   padding: 2rem;
 }
 
+.contactPage {
+  @extend .flexCenter;
+  @extend .fullView;
+  padding: 1.5rem;
+  padding-top: 100px;
+}
+
 @media screen and (max-width: 1100px) {
-  .homepage .home {
+  .generator .container {
     height: max-content;
 
     .row {
@@ -50,7 +59,7 @@
 }
 
 @media screen and (max-width: 920px) {
-  .homepage .home {
+  .generator .container {
     .row {
       padding: 3rem 0;
     }
@@ -58,7 +67,7 @@
 }
 
 @media screen and (max-width: 600px) {
-  .homepage .home {
+  .generator .container {
     padding: 10px;
     padding-top: 5rem;
 
@@ -71,5 +80,10 @@
 @media screen and (max-width: 500px) {
   .reader {
     padding: 10px;
+  }
+
+  .contactPage {
+    padding: 10px;
+    padding-top: 100px;
   }
 }

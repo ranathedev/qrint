@@ -9,6 +9,11 @@
   justify-content: flex-end;
 }
 
+.justifyCen {
+  display: flex;
+  justify-content: center;
+}
+
 .flexRow {
   display: flex;
   flex-direction: row;
@@ -65,4 +70,9 @@
 .full {
   height: 100%;
   width: 100%;
+}
+
+.clearStl {
+  outline: none;
+  border: none;
 }

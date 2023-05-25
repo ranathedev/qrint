@@ -77,6 +77,7 @@ const Contact = () => {
                 ...btnTrans,
                 delay: value,
               }}
+              key={i}
               className={stl.item}
             >
               <span

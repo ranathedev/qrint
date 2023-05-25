@@ -4,7 +4,8 @@
   @extend .flexCenter;
   flex-wrap: wrap;
   gap: 5rem;
-  height: 700px;
+  min-height: 700px;
+  height: 100%;
   width: 100%;
   padding: 0 2rem;
 

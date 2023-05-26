@@ -9,7 +9,7 @@ import stl from "./index.module.scss";
 
 const Homepage = () => {
   return (
-    <div className={stl.wrapper}>
+    <div className={stl.home}>
       <Header />
       <Intro />
       <HeroSection />

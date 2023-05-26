@@ -59,15 +59,13 @@ const Generator = () => {
   };
 
   return (
-    <div className={stl.wrapper}>
-      <div className={stl.generator}>
-        <Header />
-        <div className={stl.container}>
-          <Sidebar title={title} setTitle={setTitle} />
-          <div className={stl.row}>
-            <InputContainer title={title} setValue={setValue} />
-            <Customizer setStyles={setStyles} />
-          </div>
+    <div className={stl.generator}>
+      <Header />
+      <div className={stl.container}>
+        <Sidebar title={title} setTitle={setTitle} />
+        <div className={stl.row}>
+          <InputContainer title={title} setValue={setValue} />
+          <Customizer setStyles={setStyles} />
         </div>
       </div>
     </div>

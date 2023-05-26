@@ -9,7 +9,7 @@ import stl from "./index.module.scss";
 
 const About = () => {
   return (
-    <div className={stl.wrapper}>
+    <div className={stl.aboutPage}>
       <Header />
       <div className={stl.aboutContainer}>
         {sections.map((item, i) => (

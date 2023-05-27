@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import Link from "next/link";
 
 import Tooltip from "components/tooltip";
+
 import Icon from "assets/goto-link.svg";
 import BackIcon from "assets/arrow-left.svg";
 

@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
 import clsx from "clsx";
 
-import CollapseIcon from "assets/collapse.svg";
-import ExpandIcon from "assets/expand.svg";
 import SidebarItem from "components/sidebar-item";
 import Tooltip from "components/tooltip";
+
+import CollapseIcon from "assets/collapse.svg";
+import ExpandIcon from "assets/expand.svg";
 
 import stl from "./Sidebar.module.scss";
 

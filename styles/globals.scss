@@ -22,9 +22,9 @@ body {
   }
 
   // for development
-  // main {
-  //   @extend .flexCenter;
-  // }
+  main {
+    @extend .flexCenter;
+  }
 }
 
 a {

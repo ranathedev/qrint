@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import Link from "next/link";
 
 import Tooltip from "components/tooltip";
 import Icon from "assets/goto-link.svg";
@@ -8,7 +9,7 @@ import stl from "./ReaderRes.module.scss";
 
 interface Props {
   data: string;
-  handleBackBtn: () => void;
+  handleBackBtn?: () => void;
 }
 
 const ReaderRes = ({ data, handleBackBtn }: Props) => {
@@ -51,7 +52,7 @@ const ReaderRes = ({ data, handleBackBtn }: Props) => {
       <h2>Result</h2>
       <div className={stl.data}>
         {showURL ? (
-          <a
+          <Link
             href={data}
             className={stl.link}
             target="_blank"
@@ -67,7 +68,7 @@ const ReaderRes = ({ data, handleBackBtn }: Props) => {
               top="-160%"
               arrowPos="bottom"
             />
-          </a>
+          </Link>
         ) : (
           modifiedString
         )}

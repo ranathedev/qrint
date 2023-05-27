@@ -16,6 +16,7 @@ import ReaderRes from "components/reader-result";
 import CaptureImg from "components/captureImage";
 import Homepage from "./home";
 import FAQ from "components/faq";
+import Footer from "components/footer";
 
 export default function Home() {
   return (
@@ -45,6 +46,7 @@ export default function Home() {
         {/* <CaptureImg /> */}
         <Homepage />
         {/* <FAQ /> */}
+        {/* <Footer /> */}
       </main>
     </>
   );

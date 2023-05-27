@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 
 import Customizer from "components/customizer";
+import Footer from "components/footer";
 import Header from "components/header";
 import InputContainer from "components/input-container";
 import Sidebar from "components/sidebar";
@@ -68,6 +69,7 @@ const Generator = () => {
           <Customizer setStyles={setStyles} />
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

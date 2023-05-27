@@ -1,0 +1,52 @@
+@import "styles/common";
+
+.scanner {
+  @extend .flexColCen;
+  gap: 2rem;
+
+  .container {
+    position: relative;
+    @extend .flexCenter;
+    width: 420px;
+    height: 420px;
+    background: #ccc;
+    border-radius: 12px;
+
+    .border {
+      position: absolute;
+      inset: 0;
+      transform: translate(5%, 5%);
+      background: url(/border.png);
+      background-size: 380px;
+      background-repeat: no-repeat;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 20px;
+      width: 90%;
+      height: 3px;
+      background: #15eb40;
+      border-radius: 4px;
+      z-index: 20;
+      box-shadow: -10px 0 20px 2px#0bec38;
+      animation: animateLine 4s ease-in-out infinite;
+    }
+  }
+
+  .text {
+    color: #888;
+    font-size: 1.3rem;
+  }
+}
+
+@keyframes animateLine {
+  0% {
+    top: 20px;
+  }
+
+  50% {
+    top: calc(100% - 20px);
+  }
+}

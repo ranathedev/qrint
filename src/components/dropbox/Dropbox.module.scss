@@ -1,0 +1,26 @@
+@import "styles/common";
+
+.dropbox {
+  @extend .flexColCen;
+  gap: 1rem;
+  max-width: 600px;
+  width: 100%;
+  box-sizing: border-box;
+  height: 500px;
+  background: #fff;
+  border-radius: 12px;
+  color: #999;
+
+  &::before {
+    content: "Drag and drop file to Upload";
+    font-size: 1.1rem;
+  }
+}
+
+.draggedOver {
+  border: 3px dashed #1e90ff;
+
+  &::before {
+    content: "Drop file here";
+  }
+}

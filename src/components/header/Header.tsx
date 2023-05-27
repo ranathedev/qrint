@@ -48,8 +48,8 @@ const Header = ({ list }: Props) => {
         </Link>
         <div className={stl.right}>
           <Button
-            title="Contact"
-            handleOnClick={() => (location.href = "/contact")}
+            title="Sign Up"
+            handleOnClick={() => (location.href = "/auth")}
           />
           <button
             className={stl.expandBtn}
@@ -87,6 +87,7 @@ Header.defaultProps = {
     { title: "Reader", link: "/reader" },
     { title: "Generator", link: "/generator" },
     { title: "About", link: "/about" },
+    { title: "Contact", link: "/contact" },
   ],
 };
 

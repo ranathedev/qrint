@@ -2,21 +2,23 @@
 
 .signup {
   @extend .flexColCen;
-  gap: 1rem;
   width: 100%;
   max-width: 500px;
   min-height: 450px;
-  height: 100%;
+  height: max-content;
   background: #fff;
   padding: 1rem;
   border-radius: 10px;
   border: 2px solid #e5e7eb;
+  user-select: none;
 
   h2 {
     width: 100%;
     padding-left: 1rem;
     font-size: 1.5rem;
     color: #212121;
+    margin-bottom: 1rem;
+    margin-top: 0.5rem;
   }
 
   .otherSignIn {
@@ -49,7 +51,7 @@
   form {
     @extend .flexCol;
     align-items: flex-end;
-    gap: 1.2rem;
+    gap: 1rem;
     max-width: 400px;
     width: 100%;
 
@@ -62,7 +64,7 @@
       }
 
       input {
-        border: 1px solid #d1d5db;
+        border: 2px solid #d1d5db;
         background: #f9fafb;
         color: #454d50;
 
@@ -90,5 +92,6 @@
     width: 100%;
     margin-left: 10px;
     color: #7a808c;
+    margin-top: 10px;
   }
 }

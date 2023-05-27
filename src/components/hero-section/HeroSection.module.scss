@@ -6,8 +6,7 @@
   flex-wrap: wrap;
   gap: 1rem;
   min-height: 700px;
-  height: 100%;
-  width: 100%;
+  @extend .full;
   padding: 0 2rem;
 
   .text {

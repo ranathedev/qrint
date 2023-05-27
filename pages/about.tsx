@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 
 import { sections, techs } from "lib/about";
+import Footer from "components/footer";
 import Header from "components/header";
 import HeroSection from "components/hero-section";
 
@@ -60,6 +61,7 @@ const About = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

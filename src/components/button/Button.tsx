@@ -9,7 +9,7 @@ interface Props {
   width?: string;
   type?: "submit" | "reset";
   handleOnClick?: () => void;
-  variant: "primary" | "secondary" | "danger";
+  variant: "primary" | "secondary" | "danger" | "signup";
 }
 
 const Button = ({

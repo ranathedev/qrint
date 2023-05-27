@@ -17,6 +17,7 @@ import CaptureImg from "components/captureImage";
 import Homepage from "./home";
 import FAQ from "components/faq";
 import Footer from "components/footer";
+import SignUpFlow from "components/auth/SignUpFlow";
 
 export default function Home() {
   return (
@@ -44,9 +45,10 @@ export default function Home() {
         {/* <Spinner /> */}
         {/* <ReaderRes data="https://ranaintizar.com" /> */}
         {/* <CaptureImg /> */}
-        <Homepage />
+        {/* <Homepage /> */}
         {/* <FAQ /> */}
         {/* <Footer /> */}
+        <SignUpFlow />
       </main>
     </>
   );

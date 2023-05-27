@@ -1,6 +1,7 @@
 import React from "react";
 import clsx from "clsx";
 import { Field } from "formik";
+import { motion } from "framer-motion";
 
 import stl from "./Input.module.scss";
 
@@ -10,8 +11,9 @@ interface Props {
   id: string;
   type: string;
   width: string;
-  message: string;
-  setMessage: (arg: string) => void;
+  message?: string;
+  setMessage?: (arg: string) => void;
+  customClass?: string;
 }
 
 const Input = ({
@@ -22,25 +24,34 @@ const Input = ({
   width,
   message,
   setMessage,
+  customClass,
 }: Props) => {
   return (
-    <div
+    <motion.div
+      initial={{ y: 100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ type: "spring", stiffness: 500, damping: 50 }}
       style={{ width }}
-      className={clsx(stl.input, type === "checkbox" ? stl.checkbox : "")}
+      className={clsx(
+        stl.input,
+        type === "checkbox" ? stl.checkbox : "",
+        customClass
+      )}
     >
-      <label>{type !== "checkbox" ? label + " :" : label + " "}</label>
+      <label>{label + " "}</label>
       {type === "textarea" ? (
         <textarea
           id={id}
           name={id}
           placeholder={placeholder}
           value={message}
+          //@ts-ignore
           onChange={(e) => setMessage(e.target.value)}
         />
       ) : (
         <Field id={id} name={id} placeholder={placeholder} type={type} />
       )}
-    </div>
+    </motion.div>
   );
 };
 

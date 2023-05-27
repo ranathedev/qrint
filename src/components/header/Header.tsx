@@ -5,6 +5,7 @@ import Link from "next/link";
 import clsx from "clsx";
 
 import Button from "components/button";
+
 import MenuIcon from "assets/menu.svg";
 
 import stl from "./Header.module.scss";

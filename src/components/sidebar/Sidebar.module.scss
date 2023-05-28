@@ -6,7 +6,7 @@
   @extend .flexCol;
   align-items: center;
   width: 280px;
-  height: 80vh;
+  min-height: 80vh;
   border-radius: 2rem;
   overflow: hidden;
   background: #fff;
@@ -14,6 +14,7 @@
   transition: all 0.3s;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   overflow: visible;
+  z-index: 2;
 
   .header {
     @extend .justifyEnd;
@@ -65,4 +66,26 @@
 
 .collapse {
   width: 70px;
+}
+
+@media screen and (max-width: 1100px) {
+  .sidebar {
+    top: 4%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .sidebar {
+    transform-origin: top left;
+  }
+
+  .collapse {
+    width: 70px;
+    height: 70px;
+    min-height: 10px;
+    overflow: hidden;
+    padding-top: 5px;
+    padding-left: 6px;
+    border-radius: 35px;
+  }
 }

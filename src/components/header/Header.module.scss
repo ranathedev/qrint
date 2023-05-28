@@ -75,7 +75,7 @@
 
       ul {
         @extend .flexCol;
-        padding: 1rem;
+        padding: 5px 10px;
         margin-top: 1rem;
         font-weight: 500;
         border: 1px solid #f3f4f6;
@@ -109,7 +109,7 @@
 }
 
 .expandNav {
-  height: 258px;
+  height: 275px;
 }
 
 .darkNav {

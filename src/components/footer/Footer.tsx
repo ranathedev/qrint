@@ -38,7 +38,7 @@ const Footer = () => {
           </li>
         ))}
       </ul>
-      <p>&copy;2022 QRzar | All Rights Reserved</p>
+      <p>&copy;2022 QRint | All Rights Reserved</p>
     </footer>
   );
 };

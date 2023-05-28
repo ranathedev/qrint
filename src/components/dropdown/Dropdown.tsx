@@ -11,8 +11,8 @@ import stl from "./Dropdown.module.scss";
 interface Props {
   title: string;
   list: Array<Object>;
-  handleItemClick: (arg1: string, arg2: string) => void;
-  handleOnClick: any;
+  handleItemClick?: (arg1: string, arg2: string) => void;
+  handleOnClick?: any;
   expand: Boolean;
   colorPicker: Boolean;
 }
@@ -22,7 +22,6 @@ const Dropdown = ({
   list,
   handleOnClick,
   expand,
-  handleItemClick,
   colorPicker,
 }: Props) => {
   const [showTooltip, setShowTooltip] = React.useState(false);
@@ -97,10 +96,7 @@ Dropdown.defaultProps = {
     { id: "sample-image", src: "/qr-code.png" },
     { id: "sample-image", src: "/qr-code.png" },
   ],
-  handleItemClick: (name: string, color: string) =>
-    console.log({ name, color }),
   expand: false,
-  handleOnClick: () => console.log("Clicked on Dropdown"),
   colorPicker: true,
 };
 

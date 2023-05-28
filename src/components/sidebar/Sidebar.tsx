@@ -64,8 +64,4 @@ const Sidebar = ({ setTitle, title }: Props) => {
   );
 };
 
-Sidebar.defaultProps = {
-  setTitle: (item: string) => console.log(item),
-};
-
 export default Sidebar;

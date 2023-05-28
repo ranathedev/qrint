@@ -24,9 +24,11 @@
     min-width: max-content;
   }
 
-  &:hover {
-    color: #7a7c87;
-    background: #f1f2f5;
+  @media (hover: hover) {
+    &:hover {
+      color: #7a7c87;
+      background: #f1f2f5;
+    }
   }
 }
 

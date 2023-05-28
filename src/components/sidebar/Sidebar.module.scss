@@ -41,8 +41,10 @@
       padding: 10px;
       border-radius: 5px;
 
-      &:hover {
-        background: #f1f2f5;
+      @media (hover: hover) {
+        &:hover {
+          background: #f1f2f5;
+        }
       }
 
       svg {

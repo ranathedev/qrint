@@ -33,7 +33,6 @@
       }
 
       .tooltip {
-        // width: 135px;
         padding: 10px 5px;
         font-size: 1.1rem;
       }
@@ -61,8 +60,10 @@
       background: #fff;
       overflow: hidden;
 
-      &:hover {
-        outline: 5px solid #1e90ff;
+      @media (hover: hover) {
+        &:hover {
+          outline: 5px solid #1e90ff;
+        }
       }
     }
   }

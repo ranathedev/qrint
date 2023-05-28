@@ -41,10 +41,10 @@ const Header = ({ list }: Props) => {
             src="/logo.png"
             width={85}
             height={32}
-            alt="QRzar logo"
+            alt="QRint logo"
             className={stl.img}
           />
-          <span className={stl.logoName}>QRzar</span>
+          <span className={stl.logoName}>QRint</span>
         </Link>
         <div className={stl.right}>
           <Button

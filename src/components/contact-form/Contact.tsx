@@ -63,7 +63,9 @@ const Contact = () => {
           <span className={stl.focusInput}></span>
         </motion.div>
         <div className={stl.btnContainer}>
-          <button onClick={() => console.log("Submit")}>Send Message</button>
+          <button onClick={() => console.log("Message sent!")}>
+            Send Message
+          </button>
         </div>
       </motion.div>
       <div className={stl.contactMore}>

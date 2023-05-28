@@ -42,31 +42,29 @@ const CustomForm = ({ title, initialVals, setValue }: Props) => {
           setValue(values?.text);
         }}
       >
-        {(props: any) => (
-          <Form
-            className={clsx(stl.form, title === "VCARD" ? stl.vcardForm : "")}
-          >
-            {getForms(title)?.map((field: any, i: number) => (
-              <Input
-                key={i}
-                id={field.id}
-                placeholder={field.placeholder}
-                label={field.label}
-                type={field.type}
-                message={message}
-                setMessage={setMessage}
-              />
-            ))}
-            <div className={stl.btnContainer}>
-              <Button
-                title="Generate"
-                type="submit"
-                width="120px"
-                handleOnClick={() => setMessage("")}
-              />
-            </div>
-          </Form>
-        )}
+        <Form
+          className={clsx(stl.form, title === "VCARD" ? stl.vcardForm : "")}
+        >
+          {getForms(title)?.map((field: any, i: number) => (
+            <Input
+              key={i}
+              id={field.id}
+              placeholder={field.placeholder}
+              label={field.label}
+              type={field.type}
+              message={message}
+              setMessage={setMessage}
+            />
+          ))}
+          <div className={stl.btnContainer}>
+            <Button
+              title="Generate"
+              type="submit"
+              width="120px"
+              handleOnClick={() => setMessage("")}
+            />
+          </div>
+        </Form>
       </Formik>
     </div>
   );

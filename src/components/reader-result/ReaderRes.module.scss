@@ -48,12 +48,18 @@
 
     .link {
       position: relative;
-      @extend .alignCen;
-      gap: 10px;
+      @extend .flexColCen;
+      gap: 6px;
       border-radius: 8px;
-      padding: 5px 10px;
+      padding: 10px;
       background: #ddd;
-      bor svg {
+
+      .text {
+        @extend .alignCen;
+        gap: 5px;
+      }
+
+      svg {
         transition: all 0.2s;
       }
 

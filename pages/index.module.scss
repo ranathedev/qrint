@@ -2,6 +2,7 @@
 
 .home {
   position: relative;
+  @extend .flexColCen;
   @extend .fullView;
   padding-bottom: 400px;
 }

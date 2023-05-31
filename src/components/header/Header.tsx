@@ -37,13 +37,6 @@ const Header = ({ list }: Props) => {
     <nav className={clsx(stl.nav, isVisible ? stl.expandNav : "")}>
       <div className={stl.container}>
         <Link href="/" className={stl.logo}>
-          <Image
-            src="/logo.png"
-            width={85}
-            height={32}
-            alt="QRint logo"
-            className={stl.img}
-          />
           <span className={stl.logoName}>QRint</span>
         </Link>
         <div className={stl.right}>

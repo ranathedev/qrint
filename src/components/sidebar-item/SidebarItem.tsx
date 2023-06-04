@@ -11,6 +11,7 @@ interface Props {
   handleOnClick: (arg: string) => void;
   customClass?: string;
   isCollapsed: Boolean;
+  isActive: Boolean;
 }
 
 const SidebarItem = ({
@@ -18,6 +19,7 @@ const SidebarItem = ({
   handleOnClick,
   isCollapsed,
   customClass,
+  isActive,
 }: Props) => {
   const [showTooltip, setShowTooltip] = React.useState(false);
 
@@ -25,7 +27,7 @@ const SidebarItem = ({
     <div
       onMouseOver={() => setShowTooltip(true)}
       onMouseOut={() => setShowTooltip(false)}
-      className={clsx(stl.sidebarItem, customClass)}
+      className={clsx(stl.sidebarItem, isActive ? stl.active : "", customClass)}
       onClick={() => handleOnClick(title)}
     >
       <span className={stl.icon}>{getIcons(title)}</span>

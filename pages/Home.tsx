@@ -14,7 +14,7 @@ const Homepage = () => {
     <div className={stl.homepage}>
       <Header />
       <div className={stl.home}>
-        <Sidebar setTitle={setTitle} />
+        <Sidebar title={title} setTitle={setTitle} />
         <div className={stl.row}>
           <InputContainer title={title} />
           <Customizer />

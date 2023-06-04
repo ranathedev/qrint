@@ -12,8 +12,10 @@
   color: #999;
 
   &::before {
-    content: "Drag and drop file to Upload";
+    content: "Drag and drop file to Upload \a Supports JPEG, PNG and GIF";
     font-size: 1.1rem;
+    line-height: 1.3rem;
+    white-space: pre;
   }
 }
 

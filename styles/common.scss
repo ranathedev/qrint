@@ -9,6 +9,11 @@
   justify-content: flex-end;
 }
 
+.flexRow {
+  display: flex;
+  flex-direction: row;
+}
+
 .flexCol {
   display: flex;
   flex-direction: column;

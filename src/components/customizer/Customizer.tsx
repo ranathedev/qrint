@@ -1,16 +1,18 @@
 import React from "react";
 import Image from "next/image";
 
-import Dropdown from "components/dropdown";
+import { modules, innereyes, outereyes, logos } from "lib/data";
 import Button from "components/button";
 import DownloadIcon from "assets/download.svg";
+import Dropdown from "components/dropdown";
 
 import stl from "./Customizer.module.scss";
 
 const Customizer = () => {
   const [expand, setExpand] = React.useState({
-    frame: true,
-    shape: false,
+    modules: true,
+    innereye: false,
+    outereye: false,
     logo: false,
   });
 
@@ -26,23 +28,56 @@ const Customizer = () => {
       </div>
       <div className={stl.container}>
         <Dropdown
-          expand={expand.frame}
+          title="Modules"
+          expand={expand.modules}
+          list={modules}
           handleOnClick={() =>
-            setExpand({ frame: true, shape: false, logo: false })
+            setExpand({
+              modules: true,
+              innereye: false,
+              outereye: false,
+              logo: false,
+            })
           }
         />
         <Dropdown
-          title="Shape"
-          expand={expand.shape}
+          title="Inner Eye"
+          expand={expand.innereye}
+          list={innereyes}
           handleOnClick={() =>
-            setExpand({ frame: false, shape: true, logo: false })
+            setExpand({
+              modules: false,
+              innereye: true,
+              outereye: false,
+              logo: false,
+            })
           }
         />
         <Dropdown
+          title="Outer Eye"
+          expand={expand.outereye}
+          list={outereyes}
+          handleOnClick={() =>
+            setExpand({
+              modules: false,
+              innereye: false,
+              outereye: true,
+              logo: false,
+            })
+          }
+        />
+        <Dropdown
+          colorPicker={false}
           title="Logo"
           expand={expand.logo}
+          list={logos}
           handleOnClick={() =>
-            setExpand({ frame: false, shape: false, logo: true })
+            setExpand({
+              modules: false,
+              innereye: false,
+              outereye: false,
+              logo: true,
+            })
           }
         />
       </div>

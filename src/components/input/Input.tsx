@@ -1,4 +1,5 @@
 import React from "react";
+import clsx from "clsx";
 import { Field } from "formik";
 
 import stl from "./Input.module.scss";
@@ -13,15 +14,16 @@ interface Props {
 
 const Input = ({ placeholder, label, id, type, width }: Props) => {
   return (
-    <div style={{ width }} className={stl.input}>
-      <label>{label + ":"}</label>
-      <Field
-        id={id}
-        className={stl.input}
-        name={id}
-        placeholder={placeholder}
-        type={type}
-      />
+    <div
+      style={{ width }}
+      className={clsx(stl.input, type === "checkbox" ? stl.checkbox : "")}
+    >
+      <label>{type !== "checkbox" ? label + " :" : label + " "}</label>
+      {type === "textarea" ? (
+        <textarea id={id} placeholder={placeholder} />
+      ) : (
+        <Field id={id} name={id} placeholder={placeholder} type={type} />
+      )}
     </div>
   );
 };
@@ -30,7 +32,7 @@ Input.defaultProps = {
   placeholder: "SSID",
   label: "Network Name",
   id: "ssid",
-  width: "350px",
+  width: "300px",
   type: "text",
 };
 

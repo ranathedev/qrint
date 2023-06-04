@@ -9,8 +9,10 @@ import Button from "components/button";
 import Dropbox from "components/dropbox";
 import Scanner from "components/scanner";
 import InputContainer from "components/input-container";
-import CustomForm from "components/form";
 import FileUploader from "components/fileUploader";
+import Homepage from "./Home";
+import Spinner from "components/spinner";
+import ReaderRes from "components/reader-result";
 
 export default function Home() {
   return (
@@ -33,7 +35,10 @@ export default function Home() {
         {/* <Scanner /> */}
         {/* <InputContainer /> */}
         {/* <CustomForm /> */}
-        <FileUploader />
+        {/* <FileUploader /> */}
+        <Homepage />
+        {/* <Spinner /> */}
+        {/* <ReaderRes data="https://ranaintizar.com" /> */}
       </main>
     </>
   );

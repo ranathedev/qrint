@@ -80,7 +80,7 @@ const Header = ({ list }: Props) => {
 Header.defaultProps = {
   list: [
     { title: "Home", link: "/" },
-    { title: "About", link: "/about" },
+    { title: "Reader", link: "/reader" },
     { title: "Services", link: "/services" },
     { title: "Blog", link: "/blog" },
   ],

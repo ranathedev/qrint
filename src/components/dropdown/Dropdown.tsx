@@ -3,15 +3,17 @@ import Image from "next/image";
 import clsx from "clsx";
 
 import DownIcon from "assets/arrow-down.svg";
+import Tooltip from "components/tooltip";
 
 import stl from "./Dropdown.module.scss";
 
 interface Props {
   title: string;
-  list: Array<string>;
-  handleItemClick: (arg: string) => void;
+  list: Array<Object>;
+  handleItemClick: (arg1: string, arg2: string) => void;
   handleOnClick: any;
   expand: Boolean;
+  colorPicker: Boolean;
 }
 
 const Dropdown = ({
@@ -20,23 +22,60 @@ const Dropdown = ({
   handleOnClick,
   expand,
   handleItemClick,
+  colorPicker,
 }: Props) => {
+  const [showTooltip, setShowTooltip] = React.useState(false);
+  const [color, setColor] = React.useState("#000000");
+
   return (
     <div
       className={clsx(stl.dropDown, expand ? stl.expand : "")}
       onClick={handleOnClick}
     >
       <div className={stl.header}>
-        {title} <DownIcon className={stl.icon} />
+        {title}
+        <span className={stl.colorPicker}>
+          {colorPicker && (
+            <input
+              //@ts-ignore
+              onMouseOver={() => setShowTooltip(expand)}
+              onMouseOut={() => setShowTooltip(false)}
+              className={stl.input}
+              type="color"
+              value={color}
+              onChange={(e) => setColor(e.target.value)}
+            />
+          )}
+          <Tooltip
+            isVisible={showTooltip}
+            arrowPos="bottom"
+            text="Change Color"
+            top="-180%"
+            left="-25%"
+            customClass={stl.tooltip}
+          />
+          <DownIcon className={stl.icon} />
+        </span>
       </div>
       <div className={stl.container}>
-        {list.map((src: string, i: number) => (
+        {list.map((item: any, i: number) => (
           <div
+            style={{ color }}
+            id={`${i}`}
             className={stl.imgContainer}
             key={i}
-            onClick={() => handleItemClick(src)}
+            onClick={() =>
+              handleItemClick(item.name, (item.icon && color) || item.src)
+            }
           >
-            <Image src={src} width={75} height={80} alt="img" />
+            {(item.icon && item.icon) || (
+              <Image
+                src={item.src}
+                width={60}
+                height={60}
+                alt={item.name + "-image"}
+              />
+            )}
           </div>
         ))}
       </div>
@@ -47,15 +86,18 @@ const Dropdown = ({
 Dropdown.defaultProps = {
   title: "Frame",
   list: [
-    "/qr-code.png",
-    "/qr-code.png",
-    "/qr-code.png",
-    "/qr-code.png",
-    "/qr-code.png",
+    { id: "sample-image", src: "/qr-code.png" },
+    { id: "sample-image", src: "/qr-code.png" },
+    { id: "sample-image", src: "/qr-code.png" },
+    { id: "sample-image", src: "/qr-code.png" },
+    { id: "sample-image", src: "/qr-code.png" },
+    { id: "sample-image", src: "/qr-code.png" },
   ],
-  handleItemClick: (src: string) => console.log(src),
+  handleItemClick: (name: string, color: string) =>
+    console.log({ name, color }),
   expand: false,
   handleOnClick: () => console.log("Clicked on Dropdown"),
+  colorPicker: true,
 };
 
 export default Dropdown;

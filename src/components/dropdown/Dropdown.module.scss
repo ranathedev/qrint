@@ -19,6 +19,26 @@
     color: #fff;
     cursor: pointer;
     user-select: none;
+
+    .colorPicker {
+      @extend .alignCen;
+      gap: 1rem;
+      position: relative;
+
+      .input {
+        width: 80px;
+        outline: none;
+        border: none;
+        padding: 0 5px;
+        border-radius: 5px;
+      }
+
+      .tooltip {
+        width: 135px;
+        padding: 10px 5px;
+        font-size: 1.1rem;
+      }
+    }
   }
 
   .container {
@@ -33,26 +53,45 @@
     }
 
     .imgContainer {
+      @extend .flexCenter;
+      min-width: 70px;
+      height: 70px;
       padding: 10px;
       border-radius: 5px;
       cursor: pointer;
+      background: #fff;
+      overflow: hidden;
 
       &:hover {
-        background: #1e90ff;
+        outline: 5px solid #1e90ff;
       }
     }
   }
 }
 
 .expand {
-  height: 170px;
+  height: 150px;
+  overflow: visible !important;
 
-  .header .icon {
-    transform: rotate(-180deg);
-    transition: all 0.25s;
+  .header {
+    .icon {
+      transform: rotate(-180deg);
+      transition: all 0.25s;
+    }
   }
 
   .container {
     margin-top: 0;
+  }
+}
+
+@media screen and (max-width: 515px) {
+  .dropDown {
+    width: 310px;
+
+    .container {
+      gap: 0;
+      padding: 10px;
+    }
   }
 }

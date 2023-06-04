@@ -11,7 +11,31 @@
     margin-left: 5px;
   }
 
+  textarea {
+    width: 100%;
+    height: 200px;
+    box-sizing: border-box;
+    padding: 8px 10px;
+    outline: none;
+    border: 2px solid #ccc;
+    color: #555;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    resize: none;
+
+    &:focus {
+      border-radius: 8px;
+      border-color: #1e90ff;
+    }
+
+    &::placeholder {
+      color: #aaa;
+    }
+  }
+
   input {
+    @extend .flexRow;
     box-sizing: border-box;
     padding: 8px 10px;
     outline: none;
@@ -25,5 +49,25 @@
       border-radius: 8px;
       border-color: #1e90ff;
     }
+
+    &::placeholder {
+      color: #aaa;
+    }
+
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  }
+}
+
+.checkbox {
+  flex-direction: row;
+  gap: 1rem;
+  align-items: center;
+
+  input {
+    cursor: pointer;
   }
 }

@@ -5,11 +5,10 @@
   align-items: center;
   gap: 1rem;
   width: 400px;
-  height: 75vh;
+  height: 80vh;
   padding: 2rem 1rem;
   border-radius: 2rem;
   background: #fff;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 
   .preview {
     height: 40%;
@@ -20,8 +19,9 @@
     @extend .flexCol;
     justify-content: flex-start;
     gap: 10px;
-    height: 46%;
+    height: 50%;
     padding-top: 1rem;
+    overflow: visible;
   }
 
   .btnContainer {
@@ -29,5 +29,11 @@
     justify-content: space-evenly;
     width: 100%;
     padding: 10px 1rem;
+  }
+}
+
+@media screen and (max-width: 510px) {
+  .customizer {
+    width: 350px;
   }
 }

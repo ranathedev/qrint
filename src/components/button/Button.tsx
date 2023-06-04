@@ -7,7 +7,7 @@ interface Props {
   icon?: ReactNode;
   width?: string;
   type?: "submit" | "reset";
-  handleOnClick: () => void;
+  handleOnClick?: () => void;
 }
 
 const Button = ({ title, icon, type, handleOnClick, width }: Props) => {
@@ -25,7 +25,6 @@ const Button = ({ title, icon, type, handleOnClick, width }: Props) => {
 
 Button.defaultProps = {
   title: "JPG",
-  handleOnClick: () => console.log("Clicked..."),
 };
 
 export default Button;

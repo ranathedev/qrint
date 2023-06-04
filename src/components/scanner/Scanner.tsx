@@ -3,7 +3,12 @@ import Image from "next/image";
 
 import stl from "./Scanner.module.scss";
 
-const Scanner = ({ file, src }: any) => {
+interface Props {
+  file?: any;
+  src?: string;
+}
+
+const Scanner = ({ file, src }: Props) => {
   const [isLoading, setIsLoading] = React.useState(true);
 
   useEffect(() => {

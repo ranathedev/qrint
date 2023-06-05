@@ -1,7 +1,7 @@
 const getInitVals = (title) => {
   const textVals = { text: "" };
   const geolocVals = { latitude: "", longitude: "", format: "rfc5870" };
-  const smsVals = { to: "", message: "" };
+  const smsVals = { to: "" };
   const wifiVals = { security: "", ssid: "", password: "", hidden: false };
   const vcardVals = {
     encoding: "vcard",
@@ -31,7 +31,7 @@ const getInitVals = (title) => {
     latitude: "",
     longitude: "",
   };
-  const emailVals = { to: "", cc: "", bcc: "", subject: "", body: "" };
+  const emailVals = { to: "", cc: "", bcc: "", subject: "" };
   const callVals = { phone: "" };
 
   switch (title) {

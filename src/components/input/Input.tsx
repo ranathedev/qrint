@@ -10,9 +10,19 @@ interface Props {
   id: string;
   type: string;
   width: string;
+  message: string;
+  setMessage: (arg: string) => void;
 }
 
-const Input = ({ placeholder, label, id, type, width }: Props) => {
+const Input = ({
+  placeholder,
+  label,
+  id,
+  type,
+  width,
+  message,
+  setMessage,
+}: Props) => {
   return (
     <div
       style={{ width }}
@@ -20,7 +30,13 @@ const Input = ({ placeholder, label, id, type, width }: Props) => {
     >
       <label>{type !== "checkbox" ? label + " :" : label + " "}</label>
       {type === "textarea" ? (
-        <textarea id={id} placeholder={placeholder} />
+        <textarea
+          id={id}
+          name={id}
+          placeholder={placeholder}
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+        />
       ) : (
         <Field id={id} name={id} placeholder={placeholder} type={type} />
       )}

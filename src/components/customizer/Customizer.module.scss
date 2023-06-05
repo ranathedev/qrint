@@ -6,7 +6,7 @@
   gap: 1rem;
   width: 400px;
   height: 80vh;
-  padding: 2rem 1rem;
+  padding: 2rem 1rem 1rem 1rem;
   border-radius: 2rem;
   background: #fff;
 
@@ -19,9 +19,25 @@
     @extend .flexCol;
     justify-content: flex-start;
     gap: 10px;
-    height: 50%;
+    height: 55%;
     padding-top: 1rem;
     overflow: visible;
+    margin-top: 2rem;
+
+    .inputContainer {
+      @extend .alignCen;
+      justify-content: space-evenly;
+
+      .input {
+        @extend .alignCen;
+        gap: 10px;
+        font-size: 1.2rem;
+
+        input {
+          cursor: pointer;
+        }
+      }
+    }
   }
 
   .btnContainer {

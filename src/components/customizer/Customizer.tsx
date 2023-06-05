@@ -1,20 +1,40 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Image from "next/image";
 
 import { modules, innereyes, outereyes, logos } from "lib/data";
 import Button from "components/button";
-import DownloadIcon from "assets/download.svg";
 import Dropdown from "components/dropdown";
 
 import stl from "./Customizer.module.scss";
 
-const Customizer = () => {
+interface Props {
+  setStyles: (arg: any) => void;
+}
+
+const Customizer = ({ setStyles }: Props) => {
+  const [format, setFormat] = React.useState("jpg");
+  const [module, setModules] = React.useState({
+    shape: "default",
+    color: "#000000",
+  });
+  const [innereye, setInnerEye] = React.useState({
+    shape: "default",
+    color: "#000000",
+  });
+  const [outereye, setOuterEye] = React.useState({
+    shape: "default",
+    color: "#000000",
+  });
   const [expand, setExpand] = React.useState({
     modules: true,
     innereye: false,
     outereye: false,
     logo: false,
   });
+
+  useEffect(() => {
+    setStyles({ module, innereye, outereye });
+  }, [module, innereye, outereye]);
 
   return (
     <div className={stl.customizer}>
@@ -31,6 +51,7 @@ const Customizer = () => {
           title="Modules"
           expand={expand.modules}
           list={modules}
+          handleItemClick={(shape, color) => setModules({ shape, color })}
           handleOnClick={() =>
             setExpand({
               modules: true,
@@ -44,6 +65,7 @@ const Customizer = () => {
           title="Inner Eye"
           expand={expand.innereye}
           list={innereyes}
+          handleItemClick={(shape, color) => setInnerEye({ shape, color })}
           handleOnClick={() =>
             setExpand({
               modules: false,
@@ -57,6 +79,7 @@ const Customizer = () => {
           title="Outer Eye"
           expand={expand.outereye}
           list={outereyes}
+          handleItemClick={(shape, color) => setOuterEye({ shape, color })}
           handleOnClick={() =>
             setExpand({
               modules: false,
@@ -80,10 +103,38 @@ const Customizer = () => {
             })
           }
         />
-      </div>
-      <div className={stl.btnContainer}>
-        <Button icon={<DownloadIcon />} width="120px" />
-        <Button title="SVG/EPS" icon={<DownloadIcon />} />
+        <div className={stl.inputContainer}>
+          <div className={stl.input}>
+            <label>JPG</label>
+            <input
+              id="jpg"
+              name="format"
+              type="radio"
+              checked={format === "jpg"}
+              onClick={() => setFormat("jpg")}
+            />
+          </div>
+          <div className={stl.input}>
+            <label>PNG</label>
+            <input
+              id="png"
+              name="format"
+              type="radio"
+              checked={format === "png"}
+              onClick={() => setFormat("png")}
+            />
+          </div>
+          <div className={stl.input}>
+            <label>SVG</label>
+            <input
+              id="svg"
+              name="format"
+              type="radio"
+              checked={format === "svg"}
+              onClick={() => setFormat("svg")}
+            />
+          </div>
+        </div>
       </div>
     </div>
   );

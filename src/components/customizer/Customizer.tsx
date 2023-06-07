@@ -103,37 +103,35 @@ const Customizer = ({ setStyles }: Props) => {
             })
           }
         />
-        <div className={stl.inputContainer}>
-          <div className={stl.input}>
-            <label>JPG</label>
+        <div className={stl.radioInputs}>
+          <label className={stl.radio} onClick={() => setFormat("jpg")}>
             <input
-              id="jpg"
-              name="format"
               type="radio"
+              name="format"
               checked={format === "jpg"}
-              onClick={() => setFormat("jpg")}
+              onChange={(e) => console.log(e.target.value)}
             />
-          </div>
-          <div className={stl.input}>
-            <label>PNG</label>
+            <span className={stl.label}>JPG</span>
+          </label>
+          <label className={stl.radio} onClick={() => setFormat("png")}>
             <input
-              id="png"
-              name="format"
               type="radio"
+              name="format"
               checked={format === "png"}
-              onClick={() => setFormat("png")}
+              onChange={(e) => console.log(e.target.value)}
             />
-          </div>
-          <div className={stl.input}>
-            <label>SVG</label>
+            <span className={stl.label}>PNG</span>
+          </label>
+
+          <label className={stl.radio} onClick={() => setFormat("svg")}>
             <input
-              id="svg"
-              name="format"
               type="radio"
+              name="format"
               checked={format === "svg"}
-              onClick={() => setFormat("svg")}
+              onChange={(e) => console.log(e.target.value)}
             />
-          </div>
+            <span className={stl.label}>SVG</span>
+          </label>
         </div>
       </div>
     </div>

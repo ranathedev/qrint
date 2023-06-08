@@ -6,16 +6,16 @@
   @extend .flexCol;
   gap: 1rem;
 
+  .or {
+    font-size: 1.2rem;
+    color: #888;
+  }
+
   .other {
     @extend .alignCen;
     justify-content: space-evenly;
     flex-wrap: wrap;
     gap: 10px;
-
-    span {
-      font-size: 1.2rem;
-      color: #888;
-    }
 
     .input {
       border: none;
@@ -28,6 +28,11 @@
       border: 1px solid #1e90ff;
       border-radius: 8px;
     }
+  }
+
+  .captureBtn {
+    @extend .flexCenter;
+    gap: 1rem;
   }
 }
 

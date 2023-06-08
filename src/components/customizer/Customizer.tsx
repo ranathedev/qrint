@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import Image from "next/image";
 
 import { modules, innereyes, outereyes, logos } from "lib/data";
-import Button from "components/button";
 import Dropdown from "components/dropdown";
 
 import stl from "./Customizer.module.scss";

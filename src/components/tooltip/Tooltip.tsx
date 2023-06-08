@@ -11,6 +11,7 @@ interface Props {
   left: string;
   isVisible: Boolean;
   text: string;
+  hook: Boolean;
   customClass?: string;
 }
 
@@ -22,6 +23,7 @@ const Tooltip = ({
   left,
   isVisible,
   text,
+  hook,
   customClass,
 }: Props) => {
   return (
@@ -33,6 +35,7 @@ const Tooltip = ({
           (arrowPos === "top" && stl.top) ||
           (arrowPos === "bottom" && stl.bottom),
         isVisible ? stl.visible : "",
+        hook ? stl.showHook : "",
         customClass
       )}
     >
@@ -48,6 +51,7 @@ Tooltip.defaultProps = {
   left: "130%",
   text: "Tooltip text",
   arrowPos: "left",
+  hook: true,
 };
 
 export default Tooltip;

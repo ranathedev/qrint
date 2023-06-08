@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import axios from "axios";
 
 import Button from "components/button";
+import CaptureImg from "components/captureImage";
 import Dropbox from "components/dropbox";
 import ReaderRes from "components/reader-result";
 import Scanner from "components/scanner";
@@ -13,6 +14,7 @@ const FileUploader = () => {
   const [selectedFile, setSelectedFile] = React.useState(null);
   const [src, setSrc] = React.useState(null);
   const [data, setData] = React.useState(null);
+  const [showCamera, setShowCamera] = React.useState(false);
 
   const formData = new FormData();
 
@@ -150,7 +152,7 @@ const FileUploader = () => {
             icon={<UploadIcon />}
             handleOnClick={handleUploadBtn}
           />
-          <span>or</span>
+          <span className={stl.or}>or</span>
           <input
             placeholder="Enter image URL"
             className={stl.input}
@@ -158,6 +160,22 @@ const FileUploader = () => {
           />
         </div>
         <Dropbox setSelectedFile={setSelectedFile} />
+        <CaptureImg
+          isCameraOn={showCamera}
+          handleClick={(src) => {
+            setShowCamera(false);
+            //@ts-ignore
+            setSrc(src);
+          }}
+          handleCancel={() => setShowCamera(false)}
+        />
+        <div className={stl.captureBtn}>
+          <span className={stl.or}>or</span>
+          <Button
+            title="Capture Photo"
+            handleOnClick={() => setShowCamera(true)}
+          />
+        </div>
       </div>
     )
   );

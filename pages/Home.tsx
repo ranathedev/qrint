@@ -13,8 +13,8 @@ const Homepage = () => {
   const [value, setValue] = React.useState("");
   const [styles, setStyles] = React.useState({
     module: { color: "black", shape: "default" },
-    inner_eye: { color: "", shape: "default" },
-    outer_eye: { color: "", shape: "default" },
+    innereye: { color: "", shape: "default" },
+    outereye: { color: "", shape: "default" },
   });
 
   const options = {
@@ -31,7 +31,17 @@ const Homepage = () => {
         uri: "icon://appstore",
         modules: true,
       },
-      style: styles,
+      style: {
+        module: { color: styles.module.color, shape: styles.module.shape },
+        inner_eye: {
+          color: styles.innereye.color,
+          shape: styles.innereye.shape,
+        },
+        outer_eye: {
+          color: styles.outereye.color,
+          shape: styles.outereye.shape,
+        },
+      },
       size: { width: 200, quiet_zone: 4, error_correction: "M" },
       output: { filename: "qrcode", format: "svg" },
     },
@@ -44,7 +54,7 @@ const Homepage = () => {
         console.log(response.data);
       })
       .catch((error) => {
-        console.error(error);
+        console.log(error);
       });
   };
 

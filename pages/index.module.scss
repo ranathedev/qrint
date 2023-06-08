@@ -27,6 +27,7 @@
 }
 
 .reader {
+  position: relative;
   @extend .alignCen;
   justify-content: space-evenly;
   width: 100vw;

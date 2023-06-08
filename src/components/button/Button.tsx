@@ -1,4 +1,5 @@
 import React, { ReactNode } from "react";
+import clsx from "clsx";
 
 import stl from "./Button.module.scss";
 
@@ -8,15 +9,23 @@ interface Props {
   width?: string;
   type?: "submit" | "reset";
   handleOnClick?: () => void;
+  variant: "primary" | "secondary" | "danger";
 }
 
-const Button = ({ title, icon, type, handleOnClick, width }: Props) => {
+const Button = ({
+  title,
+  icon,
+  type,
+  handleOnClick,
+  width,
+  variant,
+}: Props) => {
   return (
     <button
       style={{ width }}
       type={type}
       onClick={handleOnClick}
-      className={stl.btn}
+      className={clsx(stl.btn, stl[variant])}
     >
       {title} {icon && icon}
     </button>
@@ -25,6 +34,7 @@ const Button = ({ title, icon, type, handleOnClick, width }: Props) => {
 
 Button.defaultProps = {
   title: "JPG",
+  variant: "primary",
 };
 
 export default Button;

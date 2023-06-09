@@ -13,7 +13,7 @@ import stl from "./FileUploader.module.scss";
 const FileUploader = () => {
   const [selectedFile, setSelectedFile] = React.useState(null);
   const [src, setSrc] = React.useState(null);
-  const [data, setData] = React.useState(null);
+  const [data, setData] = React.useState("null");
   const [showCamera, setShowCamera] = React.useState(false);
 
   const formData = new FormData();
@@ -135,7 +135,10 @@ const FileUploader = () => {
   };
 
   return (
-    (data !== null && <ReaderRes data={data} />) ||
+    (data !== null && (
+      //@ts-ignore
+      <ReaderRes handleBackBtn={() => setData(null)} data={data} />
+    )) ||
     (selectedFile !== null && <Scanner file={selectedFile} />) ||
     (src !== null && <Scanner src={src} />) || (
       <div className={stl.fileUploader}>

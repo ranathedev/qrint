@@ -1,6 +1,7 @@
 @import "styles/common";
 
 .result {
+  position: relative;
   @extend .flexColCen;
   max-width: 700px;
   width: 100%;
@@ -8,6 +9,30 @@
   padding: 1rem;
   background: #fff;
   border-radius: 1rem;
+
+  .backBtn {
+    position: absolute;
+    outline: none;
+    border: none;
+    width: 40px;
+    height: 40px;
+    padding: 5px;
+    border-radius: 50%;
+    background: none;
+    cursor: pointer;
+    color: #444;
+    top: 2%;
+    left: 3%;
+
+    .tooltip {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    &:hover {
+      background: #ddd;
+    }
+  }
 
   h2 {
     font-weight: 500;

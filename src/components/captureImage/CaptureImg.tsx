@@ -18,11 +18,15 @@ const CaptureImg = ({ isCameraOn, handleClick, handleCancel }: Props) => {
   const [showTooltip, setShowTooltip] = React.useState(false);
   const webcamRef = useRef(null);
 
-  console.log(img);
-
   useEffect(() => {
     showTooltip && setTimeout(() => setShowTooltip(false), 1500);
   }, [showTooltip]);
+
+  useEffect(() => {
+    if (!isCameraOn) {
+      setImg(null);
+    }
+  }, [isCameraOn]);
 
   const videoConstraints = {
     width: 400,

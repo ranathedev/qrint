@@ -10,10 +10,11 @@ import Dropbox from "components/dropbox";
 import Scanner from "components/scanner";
 import InputContainer from "components/input-container";
 import FileUploader from "components/fileUploader";
-import Homepage from "./Home";
+import Generator from "./generator";
 import Spinner from "components/spinner";
 import ReaderRes from "components/reader-result";
 import CaptureImg from "components/captureImage";
+import Homepage from "./home";
 
 export default function Home() {
   return (
@@ -37,10 +38,11 @@ export default function Home() {
         {/* <InputContainer /> */}
         {/* <CustomForm /> */}
         {/* <FileUploader /> */}
-        <Homepage />
+        {/* <Generator /> */}
         {/* <Spinner /> */}
         {/* <ReaderRes data="https://ranaintizar.com" /> */}
         {/* <CaptureImg /> */}
+        <Homepage />
       </main>
     </>
   );

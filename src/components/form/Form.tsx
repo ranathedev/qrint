@@ -17,7 +17,7 @@ interface Props {
 }
 
 const CustomForm = ({ title, initialVals, setValue }: Props) => {
-  const [isLoading, setIsLoading] = React.useState(false);
+  const [isLoading, setIsLoading] = React.useState(true);
   const [message, setMessage] = React.useState("");
 
   useEffect(() => {

@@ -1,10 +1,15 @@
+import React from "react";
+
 import Header from "components/header";
+import Intro from "components/intro";
+
+import stl from "./index.module.scss";
 
 const Homepage = () => {
   return (
-    <div>
+    <div className={stl.wrapper}>
       <Header />
-      <h1>Homepage</h1>
+      <Intro />
     </div>
   );
 };

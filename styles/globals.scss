@@ -23,9 +23,7 @@ body {
 
   main {
     @extend .fullView;
-    // display: flex;
-    // align-items: center;
-    // justify-content: center;
+    // @extend .flexCenter;
   }
 }
 

@@ -25,7 +25,7 @@ const Intro = () => {
         </p>
         <Button
           title="Sign Up"
-          handleOnClick={() => (location.href = "/signup")}
+          handleOnClick={() => (location.href = "/auth")}
         />
       </div>
     </div>

@@ -4,6 +4,7 @@
   position: relative;
   @extend .flexCenter;
   @extend .fullView;
+  min-height: 100vh;
   padding-top: 100px;
 
   .overlay {

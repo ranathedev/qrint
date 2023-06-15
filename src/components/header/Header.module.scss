@@ -42,8 +42,7 @@
       display: flex;
 
       .expandBtn {
-        outline: none;
-        border: none;
+        @extend .clearStl;
         display: inline-flex;
         align-items: center;
         padding: 8px;

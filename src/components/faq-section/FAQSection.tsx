@@ -18,6 +18,7 @@ const FAQSection = () => {
           isExpanded={item.q === isExpanded}
           setIsExpanded={setIsExpanded}
           key={i}
+          customClass={i + 1 === FAQs.length ? stl.faq : ""}
         />
       ))}
     </div>

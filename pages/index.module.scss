@@ -28,6 +28,68 @@
       }
     }
   }
+
+  .aboutContainer {
+    @extend .flexCol;
+    align-items: center;
+    gap: 2.5rem;
+    @extend .full;
+    padding: 1.5rem;
+    padding-top: 100px;
+    overflow: scroll;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    .techContainer {
+      @extend .flexCol;
+      gap: 5rem;
+      max-width: 900px;
+      width: 100%;
+      padding: 1rem;
+
+      .para {
+        @extend .flexColCen;
+        font-size: 1.3rem;
+        gap: 3rem;
+
+        .body {
+          color: rgb(0, 0, 0, 0.6);
+        }
+      }
+
+      .techList {
+        @extend .alignCen;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+        gap: 2rem;
+        max-width: 900px;
+        width: 100%;
+        padding: 1rem;
+
+        .techItem {
+          @extend .flexColCen;
+          gap: 10px;
+          cursor: pointer;
+
+          .imgContainer {
+            @extend .flexCenter;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+          }
+
+          .techTitle {
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 500;
+          }
+        }
+      }
+    }
+  }
 }
 
 .reader {
@@ -73,6 +135,19 @@
 
     .row {
       margin-left: 80px;
+    }
+  }
+
+  .aboutContainer .techContainer .techList {
+    gap: 10px !important;
+    padding: 10px !important;
+
+    .techItem {
+      gap: 0;
+
+      .imgContainer {
+        transform: scale(0.7);
+      }
     }
   }
 }

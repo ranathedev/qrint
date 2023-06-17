@@ -28,9 +28,9 @@ const Dropdown = ({
   const [color, setColor] = React.useState("#000000");
   const [shape, setShape] = React.useState("default");
 
-  useEffect(() => {
-    handleItemClick(shape, color);
-  }, [color, shape]);
+  // useEffect(() => {
+  //   handleItemClick(shape, color);
+  // }, [color, shape]);
 
   return (
     <div

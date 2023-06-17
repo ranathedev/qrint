@@ -1,33 +1,32 @@
 @import "styles/common";
 
-.wrapper {
+.generator {
+  position: relative;
   @extend .fullView;
-  @extend .flexCol;
-  gap: 4rem;
 
-  .generator {
-    position: relative;
-    height: 100%;
+  .container {
+    @extend .alignCen;
+    @extend .full;
+    padding: 1rem;
+    padding-top: 5rem;
+    overflow: scroll;
 
-    .container {
-      @extend .alignCen;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    .row {
+      @extend .flexCenter;
+      gap: 1rem;
       @extend .full;
-      padding: 1rem;
-      padding-top: 5rem;
-      overflow: scroll;
-
-      &::-webkit-scrollbar {
-        display: none;
-      }
-
-      .row {
-        @extend .flexCenter;
-        gap: 1rem;
-        @extend .full;
-        margin-left: 100px;
-      }
+      margin-left: 100px;
     }
   }
+}
+
+.aboutPage {
+  width: 100vw;
+  height: 100%;
 
   .aboutContainer {
     @extend .flexCol;

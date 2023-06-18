@@ -21,10 +21,10 @@ body {
     display: none;
   }
 
-  main {
-    @extend .fullView;
-    // @extend .flexCenter;
-  }
+  // for development
+  // main {
+  //   @extend .flexCenter;
+  // }
 }
 
 a {

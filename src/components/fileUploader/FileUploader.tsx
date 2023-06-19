@@ -6,6 +6,7 @@ import CaptureImg from "components/captureImage";
 import Dropbox from "components/dropbox";
 import ReaderRes from "components/reader-result";
 import Scanner from "components/scanner";
+
 import UploadIcon from "assets/upload.svg";
 
 import stl from "./FileUploader.module.scss";

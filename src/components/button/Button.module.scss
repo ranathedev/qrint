@@ -36,6 +36,26 @@
   }
 }
 
+.signup {
+  gap: 10px;
+  min-width: 150px;
+  max-width: 200px;
+  width: 100%;
+  background: #fff;
+  color: #202124;
+  padding: 10px 0;
+  border: 1px solid #e5e7eb;
+  font-weight: 500;
+
+  &:hover {
+    background: #f8f8f8;
+  }
+
+  &:active {
+    outline: 3px solid #e5e7eb;
+  }
+}
+
 .darkBtn {
   background: #2563eb;
 

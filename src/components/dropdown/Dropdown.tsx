@@ -1,9 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Image from "next/image";
 import clsx from "clsx";
 
-import DownIcon from "assets/arrow-down.svg";
 import Tooltip from "components/tooltip";
+
+import DownIcon from "assets/arrow-down.svg";
 
 import stl from "./Dropdown.module.scss";
 

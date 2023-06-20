@@ -45,10 +45,10 @@ export default function Home() {
         {/* <Spinner /> */}
         {/* <ReaderRes data="https://ranaintizar.com" /> */}
         {/* <CaptureImg /> */}
-        {/* <Homepage /> */}
+        <Homepage />
         {/* <FAQ /> */}
         {/* <Footer /> */}
-        <SignUpFlow />
+        {/* <SignUpFlow /> */}
       </main>
     </>
   );

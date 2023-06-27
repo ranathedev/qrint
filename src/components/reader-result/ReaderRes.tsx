@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import Link from "next/link";
 
 import Tooltip from "components/tooltip";
+import UrlPreview from "components/url-preview";
 
 import Icon from "assets/goto-link.svg";
 import BackIcon from "assets/arrow-left.svg";
@@ -60,8 +61,11 @@ const ReaderRes = ({ data, handleBackBtn }: Props) => {
             onMouseOver={() => setShowTooltip(true)}
             onMouseOut={() => setShowTooltip(false)}
           >
-            {data}
-            {<Icon />}
+            <span className={stl.text}>
+              {data}
+              {<Icon />}
+            </span>
+            <UrlPreview url={data} />
             <Tooltip
               isVisible={showTooltip}
               text="Open Link"

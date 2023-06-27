@@ -18,12 +18,12 @@ const moreContact = [
   },
   {
     name: "twitter",
-    url: "https://www.facebook.com/ranathedev",
+    url: "https://twitter.com/ranathedev",
     icon: <TwitterIcon />,
   },
   {
     name: "linkedIn",
-    url: "https://www.linkedin.com/in/ranathedev/",
+    url: "https://www.linkedin.com/in/ranathedev",
     icon: <LinkedInIcon />,
   },
 ];

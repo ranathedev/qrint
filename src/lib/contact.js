@@ -18,7 +18,7 @@ const moreContact = [
   },
   {
     name: "twitter",
-    url: "https://www.facebook.com/ranathedev",
+    url: "https://twitter.com/ranathedev",
     icon: <TwitterIcon />,
   },
   {

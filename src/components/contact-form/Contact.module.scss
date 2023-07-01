@@ -90,6 +90,7 @@
       }
     }
   }
+
   .contactMore {
     font-size: 1rem;
     color: #999;
@@ -143,11 +144,13 @@
 @media screen and (max-width: 600px) {
   .contact {
     padding: 4.5rem 1rem 1.5rem;
-  }
-}
 
-@media screen and (max-width: 400px) {
-  .contact .contactMore {
-    gap: 0.5rem;
+    .contactMore {
+      gap: 0;
+
+      .item {
+        transform: scale(0.8) !important;
+      }
+    }
   }
 }

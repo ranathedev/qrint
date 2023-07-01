@@ -8,6 +8,8 @@
   min-height: 700px;
   @extend .full;
   padding: 0 2rem;
+  padding-bottom: 1rem !important;
+  border-bottom: 2px solid #ccc;
 
   .text {
     @extend .flexCol;
@@ -63,6 +65,37 @@
     .text,
     .imgContainer {
       width: 100%;
+    }
+
+    .text {
+      align-items: center;
+
+      .heading {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .desc {
+        text-align: center;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .section {
+    gap: 1rem;
+
+    .text {
+      height: 100%;
+
+      .heading {
+        font-size: 1.3rem;
+      }
+
+      .desc {
+        font-size: 1.2rem;
+      }
     }
   }
 }

@@ -26,3 +26,9 @@
     content: "Drop file here";
   }
 }
+
+@media screen and (max-width: 500px) {
+  .dropbox {
+    height: 400px;
+  }
+}

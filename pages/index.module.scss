@@ -13,6 +13,7 @@
   @extend .fullView;
 
   .container {
+    position: relative;
     @extend .alignCen;
     @extend .full;
     padding: 1rem;
@@ -87,6 +88,7 @@
             height: 200px;
             border-radius: 50%;
             overflow: hidden;
+            transform: scale(0.9);
           }
 
           .techTitle {
@@ -123,13 +125,14 @@
   width: 100vw;
   height: 100vh;
   @extend .flexCenter;
+  padding: 10px;
   background: url("https://as1.ftcdn.net/v2/jpg/02/11/69/28/1000_F_211692896_EQqAQEHmkQYLQHjeK6AsnSuYksnqqGlv.jpg")
     no-repeat center / cover;
 }
 
 @media screen and (max-width: 1100px) {
   .generator .container {
-    height: max-content;
+    padding-top: 1rem;
 
     .row {
       flex-direction: column;
@@ -138,12 +141,39 @@
       padding: 3rem;
     }
   }
+
+  .aboutPage {
+    .techList {
+      gap: 0 !important;
+      justify-content: center !important;
+
+      .techItem {
+        transform: scale(0.8);
+      }
+    }
+  }
 }
 
 @media screen and (max-width: 920px) {
-  .generator .container {
-    .row {
-      padding: 3rem 0;
+  .generator .container .row {
+    padding: 3rem 0;
+  }
+
+  .aboutPage {
+    .techItem {
+      transform: scale(0.7);
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .aboutPage {
+    .techList {
+      padding: 10px 0 !important;
+
+      .techItem {
+        transform: scale(0.6) !important;
+      }
     }
   }
 }
@@ -151,34 +181,64 @@
 @media screen and (max-width: 600px) {
   .generator .container {
     padding: 10px;
-    padding-top: 5rem;
+    padding-top: 1rem;
 
     .row {
       margin-left: 80px;
     }
   }
 
-  .aboutContainer .techContainer .techList {
-    gap: 10px !important;
-    padding: 10px !important;
+  .aboutPage .aboutContainer {
+    padding-right: 8px;
+    padding-left: 8px;
 
-    .techItem {
-      gap: 0;
+    .techContainer {
+      padding-right: 0 !important;
+      padding-left: 0 !important;
+      gap: 1rem;
 
-      .imgContainer {
-        transform: scale(0.7);
+      .para {
+        h2 {
+          font-size: 1.5rem;
+          text-align: center;
+        }
+
+        span {
+          font-size: 1.15rem;
+          text-align: center;
+        }
+      }
+
+      .techList {
+        padding-right: 0 !important;
+        padding-left: 0 !important;
+        gap: 0 !important;
+
+        .techItem {
+          transform: scale(0.5) !important;
+
+          .imgContainer {
+            width: 150px !important;
+            height: 150px !important;
+          }
+        }
       }
     }
   }
 }
 
 @media screen and (max-width: 500px) {
+  .generator .container .row {
+    margin-left: 0;
+  }
+
   .reader {
-    padding: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
   }
 
   .contactPage {
-    padding: 10px;
-    padding-top: 100px;
+    padding-right: 10px;
+    padding-left: 10px;
   }
 }

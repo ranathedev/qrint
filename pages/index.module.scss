@@ -111,6 +111,12 @@
   padding: 2rem;
   padding-top: 150px;
   padding-bottom: 500px;
+
+  .content {
+    @extend .flexCenter;
+    width: 100%;
+    min-height: 60vh;
+  }
 }
 
 .contactPage {

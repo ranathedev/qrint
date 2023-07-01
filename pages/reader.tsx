@@ -10,7 +10,9 @@ const Reader = () => {
   return (
     <div className={stl.reader}>
       <Header />
-      <FileUploader />
+      <div className={stl.content}>
+        <FileUploader />
+      </div>
       <Footer />
     </div>
   );

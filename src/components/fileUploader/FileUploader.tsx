@@ -49,7 +49,7 @@ const FileUploader = () => {
     formData.append("file", selectedFile);
 
     await axios
-      .post(`http://api.qrserver.com/v1/read-qr-code/`, formData, {
+      .post(`https://api.qrserver.com/v1/read-qr-code/`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

@@ -81,11 +81,13 @@
         transition: all 0.3s;
         cursor: pointer;
 
-        &:hover {
-          border-color: #1e90ff;
-          color: #1e90ff;
-          background: #fff;
-          font-weight: 600;
+        @media (hover: hover) {
+          &:hover {
+            border-color: #1e90ff;
+            color: #1e90ff;
+            background: #fff;
+            font-weight: 600;
+          }
         }
       }
     }
@@ -113,29 +115,39 @@
         box-shadow: 0 0 8px 0 rgba(50, 50, 50, 0.15);
       }
 
-      .phone:hover {
-        color: #32cd32;
-        box-shadow: 0 0 8px 0 #32cd32;
+      @media (hover: hover) {
+        .phone:hover {
+          color: #32cd32;
+          box-shadow: 0 0 8px 0 #32cd32;
+        }
       }
 
-      .email:hover {
-        color: #e32636;
-        box-shadow: 0 0 8px 0 #e32636;
+      @media (hover: hover) {
+        .email:hover {
+          color: #e32636;
+          box-shadow: 0 0 8px 0 #e32636;
+        }
       }
 
-      .facebook:hover {
-        color: #3b5999;
-        box-shadow: 0 0 8px 0 #3b5999;
+      @media (hover: hover) {
+        .facebook:hover {
+          color: #3b5999;
+          box-shadow: 0 0 8px 0 #3b5999;
+        }
       }
 
-      .twitter:hover {
-        color: #55acee;
-        box-shadow: 0 0 8px 0 #55acee;
+      @media (hover: hover) {
+        .twitter:hover {
+          color: #55acee;
+          box-shadow: 0 0 8px 0 #55acee;
+        }
       }
 
-      .linkedIn:hover {
-        color: #0077b5;
-        box-shadow: 0 0 8px 0 #0077b5;
+      @media (hover: hover) {
+        .linkedIn:hover {
+          color: #0077b5;
+          box-shadow: 0 0 8px 0 #0077b5;
+        }
       }
     }
   }

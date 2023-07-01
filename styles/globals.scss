@@ -20,20 +20,9 @@ body {
   &::-webkit-scrollbar {
     display: none;
   }
-
-  // for development
-  main {
-    @extend .flexCenter;
-  }
 }
 
 a {
   color: inherit;
   text-decoration: none;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
 }

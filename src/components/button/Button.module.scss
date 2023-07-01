@@ -15,24 +15,30 @@
 .primary {
   background: #1e90ff;
 
-  &:hover {
-    background: #1976d2;
+  @media (hover: hover) {
+    &:hover {
+      background: #1976d2;
+    }
   }
 }
 
 .secondary {
   background: #059862;
 
-  &:hover {
-    background: #048051;
+  @media (hover: hover) {
+    &:hover {
+      background: #048051;
+    }
   }
 }
 
 .danger {
   background: #ff000099;
 
-  &:hover {
-    background: #ff0000;
+  @media (hover: hover) {
+    &:hover {
+      background: #ff0000;
+    }
   }
 }
 
@@ -47,8 +53,10 @@
   border: 1px solid #e5e7eb;
   font-weight: 500;
 
-  &:hover {
-    background: #f8f8f8;
+  @media (hover: hover) {
+    &:hover {
+      background: #f8f8f8;
+    }
   }
 
   &:active {
@@ -59,7 +67,9 @@
 .darkBtn {
   background: #2563eb;
 
-  &:hover {
-    background-color: #1d4ed8;
+  @media (hover: hover) {
+    &:hover {
+      background-color: #1d4ed8;
+    }
   }
 }

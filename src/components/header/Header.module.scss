@@ -25,10 +25,6 @@
     .logo {
       @extend .alignCen;
 
-      .img {
-        margin-right: 12px;
-      }
-
       .logoName {
         align-self: center;
         font-size: 1.5rem;
@@ -62,8 +58,10 @@
           height: 1.5rem;
         }
 
-        &:hover {
-          background-color: #f3f4f6;
+        @media (hover: hover) {
+          &:hover {
+            background-color: #f3f4f6;
+          }
         }
       }
     }
@@ -90,8 +88,10 @@
             color: #111827;
             border-radius: 4px;
 
-            &:hover {
-              background-color: #f3f4f6;
+            @media (hover: hover) {
+              &:hover {
+                background-color: #f3f4f6;
+              }
             }
 
             &:active {
@@ -124,8 +124,10 @@
     .right .expandBtn {
       color: #9ca3af;
 
-      &:hover {
-        background-color: #374151;
+      @media (hover: hover) {
+        &:hover {
+          background-color: #374151;
+        }
       }
     }
 
@@ -137,9 +139,11 @@
         color: #fff;
         border-color: #374151;
 
-        &:hover {
-          background-color: #374151;
-          color: #fff;
+        @media (hover: hover) {
+          &:hover {
+            background-color: #374151;
+            color: #fff;
+          }
         }
       }
     }
@@ -172,10 +176,12 @@
         .link {
           padding: 0;
 
-          &:hover {
-            background: transparent;
+          @media (hover: hover) {
+            &:hover {
+              background: transparent;
 
-            color: #1d4ed8;
+              color: #1d4ed8;
+            }
           }
         }
       }
@@ -189,8 +195,10 @@
       .link {
         color: #3b82f6;
 
-        &:hover {
-          background: transparent;
+        @media (hover: hover) {
+          &:hover {
+            background: transparent;
+          }
         }
       }
     }

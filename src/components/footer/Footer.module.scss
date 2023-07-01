@@ -41,13 +41,15 @@
     transition: 0.3s;
   }
 
-  &:hover {
-    color: #fff;
+  @media (hover: hover) {
+    &:hover {
+      color: #fff;
 
-    &::after {
-      width: calc(100% + 2px);
-      height: calc(100% + 2px);
-      margin-left: calc(-50% - 1px);
+      &::after {
+        width: calc(100% + 2px);
+        height: calc(100% + 2px);
+        margin-left: calc(-50% - 1px);
+      }
     }
   }
 
@@ -120,8 +122,10 @@
     transition: 0.3s;
   }
 
-  &:hover::after {
-    width: 100%;
+  @media (hover: hover) {
+    &:hover::after {
+      width: 100%;
+    }
   }
 }
 

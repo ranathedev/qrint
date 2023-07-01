@@ -28,8 +28,10 @@
       font-weight: 600;
     }
 
-    &:hover {
-      background: #ddd;
+    @media (hover: hover) {
+      &:hover {
+        background: #ddd;
+      }
     }
   }
 
@@ -63,11 +65,13 @@
         transition: all 0.2s;
       }
 
-      &:hover {
-        background: #ccc;
+      @media (hover: hover) {
+        &:hover {
+          background: #ccc;
 
-        svg {
-          transform: scale(1.1);
+          svg {
+            transform: scale(1.1);
+          }
         }
       }
     }

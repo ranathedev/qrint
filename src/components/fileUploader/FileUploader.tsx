@@ -45,7 +45,6 @@ const FileUploader = () => {
   };
 
   const scanWithFile = async () => {
-    console.log("Starting File Scan...");
     //@ts-ignore
     formData.append("file", selectedFile);
 
@@ -57,7 +56,6 @@ const FileUploader = () => {
       })
       .then((response) => {
         const data = response.data[0].symbol[0].data;
-        console.log(data);
         if (data === null) {
           console.log("No QR-Code Found in the Image.");
           //@ts-ignore
@@ -74,14 +72,12 @@ const FileUploader = () => {
   };
 
   const scanWithURL = async () => {
-    console.log("Starting URL Scan...");
     //@ts-ignore
     const encodedURL = encodeURI(src);
     await axios
       .post(`http://api.qrserver.com/v1/read-qr-code/?fileurl=${encodedURL}`)
       .then((response) => {
         const data = response.data[0].symbol[0].data;
-        console.log(data);
         if (data === null) {
           console.log("No QR-Code Found in the Image.");
           //@ts-ignore

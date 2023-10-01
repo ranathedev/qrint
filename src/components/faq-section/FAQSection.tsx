@@ -1,12 +1,12 @@
-import React from "react";
+import React from 'react'
 
-import FAQs from "lib/faqs.js";
-import FAQ from "components/faq/FAQ";
+import FAQs from 'lib/faqs.js'
+import FAQ from 'components/faq/FAQ'
 
-import stl from "./FAQSection.module.scss";
+import stl from './FAQSection.module.scss'
 
 const FAQSection = () => {
-  const [isExpanded, setIsExpanded] = React.useState("");
+  const [isExpanded, setIsExpanded] = React.useState('')
 
   return (
     <div className={stl.faqSection}>
@@ -18,11 +18,11 @@ const FAQSection = () => {
           isExpanded={item.q === isExpanded}
           setIsExpanded={setIsExpanded}
           key={i}
-          customClass={i + 1 === FAQs.length ? stl.faq : ""}
         />
       ))}
+      <div className={stl.divider} />
     </div>
-  );
-};
+  )
+}
 
-export default FAQSection;
+export default FAQSection

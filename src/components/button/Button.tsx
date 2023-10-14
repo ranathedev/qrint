@@ -1,15 +1,15 @@
-import React, { ReactNode } from "react";
-import clsx from "clsx";
+import React, { ReactNode } from 'react'
+import clsx from 'clsx'
 
-import stl from "./Button.module.scss";
+import stl from './Button.module.scss'
 
 interface Props {
-  title: string;
-  icon?: ReactNode;
-  width?: string;
-  type?: "submit" | "reset";
-  handleOnClick?: () => void;
-  variant: "primary" | "secondary" | "danger" | "signup";
+  title: string
+  icon?: ReactNode
+  width?: string
+  type?: 'submit' | 'reset'
+  handleOnClick?: (arg: any) => void
+  variant: 'primary' | 'secondary' | 'danger' | 'signup'
 }
 
 const Button = ({
@@ -29,12 +29,12 @@ const Button = ({
     >
       {title} {icon && icon}
     </button>
-  );
-};
+  )
+}
 
 Button.defaultProps = {
-  title: "JPG",
-  variant: "primary",
-};
+  title: 'JPG',
+  variant: 'primary',
+}
 
-export default Button;
+export default Button

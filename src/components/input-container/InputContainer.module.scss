@@ -1,7 +1,7 @@
-@import "styles/common";
+@import 'styles/common';
 
 .inputContainer {
-  @extend .flexCenter;
+  @extend .flexColCen;
   background: #fff;
   border-radius: 12px;
   max-width: 800px;
@@ -9,6 +9,23 @@
   width: 100%;
   height: 80vh;
   padding: 2rem 1rem;
+
+  .imgContainer {
+    @extend .flexCenter;
+    padding-top: 2rem;
+    border-top: 2px solid #ccc;
+    width: 100%;
+
+    img {
+      border: 1px solid #ccc;
+      border-radius: 1rem;
+      padding: 1rem;
+    }
+  }
+
+  .btnContainer {
+    margin-top: 1rem;
+  }
 }
 
 @media screen and (max-width: 510px) {

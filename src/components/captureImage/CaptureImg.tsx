@@ -1,61 +1,61 @@
-import React, { useCallback, useEffect, useRef } from "react";
-import Webcam from "react-webcam";
-import Image from "next/image";
-import { motion } from "framer-motion";
+import React, { useCallback, useEffect, useRef, useState } from 'react'
+import Webcam from 'react-webcam'
+import Image from 'next/image'
+import { motion } from 'framer-motion'
 
-import Button from "components/button";
-import Tooltip from "components/tooltip";
+import Button from 'components/button'
+import Tooltip from 'components/tooltip'
 
-import stl from "./CaptureImg.module.scss";
+import stl from './CaptureImg.module.scss'
 
 interface Props {
-  isCameraOn: Boolean;
-  handleCancel: () => void;
-  handleClick: (arg: string) => void;
+  isCameraOn: Boolean
+  handleCancel: () => void
+  handleClick: (arg: string) => void
 }
 
 const CaptureImg = ({ isCameraOn, handleClick, handleCancel }: Props) => {
-  const [img, setImg] = React.useState(null);
-  const [showTooltip, setShowTooltip] = React.useState(false);
-  const webcamRef = useRef(null);
+  const [img, setImg] = useState(null)
+  const [showTooltip, setShowTooltip] = useState(false)
+  const webcamRef = useRef(null)
 
   useEffect(() => {
-    showTooltip && setTimeout(() => setShowTooltip(false), 1500);
-  }, [showTooltip]);
+    showTooltip && setTimeout(() => setShowTooltip(false), 1500)
+  }, [showTooltip])
 
   useEffect(() => {
     if (!isCameraOn) {
-      setImg(null);
+      setImg(null)
     }
-  }, [isCameraOn]);
+  }, [isCameraOn])
 
   const videoConstraints = {
     width: 400,
     height: 400,
-    facingMode: "user",
-  };
+    facingMode: 'user',
+  }
 
   const capture = useCallback(() => {
     //@ts-ignore
-    const imageSrc = webcamRef.current.getScreenshot();
-    setImg(imageSrc);
-    setShowTooltip(true);
-  }, [webcamRef]);
+    const imageSrc = webcamRef.current.getScreenshot()
+    setImg(imageSrc)
+    setShowTooltip(true)
+  }, [webcamRef])
 
   return (
     <motion.div
       initial={{ scale: 0 }}
       animate={
         isCameraOn
-          ? { scale: 1, y: "-50%", x: "-50%" }
-          : { scale: 0, y: "-50%", x: "-50%" }
+          ? { scale: 1, y: '-50%', x: '-50%' }
+          : { scale: 0, y: '-50%', x: '-50%' }
       }
-      transition={{ type: "spring" }}
+      transition={{ type: 'spring' }}
       style={{
-        transformOrigin: "center",
-        position: "absolute",
-        top: "50%",
-        left: "50%",
+        transformOrigin: 'center',
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
       }}
       className={stl.container}
     >
@@ -81,7 +81,7 @@ const CaptureImg = ({ isCameraOn, handleClick, handleCancel }: Props) => {
         </>
       ) : (
         <>
-          <Image src={img || ""} width={400} height={400} alt="screenshot" />
+          <Image src={img || ''} width={400} height={400} alt="screenshot" />
           <div className={stl.btnContainer}>
             <Button
               // @ts-ignore
@@ -111,11 +111,11 @@ const CaptureImg = ({ isCameraOn, handleClick, handleCancel }: Props) => {
         customClass={stl.tooltip}
       />
     </motion.div>
-  );
-};
+  )
+}
 
 CaptureImg.defaultProps = {
   isCameraOn: false,
-};
+}
 
-export default CaptureImg;
+export default CaptureImg

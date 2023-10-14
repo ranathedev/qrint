@@ -1,20 +1,20 @@
-import React from "react";
-import Image from "next/image";
-import clsx from "clsx";
+import React, { useState } from 'react'
+import Image from 'next/image'
+import clsx from 'clsx'
 
-import Tooltip from "components/tooltip";
+import Tooltip from 'components/tooltip'
 
-import DownIcon from "assets/arrow-down.svg";
+import DownIcon from 'assets/arrow-down.svg'
 
-import stl from "./Dropdown.module.scss";
+import stl from './Dropdown.module.scss'
 
 interface Props {
-  title: string;
-  list: Array<Object>;
-  handleItemClick?: (arg1: string, arg2: string) => void;
-  handleOnClick?: any;
-  expand: Boolean;
-  colorPicker: Boolean;
+  title: string
+  list: Array<Object>
+  handleItemClick?: (arg1: string, arg2: string) => void
+  handleOnClick?: any
+  expand: Boolean
+  colorPicker: Boolean
 }
 
 const Dropdown = ({
@@ -24,9 +24,9 @@ const Dropdown = ({
   expand,
   colorPicker,
 }: Props) => {
-  const [showTooltip, setShowTooltip] = React.useState(false);
-  const [color, setColor] = React.useState("#000000");
-  const [shape, setShape] = React.useState("default");
+  const [showTooltip, setShowTooltip] = useState(false)
+  const [color, setColor] = useState('#000000')
+  const [shape, setShape] = useState('default')
 
   // useEffect(() => {
   //   handleItemClick(shape, color);
@@ -34,7 +34,7 @@ const Dropdown = ({
 
   return (
     <div
-      className={clsx(stl.dropDown, expand ? stl.expand : "")}
+      className={clsx(stl.dropDown, expand ? stl.expand : '')}
       onClick={handleOnClick}
     >
       <div className={stl.header}>
@@ -48,7 +48,7 @@ const Dropdown = ({
               className={stl.input}
               type="color"
               value={color}
-              onChange={(e) => setColor(e.target.value)}
+              onChange={e => setColor(e.target.value)}
             />
           )}
           <Tooltip
@@ -76,28 +76,28 @@ const Dropdown = ({
                 src={item.src}
                 width={60}
                 height={60}
-                alt={item.name + "-image"}
+                alt={item.name + '-image'}
               />
             )}
           </div>
         ))}
       </div>
     </div>
-  );
-};
+  )
+}
 
 Dropdown.defaultProps = {
-  title: "Frame",
+  title: 'Frame',
   list: [
-    { id: "sample-image", src: "/qr-code.png" },
-    { id: "sample-image", src: "/qr-code.png" },
-    { id: "sample-image", src: "/qr-code.png" },
-    { id: "sample-image", src: "/qr-code.png" },
-    { id: "sample-image", src: "/qr-code.png" },
-    { id: "sample-image", src: "/qr-code.png" },
+    { id: 'sample-image', src: '/qr-code.png' },
+    { id: 'sample-image', src: '/qr-code.png' },
+    { id: 'sample-image', src: '/qr-code.png' },
+    { id: 'sample-image', src: '/qr-code.png' },
+    { id: 'sample-image', src: '/qr-code.png' },
+    { id: 'sample-image', src: '/qr-code.png' },
   ],
   expand: false,
   colorPicker: true,
-};
+}
 
-export default Dropdown;
+export default Dropdown

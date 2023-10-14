@@ -1,38 +1,38 @@
-import React, { useEffect } from "react";
-import clsx from "clsx";
+import React, { useEffect, useState } from 'react'
+import clsx from 'clsx'
 
-import SidebarItem from "components/sidebar-item";
-import Tooltip from "components/tooltip";
+import SidebarItem from 'components/sidebar-item'
+import Tooltip from 'components/tooltip'
 
-import CollapseIcon from "assets/collapse.svg";
-import ExpandIcon from "assets/expand.svg";
+import CollapseIcon from 'assets/collapse.svg'
+import ExpandIcon from 'assets/expand.svg'
 
-import stl from "./Sidebar.module.scss";
+import stl from './Sidebar.module.scss'
 
 interface Props {
-  setTitle: (arg: any) => void;
-  title: string;
+  setTitle: (arg: any) => void
+  title: string
 }
 
 const Sidebar = ({ setTitle, title }: Props) => {
-  const [collapse, setCollapse] = React.useState(true);
-  const [showTooltip, setShowTooltip] = React.useState(false);
+  const [collapse, setCollapse] = useState(true)
+  const [showTooltip, setShowTooltip] = useState(false)
 
   useEffect(() => {
-    const ele = document.getElementById("header");
+    const ele = document.getElementById('header')
     if (collapse) {
-      setTimeout(() => ele?.classList.add(stl.isCollapsed), 200);
+      setTimeout(() => ele?.classList.add(stl.isCollapsed), 200)
     } else {
-      ele?.classList.remove(stl.isCollapsed);
+      ele?.classList.remove(stl.isCollapsed)
     }
-  }, [collapse]);
+  }, [collapse])
 
-  const types = ["Text", "GeoLoc", "SMS", "WiFi", "VCARD", "Email", "Call"];
+  const types = ['Text', 'GeoLoc', 'SMS', 'WiFi', 'VCARD', 'Email', 'Call']
 
   return (
-    <div className={clsx(stl.sidebar, collapse ? stl.collapse : "")}>
+    <div className={clsx(stl.sidebar, collapse ? stl.collapse : '')}>
       <div id="header" className={stl.header}>
-        {collapse ? "" : <span className={stl.title}>Types</span>}
+        {collapse ? '' : <span className={stl.title}>Types</span>}
         <span
           onMouseOver={() => setShowTooltip(true)}
           onMouseOut={() => setShowTooltip(false)}
@@ -43,9 +43,9 @@ const Sidebar = ({ setTitle, title }: Props) => {
         </span>
         <Tooltip
           isVisible={showTooltip}
-          text={collapse ? "Expand" : "Collapse"}
+          text={collapse ? 'Expand' : 'Collapse'}
           top="5%"
-          left={collapse ? "110%" : "103%"}
+          left={collapse ? '110%' : '103%'}
         />
       </div>
       <div className={stl.container}>
@@ -54,14 +54,14 @@ const Sidebar = ({ setTitle, title }: Props) => {
             key={i}
             customClass={stl.item}
             title={type}
-            handleOnClick={(item) => setTitle(item)}
+            handleOnClick={item => setTitle(item)}
             isCollapsed={collapse}
             isActive={title === type}
           />
         ))}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Sidebar;
+export default Sidebar

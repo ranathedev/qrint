@@ -1,38 +1,38 @@
-import React, { useEffect } from "react";
-import Link from "next/link";
+import React, { useEffect, useState } from 'react'
+import Link from 'next/link'
 
-import Tooltip from "components/tooltip";
-import UrlPreview from "components/url-preview";
+import Tooltip from 'components/tooltip'
+import UrlPreview from 'components/url-preview'
 
-import Icon from "assets/goto-link.svg";
-import BackIcon from "assets/arrow-left.svg";
+import Icon from 'assets/goto-link.svg'
+import BackIcon from 'assets/arrow-left.svg'
 
-import stl from "./ReaderRes.module.scss";
+import stl from './ReaderRes.module.scss'
 
 interface Props {
-  data: string;
-  handleBackBtn?: () => void;
+  data: string
+  handleBackBtn?: () => void
 }
 
 const ReaderRes = ({ data, handleBackBtn }: Props) => {
-  const [showURL, setShowURL] = React.useState(false);
-  const [showTooltip, setShowTooltip] = React.useState(false);
-  const [showBtnTooltip, setShowBtnTooltip] = React.useState(false);
+  const [showURL, setShowURL] = useState(false)
+  const [showTooltip, setShowTooltip] = useState(false)
+  const [showBtnTooltip, setShowBtnTooltip] = useState(false)
 
   const isURL = (str: string) => {
-    const urlPattern = /^(https?:\/\/)?([\w.-]+)\.([a-z]{2,})(\/.*)?$/i;
-    return urlPattern.test(str);
-  };
+    const urlPattern = /^(https?:\/\/)?([\w.-]+)\.([a-z]{2,})(\/.*)?$/i
+    return urlPattern.test(str)
+  }
 
-  const modifiedString = data.replace(/:(?!\s)/g, ": ");
+  const modifiedString = data.replace(/:(?!\s)/g, ': ')
 
   useEffect(() => {
     if (isURL(data)) {
-      setShowURL(true);
+      setShowURL(true)
     } else {
-      setShowURL(false);
+      setShowURL(false)
     }
-  }, [data]);
+  }, [data])
 
   return (
     <div className={stl.result}>
@@ -79,11 +79,11 @@ const ReaderRes = ({ data, handleBackBtn }: Props) => {
         )}
       </div>
     </div>
-  );
-};
+  )
+}
 
 ReaderRes.defaultProps = {
-  data: "Ut reprehenderit deserunt laboris qui. Aute consequat est irure ipsum duis nisi. Nulla dolore deserunt ipsum pariatur consequat quis ut.",
-};
+  data: 'Ut reprehenderit deserunt laboris qui. Aute consequat est irure ipsum duis nisi. Nulla dolore deserunt ipsum pariatur consequat quis ut.',
+}
 
-export default ReaderRes;
+export default ReaderRes

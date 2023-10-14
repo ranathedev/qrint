@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import FAQs from 'lib/faqs.js'
 import FAQ from 'components/faq/FAQ'
@@ -6,7 +6,7 @@ import FAQ from 'components/faq/FAQ'
 import stl from './FAQSection.module.scss'
 
 const FAQSection = () => {
-  const [isExpanded, setIsExpanded] = React.useState('')
+  const [isExpanded, setIsExpanded] = useState('')
 
   return (
     <div className={stl.faqSection}>

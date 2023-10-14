@@ -1,25 +1,25 @@
-import React from "react";
+import React, { useState } from 'react'
 
-import AuthForm from "./AuthForm";
+import AuthForm from './AuthForm'
 
 const SignUpFlow = () => {
-  const [method, setMethod] = React.useState("signup");
+  const [method, setMethod] = useState('signup')
 
   return (
     <AuthForm
       method={method}
       setMethod={setMethod}
       initVals={
-        (method === "signup" && {
-          fullname: "",
-          email: "",
-          pass: "",
-          confpass: "",
+        (method === 'signup' && {
+          fullname: '',
+          email: '',
+          pass: '',
+          confpass: '',
         }) ||
-        (method === "signin" && { email: "", pass: "" })
+        (method === 'signin' && { email: '', pass: '' })
       }
     />
-  );
-};
+  )
+}
 
-export default SignUpFlow;
+export default SignUpFlow

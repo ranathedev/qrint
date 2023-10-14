@@ -1,17 +1,17 @@
-import React from "react";
-import clsx from "clsx";
+import React, { useState } from 'react'
+import clsx from 'clsx'
 
-import getIcons from "lib/getIcons";
-import Tooltip from "components/tooltip";
+import getIcons from 'lib/getIcons'
+import Tooltip from 'components/tooltip'
 
-import stl from "./SidebarItem.module.scss";
+import stl from './SidebarItem.module.scss'
 
 interface Props {
-  title: string;
-  handleOnClick: (arg: string) => void;
-  customClass?: string;
-  isCollapsed: Boolean;
-  isActive: Boolean;
+  title: string
+  handleOnClick: (arg: string) => void
+  customClass?: string
+  isCollapsed: Boolean
+  isActive: Boolean
 }
 
 const SidebarItem = ({
@@ -21,26 +21,26 @@ const SidebarItem = ({
   customClass,
   isActive,
 }: Props) => {
-  const [showTooltip, setShowTooltip] = React.useState(false);
+  const [showTooltip, setShowTooltip] = useState(false)
 
   return (
     <div
       onMouseOver={() => setShowTooltip(true)}
       onMouseOut={() => setShowTooltip(false)}
-      className={clsx(stl.sidebarItem, isActive ? stl.active : "", customClass)}
+      className={clsx(stl.sidebarItem, isActive ? stl.active : '', customClass)}
       onClick={() => handleOnClick(title)}
     >
       <span className={stl.icon}>{getIcons(title)}</span>
-      {isCollapsed ? "" : <span className={stl.text}>{title}</span>}
+      {isCollapsed ? '' : <span className={stl.text}>{title}</span>}
       <Tooltip isVisible={isCollapsed && showTooltip} text={title} />
     </div>
-  );
-};
+  )
+}
 
 SidebarItem.defaultProps = {
-  title: "Text message",
+  title: 'Text message',
   handleOnClick: (title: string) => console.log(title),
   isCollapsed: true,
-};
+}
 
-export default SidebarItem;
+export default SidebarItem

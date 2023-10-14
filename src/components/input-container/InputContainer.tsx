@@ -13,9 +13,16 @@ import Image from 'next/image'
 interface Props {
   title: string
   setValue: (arg: string) => void
+  // generate: (arg: any) => void
+  // src: string
 }
 
-const InputContainer = ({ title, setValue }: Props) => {
+const InputContainer = ({
+  title,
+  setValue,
+}: //  generate,
+//  src
+Props) => {
   const [src, setSrc] = useState('')
 
   const generate = (val: string) => {

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import clsx from 'clsx'
 import { Formik, Form } from 'formik'
 
@@ -18,8 +18,8 @@ interface Props {
 }
 
 const CustomForm = ({ title, initialVals, setValue, generate }: Props) => {
-  const [isLoading, setIsLoading] = React.useState(true)
-  const [message, setMessage] = React.useState('')
+  const [isLoading, setIsLoading] = useState(true)
+  const [message, setMessage] = useState('')
 
   useEffect(() => {
     setIsLoading(true)

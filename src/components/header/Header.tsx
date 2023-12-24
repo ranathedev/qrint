@@ -1,40 +1,39 @@
-import React, { useEffect } from "react";
-import { useRouter } from "next/router";
-import Image from "next/image";
-import Link from "next/link";
-import clsx from "clsx";
+import React, { useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
+import Link from 'next/link'
+import clsx from 'clsx'
 
-import Button from "components/button";
+import Button from 'components/button'
 
-import MenuIcon from "assets/menu.svg";
+import MenuIcon from 'assets/menu.svg'
 
-import stl from "./Header.module.scss";
+import stl from './Header.module.scss'
 
 interface Props {
-  list: Array<any>;
+  list: Array<any>
 }
 
 const Header = ({ list }: Props) => {
-  const [isVisible, setIsVisible] = React.useState(false);
-  const [width, setWidth] = React.useState(1000);
+  const [isVisible, setIsVisible] = useState(false)
+  const [width, setWidth] = useState(1000)
 
-  const router = useRouter();
+  const router = useRouter()
 
   useEffect(() => {
     function measureWidth() {
-      setWidth(document.body.clientWidth);
+      setWidth(document.body.clientWidth)
     }
-    measureWidth();
-    window.addEventListener("resize", measureWidth);
-    return () => window.removeEventListener("resize", measureWidth);
-  }, []);
+    measureWidth()
+    window.addEventListener('resize', measureWidth)
+    return () => window.removeEventListener('resize', measureWidth)
+  }, [])
 
   useEffect(() => {
-    width >= 640 && setIsVisible(false);
-  }, [width]);
+    width >= 640 && setIsVisible(false)
+  }, [width])
 
   return (
-    <nav className={clsx(stl.nav, isVisible ? stl.expandNav : "")}>
+    <nav className={clsx(stl.nav, isVisible ? stl.expandNav : '')}>
       <div className={stl.container}>
         <Link href="/" className={stl.logo}>
           <span className={stl.logoName}>QRint</span>
@@ -42,7 +41,7 @@ const Header = ({ list }: Props) => {
         <div className={stl.right}>
           <Button
             title="Sign Up"
-            handleOnClick={() => (location.href = "/auth")}
+            handleOnClick={() => (location.href = '/auth')}
           />
           <button
             className={stl.expandBtn}
@@ -60,7 +59,7 @@ const Header = ({ list }: Props) => {
                   href={item.link}
                   className={clsx(
                     stl.link,
-                    router.pathname === item.link ? stl.active : ""
+                    router.pathname === item.link ? stl.active : ''
                   )}
                 >
                   {item.title}
@@ -71,17 +70,17 @@ const Header = ({ list }: Props) => {
         </div>
       </div>
     </nav>
-  );
-};
+  )
+}
 
 Header.defaultProps = {
   list: [
-    { title: "Home", link: "/" },
-    { title: "Reader", link: "/reader" },
-    { title: "Generator", link: "/generator" },
-    { title: "About", link: "/about" },
-    { title: "Contact", link: "/contact" },
+    { title: 'Home', link: '/' },
+    { title: 'Reader', link: '/reader' },
+    { title: 'Generator', link: '/generator' },
+    { title: 'About', link: '/about' },
+    { title: 'Contact', link: '/contact' },
   ],
-};
+}
 
-export default Header;
+export default Header

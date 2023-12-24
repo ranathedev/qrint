@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react'
-import axios from 'axios'
+import React, { useState } from 'react'
 
 import Customizer from 'components/customizer'
 import Footer from 'components/footer'
@@ -10,64 +9,65 @@ import Sidebar from 'components/sidebar'
 import stl from './index.module.scss'
 
 const Generator = () => {
-  const [title, setTitle] = React.useState('Text')
-  const [value, setValue] = React.useState('')
-  const [styles, setStyles] = React.useState({
+  const [title, setTitle] = useState('Text')
+  const [value, setValue] = useState('')
+  const [src, setSrc] = useState<any>('')
+  const [styles, setStyles] = useState({
     module: { color: 'black', shape: 'default' },
     innereye: { color: '', shape: 'default' },
     outereye: { color: '', shape: 'default' },
+    format: 'png',
   })
 
-  // const [response, setResponse] = React.useState(null);
-
-  const options = {
-    method: 'POST',
-    url: 'https://qrcode3.p.rapidapi.com/qrcode/text',
-    headers: {
-      Accept: 'image/svg+xml',
-      'Content-Type': 'application/json',
-      'X-RapidAPI-Key': process.env.X_RapidAPI_Key,
+  const data = {
+    data: value,
+    image: {
+      uri: 'icon://appstore',
+      modules: true,
     },
-    data: {
-      data: 'https://ranaintizar.com',
-      image: {
-        uri: 'icon://appstore',
-        modules: true,
+    style: {
+      module: { color: styles.module.color, shape: styles.module.shape },
+      inner_eye: {
+        color: styles.innereye.color,
+        shape: styles.innereye.shape,
       },
-      style: {
-        module: { color: styles.module.color, shape: styles.module.shape },
-        inner_eye: {
-          color: styles.innereye.color,
-          shape: styles.innereye.shape,
-        },
-        outer_eye: {
-          color: styles.outereye.color,
-          shape: styles.outereye.shape,
-        },
-        background: { color: 'white' },
+      outer_eye: {
+        color: styles.outereye.color,
+        shape: styles.outereye.shape,
       },
-      size: { width: 300, quiet_zone: 4, error_correction: 'M' },
-      output: { format: 'png' },
+      background: { color: 'white' },
     },
+    size: { width: 400, quiet_zone: 4, error_correction: 'M' },
+    output: { format: styles.format },
   }
 
   const generateCode = async (val: string) => {
-    // axios.request(options).then((response: any) => {
-    //   console.log(response.data)
-    //   // setResponse(response);
-    //   response
-    //     .blob()
-    //     .then((blob: any) => {
-    //       const reader = new FileReader()
-    //       reader.readAsDataURL(blob)
-    //       reader.onloadend = () => {
-    //         console.log(reader.result)
-    //       }
-    //     })
-    //     .catch((error: any) => {
-    //       console.log(error)
-    //     })
+    // fetch('https://qrcode3.p.rapidapi.com/qrcode/text', {
+    //   method: 'POST',
+    //   // @ts-ignore
+    //   headers: {
+    //     'content-type': 'application/json',
+    //     'x-rapidapi-key': process.env.X_RapidAPI_Key,
+    //   },
+    //   body: JSON.stringify(data),
+    // }).then(response => {
+    //   if (response.status >= 400) {
+    //     response.text().then(text => alert('API Error:\n\n' + text))
+    //     return
+    //   }
+
+    //   response.blob().then(blob => {
+    //     const reader = new FileReader()
+    //     reader.readAsDataURL(blob)
+    //     reader.onloadend = () => {
+    //       const imgUrl = reader.result
+    //       setSrc(imgUrl)
+    //       console.log('Reader Result:', reader.result)
+    //     }
+    //   })
     // })
+
+    alert('Coming Soon')
   }
 
   return (
@@ -76,7 +76,13 @@ const Generator = () => {
       <div className={stl.container}>
         <Sidebar title={title} setTitle={setTitle} />
         <div className={stl.row}>
-          <InputContainer title={title} setValue={setValue} />
+          <InputContainer
+            //@ts-ignore
+            generate={generateCode}
+            title={title}
+            setValue={setValue}
+            src={src}
+          />
           <Customizer setStyles={setStyles} />
         </div>
       </div>

@@ -1,4 +1,4 @@
-@import "styles/common";
+@import 'styles/common';
 
 .dropDown {
   @extend .flexCol;
@@ -65,8 +65,16 @@
           outline: 5px solid #1e90ff;
         }
       }
+
+      &.active {
+        border: 3px dashed #1e90ff;
+      }
     }
   }
+}
+
+.noColorPicker .header {
+  margin-bottom: 2px;
 }
 
 .expand {

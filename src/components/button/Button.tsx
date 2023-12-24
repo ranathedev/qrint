@@ -8,7 +8,7 @@ interface Props {
   icon?: ReactNode
   width?: string
   type?: 'submit' | 'reset'
-  handleOnClick?: (arg: any) => void
+  handleOnClick?: () => void
   variant: 'primary' | 'secondary' | 'danger' | 'signup'
 }
 

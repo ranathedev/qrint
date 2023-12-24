@@ -8,14 +8,22 @@ import Sidebar from 'components/sidebar'
 
 import stl from './index.module.scss'
 
+interface Styles {
+  module: { color: string; shape: string }
+  innereye: { color: string; shape: string }
+  outereye: { color: string; shape: string }
+  format: string
+}
+
 const Generator = () => {
   const [title, setTitle] = useState('Text')
   const [value, setValue] = useState('')
-  const [src, setSrc] = useState<any>('')
+  const [shouldGetData, setShouldGetData] = useState(false)
+  const [src, setSrc] = useState('')
   const [styles, setStyles] = useState({
     module: { color: 'black', shape: 'default' },
-    innereye: { color: '', shape: 'default' },
-    outereye: { color: '', shape: 'default' },
+    innereye: { color: 'black', shape: 'default' },
+    outereye: { color: 'black', shape: 'default' },
     format: 'png',
   })
 
@@ -41,10 +49,12 @@ const Generator = () => {
     output: { format: styles.format },
   }
 
-  const generateCode = async (val: string) => {
+  const generateCode = async (styles: Styles) => {
+    // console.log(styles)
+    // console.log(value)
+
     // fetch('https://qrcode3.p.rapidapi.com/qrcode/text', {
     //   method: 'POST',
-    //   // @ts-ignore
     //   headers: {
     //     'content-type': 'application/json',
     //     'x-rapidapi-key': process.env.X_RapidAPI_Key,
@@ -68,7 +78,15 @@ const Generator = () => {
     // })
 
     alert('Coming Soon')
+    setShouldGetData(false)
   }
+
+  const getValue = (val: string) => {
+    setValue(val)
+    setShouldGetData(true)
+  }
+
+  const getStyles = (styles: Styles) => generateCode(styles)
 
   return (
     <div className={stl.generator}>
@@ -77,13 +95,12 @@ const Generator = () => {
         <Sidebar title={title} setTitle={setTitle} />
         <div className={stl.row}>
           <InputContainer
-            //@ts-ignore
-            generate={generateCode}
             title={title}
             setValue={setValue}
-            src={src}
+            onGenerate={getValue}
+            // src={src}
           />
-          <Customizer setStyles={setStyles} />
+          <Customizer setStyles={getStyles} shouldGetData={shouldGetData} />
         </div>
       </div>
       <Footer />

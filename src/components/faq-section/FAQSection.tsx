@@ -11,13 +11,13 @@ const FAQSection = () => {
   return (
     <div className={stl.faqSection}>
       <h2>FAQ&apos;s</h2>
-      {FAQs.map((item, i) => (
+      {FAQs.map(item => (
         <FAQ
+          key={item.q}
           title={item.q}
           answer={item.ans}
           isExpanded={item.q === isExpanded}
           setIsExpanded={setIsExpanded}
-          key={i}
         />
       ))}
       <div className={stl.divider} />

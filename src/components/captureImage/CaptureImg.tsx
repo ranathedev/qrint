@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import Webcam from 'react-webcam'
+import type WebCam from 'react-webcam'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 
@@ -11,7 +12,7 @@ import RotateCamIcon from 'assets/camera-rotate.svg'
 import stl from './CaptureImg.module.scss'
 
 interface Props {
-  isCameraOn: Boolean
+  isCameraOn: boolean
   handleCancel: () => void
   handleClick: (arg: string) => void
 }
@@ -20,14 +21,14 @@ const CaptureImg = ({ isCameraOn, handleClick, handleCancel }: Props) => {
   const [img, setImg] = useState('https://picsum.photos/400')
   const [showTooltip, setShowTooltip] = useState(false)
   const [cameraFacingMode, setCameraFacingMode] = useState('user')
-  const webcamRef = useRef(null)
+  const webcamRef = useRef<WebCam>(null)
 
   useEffect(() => {
     showTooltip && setTimeout(() => setShowTooltip(false), 1500)
   }, [showTooltip])
 
   useEffect(() => {
-    if (!isCameraOn) setImg('https://picsum.photos/400')
+    !isCameraOn && setImg('https://picsum.photos/400')
   }, [isCameraOn])
 
   const videoConstraints = {
@@ -42,9 +43,8 @@ const CaptureImg = ({ isCameraOn, handleClick, handleCancel }: Props) => {
   }
 
   const capture = useCallback(() => {
-    //@ts-ignore
-    const imageSrc = webcamRef.current.getScreenshot()
-    setImg(imageSrc)
+    const imageSrc = webcamRef.current?.getScreenshot()
+    imageSrc && setImg(imageSrc)
     setShowTooltip(true)
   }, [webcamRef])
 
@@ -65,7 +65,7 @@ const CaptureImg = ({ isCameraOn, handleClick, handleCancel }: Props) => {
       }}
       className={stl.container}
     >
-      {isCameraOn && img === 'https://picsum.photos/400' ? (
+      {isCameraOn ? (
         <>
           <Webcam
             audio={false}
@@ -100,7 +100,6 @@ const CaptureImg = ({ isCameraOn, handleClick, handleCancel }: Props) => {
           />
           <div className={stl.btnContainer}>
             <Button
-              // @ts-ignore
               handleOnClick={() => handleClick(img)}
               title="Select Photo"
             />

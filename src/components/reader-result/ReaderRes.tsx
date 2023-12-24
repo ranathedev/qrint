@@ -24,14 +24,11 @@ const ReaderRes = ({ data, handleBackBtn }: Props) => {
     return urlPattern.test(str)
   }
 
-  const modifiedString = data.replace(/:(?!\s)/g, ': ')
+  const modifiedString = data?.replace(/:(?!\s)/g, ': ')
 
   useEffect(() => {
-    if (isURL(data)) {
-      setShowURL(true)
-    } else {
-      setShowURL(false)
-    }
+    if (isURL(data)) setShowURL(true)
+    else setShowURL(false)
   }, [data])
 
   return (

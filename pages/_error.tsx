@@ -1,14 +1,14 @@
-import React from "react";
-import ErrorPage from "next/error";
+import React from 'react'
+import ErrorPage from 'next/error'
 
-import PageNotFound from "./404";
+import PageNotFound from './404'
 
 const CustomErrorPage = ({ statusCode }: { statusCode: number }) => {
   if (statusCode === 404) {
-    return <PageNotFound />;
+    return <PageNotFound />
   }
 
-  return <ErrorPage statusCode={statusCode} />;
-};
+  return <ErrorPage statusCode={statusCode} />
+}
 
-export default CustomErrorPage;
+export default CustomErrorPage

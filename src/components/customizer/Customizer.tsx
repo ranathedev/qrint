@@ -1,18 +1,24 @@
 import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 
-import { modules, innereyes, outereyes, logos } from 'lib/data'
+import { modules, innereyes, outereyes, logos } from 'lib/customizerData'
 import Dropdown from 'components/dropdown'
 import RadioInput from 'components/radio-inputs'
 
 import stl from './Customizer.module.scss'
 
 interface Props {
-  setStyles: (arg: any) => void
+  setStyles: (arg: {
+    module: { color: string; shape: string }
+    innereye: { color: string; shape: string }
+    outereye: { color: string; shape: string }
+    format: string
+  }) => void
+  shouldGetData: boolean
 }
 
-const Customizer = ({ setStyles }: Props) => {
-  const [format, setFormat] = useState('jpg')
+const Customizer = ({ setStyles, shouldGetData }: Props) => {
+  const [format, setFormat] = useState('png')
   const [module, setModules] = useState({
     shape: 'default',
     color: '#ff0000',
@@ -33,8 +39,8 @@ const Customizer = ({ setStyles }: Props) => {
   })
 
   useEffect(() => {
-    setStyles({ module, innereye, outereye, format })
-  }, [module, innereye, outereye, format])
+    shouldGetData && setStyles({ module, innereye, outereye, format })
+  }, [shouldGetData])
 
   return (
     <div className={stl.customizer}>

@@ -13,16 +13,11 @@ import Image from 'next/image'
 interface Props {
   title: string
   setValue: (arg: string) => void
-  // generate: (arg: any) => void
+  onGenerate: (arg: string) => void
   // src: string
 }
 
-const InputContainer = ({
-  title,
-  setValue,
-}: //  generate,
-//  src
-Props) => {
+const InputContainer = ({ title, setValue, onGenerate }: Props) => {
   const [src, setSrc] = useState('')
 
   const generate = (val: string) => {
@@ -32,9 +27,7 @@ Props) => {
       qr.make()
       const url = qr.createDataURL(20, 20)
       setSrc(url)
-    } else {
-      alert("Value shouldn't be empty")
-    }
+    } else alert("Value shouldn't be empty")
   }
 
   const downloadImage = () => {
@@ -46,9 +39,7 @@ Props) => {
       document.body.appendChild(a)
       a.click()
       document.body.removeChild(a)
-    } else {
-      console.log('Download canceled: No filename provided.')
-    }
+    } else alert('Download canceled: No filename provided.')
   }
 
   return (
@@ -56,6 +47,7 @@ Props) => {
       <CustomForm
         generate={generate}
         title={title}
+        // @ts-ignore
         initialVals={getInitVals(title)}
         setValue={setValue}
       />

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import clsx from 'clsx'
 
 import Button from 'components/button'
 import CaptureImg from 'components/captureImage'
@@ -12,7 +13,7 @@ import UploadIcon from 'assets/upload.svg'
 import stl from './FileUploader.module.scss'
 
 const FileUploader = () => {
-  const [selectedFile, setSelectedFile] = useState(null)
+  const [selectedFile, setSelectedFile] = useState<File | null>(null)
   const [src, setSrc] = useState(null)
   const [data, setData] = useState(null)
   const [showCamera, setShowCamera] = useState(false)
@@ -31,17 +32,19 @@ const FileUploader = () => {
     }
   }, [src])
 
-  const dataURLtoFile = (dataurl: string) => {
-    var arr = dataurl.split(','),
-      bstr = atob(arr[arr.length - 1]),
-      n = bstr.length,
-      u8arr = new Uint8Array(n)
-    while (n--) {
-      u8arr[n] = bstr.charCodeAt(n)
+  const dataURLtoFile = async (dataurl: string) => {
+    try {
+      const response = await fetch(dataurl)
+      if (!response.ok)
+        throw new Error(`HTTP error! Status: ${response.status}`)
+
+      const blob = await response.blob()
+      const u8arr = new Uint8Array(await new Response(blob).arrayBuffer())
+      const file = new File([u8arr], 'image.png', { type: 'image/png' })
+      setSelectedFile(file)
+    } catch (error) {
+      console.error('Fetch error:', error)
     }
-    const file = new File([u8arr], 'image', { type: 'image/png' })
-    //@ts-ignore
-    setSelectedFile(file)
   }
 
   const scanWithFile = async () => {
@@ -56,8 +59,7 @@ const FileUploader = () => {
       })
       .then(response => {
         const data = response.data[0].symbol[0].data
-        if (data === null) {
-          console.log('No QR-Code Found in the Image.')
+        if (!data) {
           //@ts-ignore
           setData('No QR-Code Found in the Image.')
         } else {
@@ -78,13 +80,10 @@ const FileUploader = () => {
       .post(`http://api.qrserver.com/v1/read-qr-code/?fileurl=${encodedURL}`)
       .then(response => {
         const data = response.data[0].symbol[0].data
-        if (data === null) {
-          console.log('No QR-Code Found in the Image.')
+        if (!data) {
           //@ts-ignore
           setData('No QR-Code Found in the Image.')
-        } else {
-          setData(data)
-        }
+        } else setData(data)
       })
       .catch(error => {
         console.error(error)
@@ -144,6 +143,11 @@ const FileUploader = () => {
     })
   }
 
+  const handleCaptureImg = (src: string) => {
+    setShowCamera(false)
+    dataURLtoFile(src)
+  }
+
   return (
     (data !== null && (
       //@ts-ignore
@@ -175,10 +179,7 @@ const FileUploader = () => {
         <Dropbox setSelectedFile={setSelectedFile} />
         <CaptureImg
           isCameraOn={showCamera}
-          handleClick={src => {
-            setShowCamera(false)
-            dataURLtoFile(src)
-          }}
+          handleClick={handleCaptureImg}
           handleCancel={() => setShowCamera(false)}
         />
         <div className={stl.captureBtn}>
@@ -188,6 +189,7 @@ const FileUploader = () => {
             handleOnClick={() => setShowCamera(true)}
           />
         </div>
+        <div className={clsx(stl.wrapper, showCamera ? stl.showWrapper : '')} />
       </div>
     )
   )

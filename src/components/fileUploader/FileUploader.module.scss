@@ -1,10 +1,26 @@
-@import "styles/common";
+@import 'styles/common';
 
 .fileUploader {
   max-width: 600px;
   width: 100%;
   @extend .flexCol;
   gap: 1rem;
+
+  .wrapper {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background: #00000030;
+    left: 0;
+    top: 0;
+    z-index: 20;
+    backdrop-filter: blur(0.5rem);
+    display: none;
+  }
+
+  .showWrapper {
+    display: block;
+  }
 
   .or {
     font-size: 1.2rem;

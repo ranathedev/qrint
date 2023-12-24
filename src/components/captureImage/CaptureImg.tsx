@@ -6,6 +6,8 @@ import { motion } from 'framer-motion'
 import Button from 'components/button'
 import Tooltip from 'components/tooltip'
 
+import RotateCamIcon from 'assets/camera-rotate.svg'
+
 import stl from './CaptureImg.module.scss'
 
 interface Props {
@@ -15,8 +17,9 @@ interface Props {
 }
 
 const CaptureImg = ({ isCameraOn, handleClick, handleCancel }: Props) => {
-  const [img, setImg] = useState(null)
+  const [img, setImg] = useState('https://picsum.photos/400')
   const [showTooltip, setShowTooltip] = useState(false)
+  const [cameraFacingMode, setCameraFacingMode] = useState('user')
   const webcamRef = useRef(null)
 
   useEffect(() => {
@@ -24,15 +27,18 @@ const CaptureImg = ({ isCameraOn, handleClick, handleCancel }: Props) => {
   }, [showTooltip])
 
   useEffect(() => {
-    if (!isCameraOn) {
-      setImg(null)
-    }
+    if (!isCameraOn) setImg('https://picsum.photos/400')
   }, [isCameraOn])
 
   const videoConstraints = {
     width: 400,
     height: 400,
-    facingMode: 'user',
+    facingMode: cameraFacingMode,
+  }
+
+  const handleCamRotate = () => {
+    if (cameraFacingMode === 'user') setCameraFacingMode('environment')
+    else setCameraFacingMode('user')
   }
 
   const capture = useCallback(() => {
@@ -53,24 +59,28 @@ const CaptureImg = ({ isCameraOn, handleClick, handleCancel }: Props) => {
       transition={{ type: 'spring' }}
       style={{
         transformOrigin: 'center',
-        position: 'absolute',
+        position: 'fixed',
         top: '50%',
         left: '50%',
       }}
       className={stl.container}
     >
-      {isCameraOn && img === null ? (
+      {isCameraOn && img === 'https://picsum.photos/400' ? (
         <>
           <Webcam
             audio={false}
-            mirrored={false}
-            height={400}
-            width={400}
+            mirrored={true}
             ref={webcamRef}
+            width="100%"
             screenshotFormat="image/png"
             videoConstraints={videoConstraints}
           />
           <div className={stl.btnContainer}>
+            <Button
+              handleOnClick={handleCamRotate}
+              title="Rotate"
+              icon={<RotateCamIcon />}
+            />
             <Button handleOnClick={capture} title="Take Photo" />
             <Button
               handleOnClick={handleCancel}
@@ -81,7 +91,13 @@ const CaptureImg = ({ isCameraOn, handleClick, handleCancel }: Props) => {
         </>
       ) : (
         <>
-          <Image src={img || ''} width={400} height={400} alt="screenshot" />
+          <Image
+            src={img}
+            width={400}
+            height={400}
+            alt="captured"
+            className={stl.capturedImg}
+          />
           <div className={stl.btnContainer}>
             <Button
               // @ts-ignore
@@ -89,7 +105,7 @@ const CaptureImg = ({ isCameraOn, handleClick, handleCancel }: Props) => {
               title="Select Photo"
             />
             <Button
-              handleOnClick={() => setImg(null)}
+              handleOnClick={() => setImg('https://picsum.photos/400')}
               title="Retake Photo"
               variant="secondary"
             />

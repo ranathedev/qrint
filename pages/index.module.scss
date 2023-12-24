@@ -1,4 +1,4 @@
-@import "styles/common";
+@import 'styles/common';
 
 .home {
   position: relative;
@@ -103,7 +103,7 @@
   }
 }
 
-.reader {
+.scanner {
   position: relative;
   @extend .alignCen;
   justify-content: space-evenly;
@@ -133,7 +133,7 @@
   height: 100vh;
   @extend .flexCenter;
   padding: 10px;
-  background: url("https://as1.ftcdn.net/v2/jpg/02/11/69/28/1000_F_211692896_EQqAQEHmkQYLQHjeK6AsnSuYksnqqGlv.jpg")
+  background: url('https://as1.ftcdn.net/v2/jpg/02/11/69/28/1000_F_211692896_EQqAQEHmkQYLQHjeK6AsnSuYksnqqGlv.jpg')
     no-repeat center / cover;
 }
 
@@ -239,7 +239,7 @@
     margin-left: 0;
   }
 
-  .reader {
+  .scanner {
     padding-left: 10px;
     padding-right: 10px;
   }

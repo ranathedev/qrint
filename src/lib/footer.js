@@ -34,7 +34,7 @@ const socials = [
 
 const links = [
   { name: 'Home', path: '/' },
-  { name: 'Reader', path: '/reader' },
+  { name: 'Scanner', path: '/scanner' },
   { name: 'Generator', path: '/generator' },
   { name: 'About', path: '/about' },
   { name: 'Contact', path: '/contact' },

@@ -27,7 +27,7 @@ const Button = ({
       onClick={handleOnClick}
       className={clsx(stl.btn, stl[variant])}
     >
-      {title} {icon && icon}
+      {title} {icon}
     </button>
   )
 }

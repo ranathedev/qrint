@@ -9,11 +9,7 @@ import MenuIcon from 'assets/menu.svg'
 
 import stl from './Header.module.scss'
 
-interface Props {
-  list: Array<any>
-}
-
-const Header = ({ list }: Props) => {
+const Header = () => {
   const [isVisible, setIsVisible] = useState(false)
   const [width, setWidth] = useState(1000)
 
@@ -31,6 +27,14 @@ const Header = ({ list }: Props) => {
   useEffect(() => {
     width >= 640 && setIsVisible(false)
   }, [width])
+
+  const list = [
+    { title: 'Home', link: '/' },
+    { title: 'Scanner', link: '/scanner' },
+    { title: 'Generator', link: '/generator' },
+    { title: 'About', link: '/about' },
+    { title: 'Contact', link: '/contact' },
+  ]
 
   return (
     <nav className={clsx(stl.nav, isVisible ? stl.expandNav : '')}>
@@ -71,16 +75,6 @@ const Header = ({ list }: Props) => {
       </div>
     </nav>
   )
-}
-
-Header.defaultProps = {
-  list: [
-    { title: 'Home', link: '/' },
-    { title: 'Reader', link: '/reader' },
-    { title: 'Generator', link: '/generator' },
-    { title: 'About', link: '/about' },
-    { title: 'Contact', link: '/contact' },
-  ],
 }
 
 export default Header

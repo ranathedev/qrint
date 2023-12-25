@@ -30,9 +30,9 @@ interface Data {
 }
 
 const Generator = () => {
-  const [title, setTitle] = useState('Text')
   const [value, setValue] = useState('')
   const [shouldGetData, setShouldGetData] = useState(false)
+  const [btnLabel, setLabel] = useState('Generate QRCode')
   const [src, setSrc] = useState('')
   // const [styles, setStyles] = useState({
   //   imageURI: '',
@@ -107,15 +107,19 @@ const Generator = () => {
     <div className={stl.generator}>
       <Header />
       <div className={stl.container}>
-        <Sidebar title={title} setTitle={setTitle} />
+        {/* <Sidebar title={title} setTitle={setTitle} /> */}
         <div className={stl.row}>
-          <InputContainer
+          {/* <InputContainer
             title={title}
             setValue={setValue}
             onGenerate={() => setShouldGetData(true)}
             // src={src}
+          /> */}
+          <Customizer
+            setStyles={getStyles}
+            shouldGetData={shouldGetData}
+            btnLabel={btnLabel}
           />
-          <Customizer setStyles={getStyles} shouldGetData={shouldGetData} />
         </div>
       </div>
       <Footer />

@@ -72,7 +72,7 @@ const Dropdown = ({
             arrowPos="bottom"
             text="Change Color"
             top="-180%"
-            left="-25%"
+            left="0"
             customClass={stl.tooltip}
           />
           <DownIcon className={stl.icon} />

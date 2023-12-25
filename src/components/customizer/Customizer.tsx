@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
+import qrcode from 'qrcode-generator'
 
 import { modules, innereyes, outereyes, logos } from 'lib/customizerData'
 import Dropdown from 'components/dropdown'
@@ -7,6 +8,8 @@ import Button from 'components/button'
 // import RadioInput from 'components/radio-inputs'
 
 import DownloadIcon from 'assets/download.svg'
+import QRCodeIcon from 'assets/generate-qrcode.svg'
+import ResetIcon from 'assets/reset.svg'
 
 import stl from './Customizer.module.scss'
 
@@ -19,9 +22,12 @@ interface Props {
     format: string
   }) => void
   shouldGetData: boolean
+  btnLabel: string
 }
 
-const Customizer = ({ setStyles, shouldGetData }: Props) => {
+const Customizer = ({ setStyles, shouldGetData, btnLabel }: Props) => {
+  const [src, setSrc] = useState('')
+  const [value, setValue] = useState('')
   const [format, setFormat] = useState('png')
   const [module, setModules] = useState({
     shape: 'default',
@@ -47,17 +53,46 @@ const Customizer = ({ setStyles, shouldGetData }: Props) => {
     shouldGetData && setStyles({ imageURI, module, innereye, outereye, format })
   }, [shouldGetData])
 
+  const generate = (val: string) => {
+    if (val !== '') {
+      var qr = qrcode(0, 'H')
+      qr.addData(val)
+      qr.make()
+      const url = qr.createDataURL(20, 20)
+      setSrc(url)
+      setValue('')
+    } else alert("Value shouldn't be empty")
+  }
+
+  const downloadImage = () => {
+    const a = document.createElement('a')
+    a.href = src
+    a.download = 'qrcode.png'
+    document.body.appendChild(a)
+    a.click()
+    document.body.removeChild(a)
+  }
+
   return (
     <div className={stl.customizer}>
       <div className={stl.preview}>
-        <Image
-          src="/qr-code.png"
-          width={250}
-          height={250}
-          alt="preview-image"
-        />
+        {src !== '' ? (
+          <Image src={src} width={250} height={250} alt="generated-qrcode" />
+        ) : (
+          <div className={stl.placeholder}>
+            <span>Your QRCode will appear here.</span>
+          </div>
+        )}
       </div>
-      <div className={stl.container}>
+      <input
+        placeholder="Enter text or URL"
+        id="textInput"
+        type="text"
+        className={stl.input}
+        value={value}
+        onChange={e => setValue(e.target.value)}
+      />
+      {/* <div className={stl.container}>
         <Dropdown
           title="Modules"
           expand={expand.modules}
@@ -117,10 +152,27 @@ const Customizer = ({ setStyles, shouldGetData }: Props) => {
             })
           }
         />
-        <div className={stl.btnContainer}>
-          <Button title="Download" icon={<DownloadIcon />} width="100%" />
-        </div>
-        {/* <RadioInput format={format} setFormat={setFormat} /> */}
+      </div> */}
+      {/* <RadioInput format={format} setFormat={setFormat} /> */}
+      <div className={stl.btnContainer}>
+        <Button
+          title={src === '' ? btnLabel : 'Download'}
+          icon={src === '' ? <QRCodeIcon /> : <DownloadIcon />}
+          handleOnClick={() => {
+            src === '' ? generate(value) : downloadImage()
+          }}
+        />
+        {src !== '' && (
+          <Button
+            title="Reset"
+            variant="danger"
+            icon={<ResetIcon />}
+            handleOnClick={() => {
+              setValue('')
+              setSrc('')
+            }}
+          />
+        )}
       </div>
     </div>
   )

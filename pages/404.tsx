@@ -1,7 +1,7 @@
-import React from "react";
-import Link from "next/link";
+import React from 'react'
+import Link from 'next/link'
 
-import stl from "./404.module.scss";
+import stl from './404.module.scss'
 
 const PageNotFound = () => {
   return (
@@ -16,7 +16,7 @@ const PageNotFound = () => {
       </p>
       <Link href="/">Go to Home</Link>
     </div>
-  );
-};
+  )
+}
 
-export default PageNotFound;
+export default PageNotFound

@@ -1,4 +1,4 @@
-@import "styles/common";
+@import 'styles/common';
 
 .section {
   @extend .alignCen;
@@ -9,8 +9,7 @@
   width: 100%;
   min-height: 700px;
   @extend .full;
-  padding: 0 2rem;
-  padding-bottom: 1rem !important;
+  padding: 3rem 1rem;
   border-bottom: 2px solid #ccc;
 
   .text {
@@ -39,65 +38,52 @@
   }
 }
 
-@media screen and (max-width: 1025px) {
+@media screen and (max-width: 1024px) {
   .section {
     justify-content: center;
-    gap: 0;
-
-    .text,
-    .imgContainer {
-      width: 80%;
-    }
   }
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 768px) {
   .section {
     .text,
     .imgContainer {
-      width: 95%;
+      width: 100%;
+      max-width: 600px;
+      order: 1;
+    }
+
+    .text {
+      height: unset;
+      gap: 1rem;
+      order: 0;
     }
   }
 }
 
 @media screen and (max-width: 600px) {
-  .section {
-    padding: 0 10px;
+  .section .text {
+    align-items: center;
 
-    .text,
-    .imgContainer {
-      width: 100%;
+    .heading {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
     }
 
-    .text {
-      align-items: center;
-
-      .heading {
-        font-size: 1.5rem;
-        margin-bottom: 1rem;
-      }
-
-      .desc {
-        text-align: center;
-      }
+    .desc {
+      text-align: center;
     }
   }
 }
 
 @media screen and (max-width: 500px) {
-  .section {
-    gap: 1rem;
+  .section .text {
+    .heading {
+      font-size: 1.3rem;
+    }
 
-    .text {
-      height: 100%;
-
-      .heading {
-        font-size: 1.3rem;
-      }
-
-      .desc {
-        font-size: 1.2rem;
-      }
+    .desc {
+      font-size: 1.2rem;
     }
   }
 }

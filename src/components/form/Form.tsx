@@ -18,22 +18,22 @@ interface Props {
 }
 
 const CustomForm = ({ title, initialVals, setValue, generate }: Props) => {
-  const [isLoading, setIsLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(false)
   const [message, setMessage] = useState('')
 
-  useEffect(() => {
-    setIsLoading(true)
-    setTimeout(() => setIsLoading(false), 1500)
-  }, [initialVals])
+  // useEffect(() => {
+  //   setIsLoading(true)
+  //   setTimeout(() => setIsLoading(false), 1500)
+  // }, [initialVals])
 
   return isLoading ? (
     <Spinner />
   ) : (
     <div className={stl.formContainer}>
-      <div className={stl.title}>
+      {/* <div className={stl.title}>
         {getIcons(title)}
         <span className={stl.text}>{title}</span>
-      </div>
+      </div> */}
       <Formik
         initialValues={initialVals}
         validateOnBlur={true}

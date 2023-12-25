@@ -1,4 +1,4 @@
-@import "styles/common";
+@import 'styles/common';
 
 .contact {
   @extend .flexCol;
@@ -8,7 +8,7 @@
   width: 100%;
   min-height: 800px;
   background: #fff;
-  border-radius: 10px;
+  border-radius: 1rem;
   padding: 4.5rem 2rem 2rem;
   box-shadow: 0 3px 20px 0 rgba(0, 0, 0, 0.1);
   font-size: 1rem;
@@ -32,13 +32,12 @@
       position: relative;
       width: 100%;
       background: #fff;
-      border-radius: 1rem;
       margin-bottom: 30px;
 
       .input {
         @extend .clearStl;
         width: 100%;
-        padding: 1.3rem;
+        padding: 1rem;
         font-size: 1rem;
         color: #4b2354;
       }
@@ -54,7 +53,7 @@
         top: 0;
         left: 0;
         @extend .full;
-        border-radius: 20px;
+        border-radius: 0.75rem;
         box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.3);
         pointer-events: none;
       }

@@ -26,9 +26,8 @@
 
     .row {
       @extend .flexCenter;
-      gap: 1rem;
+      gap: 2rem;
       @extend .full;
-      margin-left: 100px;
     }
   }
 }
@@ -190,7 +189,7 @@
     padding-top: 1rem;
 
     .row {
-      margin-left: 80px;
+      // margin-left: 80px;
     }
   }
 

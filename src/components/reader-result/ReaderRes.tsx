@@ -27,8 +27,10 @@ const ReaderRes = ({ data, handleBackBtn }: Props) => {
   const modifiedString = data?.replace(/:(?!\s)/g, ': ')
 
   useEffect(() => {
-    if (isURL(data)) setShowURL(true)
-    else setShowURL(false)
+    if (isURL(data)) {
+      window.open(data, '_blank')
+      setShowURL(true)
+    } else setShowURL(false)
   }, [data])
 
   return (
@@ -62,7 +64,7 @@ const ReaderRes = ({ data, handleBackBtn }: Props) => {
               {data}
               {<Icon />}
             </span>
-            <UrlPreview url={data} />
+            {/* <UrlPreview url={data} /> */}
             <Tooltip
               isVisible={showTooltip}
               text="Open Link"

@@ -8,17 +8,15 @@
 }
 
 .generator {
-  position: relative;
-  padding-top: 50px;
-  padding-bottom: 450px;
   @extend .fullView;
+  position: relative;
+  padding-top: 50px 0 450px;
 
   .container {
     position: relative;
     @extend .alignCen;
     @extend .full;
-    padding: 1rem;
-    padding-top: 5rem;
+    padding: 5rem 1rem 1rem;
 
     &::-webkit-scrollbar {
       display: none;
@@ -42,8 +40,7 @@
     align-items: center;
     gap: 2.5rem;
     @extend .full;
-    padding: 1.5rem;
-    padding-top: 100px;
+    padding: 6.25rem 1rem 1rem;
     overflow: scroll;
 
     &::-webkit-scrollbar {
@@ -63,7 +60,7 @@
         gap: 3rem;
 
         .body {
-          color: rgb(0, 0, 0, 0.6);
+          color: #00000099;
         }
       }
 
@@ -106,9 +103,7 @@
   @extend .alignCen;
   justify-content: space-evenly;
   @extend .fullView;
-  padding: 2rem;
-  padding-top: 150px;
-  padding-bottom: 500px;
+  padding: 150px 1rem 500px;
 
   .content {
     @extend .flexCenter;
@@ -121,15 +116,13 @@
   position: relative;
   @extend .flexCenter;
   @extend .fullView;
-  padding: 1.5rem;
-  padding-top: 120px;
-  padding-bottom: 450px;
+  padding: 7.5rem 1rem 450px;
 }
 
 .auth {
+  @extend .flexCenter;
   width: 100vw;
   height: 100vh;
-  @extend .flexCenter;
   padding: 10px;
   background: url('https://as1.ftcdn.net/v2/jpg/02/11/69/28/1000_F_211692896_EQqAQEHmkQYLQHjeK6AsnSuYksnqqGlv.jpg')
     no-repeat center / cover;
@@ -147,14 +140,12 @@
     }
   }
 
-  .aboutPage {
-    .techList {
-      gap: 0 !important;
-      justify-content: center !important;
+  .aboutPage .techList {
+    gap: 0 !important;
+    justify-content: center !important;
 
-      .techItem {
-        transform: scale(0.8);
-      }
+    .techItem {
+      transform: scale(0.8);
     }
   }
 }
@@ -164,28 +155,23 @@
     padding: 3rem 0;
   }
 
-  .aboutPage {
-    .techItem {
-      transform: scale(0.7);
-    }
+  .aboutPage .techItem {
+    transform: scale(0.7);
   }
 }
 
 @media screen and (max-width: 768px) {
-  .aboutPage {
-    .techList {
-      padding: 10px 0 !important;
+  .aboutPage .techList {
+    padding: 10px 0 !important;
 
-      .techItem {
-        transform: scale(0.6) !important;
-      }
+    .techItem {
+      transform: scale(0.6) !important;
     }
   }
 }
 
 @media screen and (max-width: 600px) {
   .generator .container {
-    padding: 10px;
     padding-top: 1rem;
 
     .row {
@@ -193,57 +179,36 @@
     }
   }
 
-  .aboutPage .aboutContainer {
-    padding-right: 8px;
-    padding-left: 8px;
+  .aboutPage .aboutContainer .techContainer {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+    gap: 1rem;
 
-    .techContainer {
-      padding-right: 0 !important;
-      padding-left: 0 !important;
-      gap: 1rem;
-
-      .para {
-        h2 {
-          font-size: 1.5rem;
-          text-align: center;
-        }
-
-        span {
-          font-size: 1.15rem;
-          text-align: center;
-        }
+    .para {
+      h2 {
+        font-size: 1.5rem;
+        text-align: center;
       }
 
-      .techList {
-        padding-right: 0 !important;
-        padding-left: 0 !important;
-        gap: 0 !important;
+      span {
+        font-size: 1.15rem;
+        text-align: center;
+      }
+    }
 
-        .techItem {
-          transform: scale(0.5) !important;
+    .techList {
+      padding-right: 0 !important;
+      padding-left: 0 !important;
+      gap: 0 !important;
 
-          .imgContainer {
-            width: 150px !important;
-            height: 150px !important;
-          }
+      .techItem {
+        transform: scale(0.5) !important;
+
+        .imgContainer {
+          width: 150px !important;
+          height: 150px !important;
         }
       }
     }
-  }
-}
-
-@media screen and (max-width: 500px) {
-  .generator .container .row {
-    margin-left: 0;
-  }
-
-  .scanner {
-    padding-left: 10px;
-    padding-right: 10px;
-  }
-
-  .contactPage {
-    padding-right: 10px;
-    padding-left: 10px;
   }
 }

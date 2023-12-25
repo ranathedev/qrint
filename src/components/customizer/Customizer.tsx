@@ -3,12 +3,16 @@ import Image from 'next/image'
 
 import { modules, innereyes, outereyes, logos } from 'lib/customizerData'
 import Dropdown from 'components/dropdown'
-import RadioInput from 'components/radio-inputs'
+import Button from 'components/button'
+// import RadioInput from 'components/radio-inputs'
+
+import DownloadIcon from 'assets/download.svg'
 
 import stl from './Customizer.module.scss'
 
 interface Props {
   setStyles: (arg: {
+    imageURI: string
     module: { color: string; shape: string }
     innereye: { color: string; shape: string }
     outereye: { color: string; shape: string }
@@ -31,6 +35,7 @@ const Customizer = ({ setStyles, shouldGetData }: Props) => {
     shape: 'default',
     color: '#0000ff',
   })
+  const [imageURI, setImageURI] = useState('')
   const [expand, setExpand] = useState({
     modules: true,
     innereye: false,
@@ -39,7 +44,7 @@ const Customizer = ({ setStyles, shouldGetData }: Props) => {
   })
 
   useEffect(() => {
-    shouldGetData && setStyles({ module, innereye, outereye, format })
+    shouldGetData && setStyles({ imageURI, module, innereye, outereye, format })
   }, [shouldGetData])
 
   return (
@@ -47,7 +52,7 @@ const Customizer = ({ setStyles, shouldGetData }: Props) => {
       <div className={stl.preview}>
         <Image
           src="/qr-code.png"
-          width={200}
+          width={250}
           height={250}
           alt="preview-image"
         />
@@ -100,6 +105,9 @@ const Customizer = ({ setStyles, shouldGetData }: Props) => {
           title="Logo"
           expand={expand.logo}
           list={logos}
+          isLogo={true}
+          imageURI={imageURI}
+          setImageURI={setImageURI}
           handleOnClick={() =>
             setExpand({
               modules: false,
@@ -109,7 +117,10 @@ const Customizer = ({ setStyles, shouldGetData }: Props) => {
             })
           }
         />
-        <RadioInput format={format} setFormat={setFormat} />
+        <div className={stl.btnContainer}>
+          <Button title="Download" icon={<DownloadIcon />} width="100%" />
+        </div>
+        {/* <RadioInput format={format} setFormat={setFormat} /> */}
       </div>
     </div>
   )

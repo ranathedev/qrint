@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import Image from 'next/image'
 import clsx from 'clsx'
 
 import Tooltip from 'components/tooltip'
@@ -14,7 +13,10 @@ interface Props {
   handleItemClick: (arg1: string, arg2: string) => void
   handleOnClick: () => void
   expand: boolean
+  isLogo: boolean
   colorPicker: boolean
+  imageURI?: string
+  setImageURI: (arg: string) => void
 }
 
 const Dropdown = ({
@@ -23,7 +25,10 @@ const Dropdown = ({
   handleOnClick,
   handleItemClick,
   expand,
+  isLogo,
   colorPicker,
+  imageURI,
+  setImageURI,
 }: Props) => {
   const [showTooltip, setShowTooltip] = useState(false)
   const [color, setColor] = useState('#000000')
@@ -32,6 +37,13 @@ const Dropdown = ({
   useEffect(() => {
     handleItemClick(shape, color)
   }, [color, shape])
+
+  const onItemClick = (name: string) => {
+    if (isLogo) {
+      if (imageURI === name) setImageURI('')
+      else setImageURI(name)
+    } else setShape(name)
+  }
 
   return (
     <div
@@ -73,19 +85,12 @@ const Dropdown = ({
             id={item.name}
             className={clsx(
               stl.imgContainer,
-              shape === item.name && stl.active
+              shape === item.name || (imageURI === item.name && stl.active)
             )}
             key={item.name}
-            onClick={() => setShape(item.name)}
+            onClick={() => onItemClick(item.name)}
           >
-            {(item.icon && item.icon) || (
-              <Image
-                src={item.src || ''}
-                width={60}
-                height={60}
-                alt={item.name + '-image'}
-              />
-            )}
+            {item.icon}
           </div>
         ))}
       </div>
@@ -105,7 +110,9 @@ Dropdown.defaultProps = {
   ],
   expand: false,
   colorPicker: true,
+  isLogo: false,
   handleItemClick: () => {},
+  setImageURI: () => {},
 }
 
 export default Dropdown

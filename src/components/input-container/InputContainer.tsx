@@ -13,7 +13,7 @@ import Image from 'next/image'
 interface Props {
   title: string
   setValue: (arg: string) => void
-  onGenerate: (arg: string) => void
+  onGenerate: () => void
   // src: string
 }
 
@@ -45,7 +45,10 @@ const InputContainer = ({ title, setValue, onGenerate }: Props) => {
   return (
     <div className={stl.inputContainer}>
       <CustomForm
-        generate={generate}
+        generate={val =>
+          // val !== '' ? onGenerate() : alert("Value shouldn't be empty")
+          generate(val)
+        }
         title={title}
         // @ts-ignore
         initialVals={getInitVals(title)}
@@ -55,7 +58,7 @@ const InputContainer = ({ title, setValue, onGenerate }: Props) => {
         <>
           <div className={stl.imgContainer}>
             <div className={stl.divider} />
-            <Image src={src} width={250} height={250} alt="qrcode-image" />
+            <Image src={src} width={225} height={225} alt="qrcode-image" />
           </div>
           <div className={stl.btnContainer}>
             <Button

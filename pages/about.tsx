@@ -1,21 +1,21 @@
-import React from "react";
-import Image from "next/image";
+import React from 'react'
+import Image from 'next/image'
 
-import { sections, techs } from "lib/about";
-import Footer from "components/footer";
-import Header from "components/header";
-import HeroSection from "components/hero-section";
+import { sections, techs } from 'lib/about'
+import Footer from 'components/footer'
+import Header from 'components/header'
+import HeroSection from 'components/hero-section'
 
-import stl from "./index.module.scss";
+import stl from './index.module.scss'
 
 const About = () => {
   return (
     <div className={stl.aboutPage}>
       <Header />
       <div className={stl.aboutContainer}>
-        {sections.map((item, i) => (
+        {sections.map(item => (
           <HeroSection
-            key={i}
+            key={item.heading}
             heading={item.heading}
             desc={item.desc}
             imgSrc={item.src}
@@ -41,11 +41,11 @@ const About = () => {
             </span>
           </div>
           <div className={stl.techList}>
-            {techs.map((item, i) => (
+            {techs.map(item => (
               <div
-                key={i}
+                key={item.name}
                 className={stl.techItem}
-                onClick={() => window.open(item.url, "_blank")}
+                onClick={() => window.open(item.url, '_blank')}
               >
                 <div className={stl.imgContainer}>
                   <Image
@@ -63,7 +63,7 @@ const About = () => {
       </div>
       <Footer />
     </div>
-  );
-};
+  )
+}
 
-export default About;
+export default About

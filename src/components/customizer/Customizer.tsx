@@ -1,18 +1,28 @@
 import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 
-import { modules, innereyes, outereyes, logos } from 'lib/data'
+import { modules, innereyes, outereyes, logos } from 'lib/customizerData'
 import Dropdown from 'components/dropdown'
-import RadioInput from 'components/radio-inputs'
+import Button from 'components/button'
+// import RadioInput from 'components/radio-inputs'
+
+import DownloadIcon from 'assets/download.svg'
 
 import stl from './Customizer.module.scss'
 
 interface Props {
-  setStyles: (arg: any) => void
+  setStyles: (arg: {
+    imageURI: string
+    module: { color: string; shape: string }
+    innereye: { color: string; shape: string }
+    outereye: { color: string; shape: string }
+    format: string
+  }) => void
+  shouldGetData: boolean
 }
 
-const Customizer = ({ setStyles }: Props) => {
-  const [format, setFormat] = useState('jpg')
+const Customizer = ({ setStyles, shouldGetData }: Props) => {
+  const [format, setFormat] = useState('png')
   const [module, setModules] = useState({
     shape: 'default',
     color: '#ff0000',
@@ -25,6 +35,7 @@ const Customizer = ({ setStyles }: Props) => {
     shape: 'default',
     color: '#0000ff',
   })
+  const [imageURI, setImageURI] = useState('')
   const [expand, setExpand] = useState({
     modules: true,
     innereye: false,
@@ -33,15 +44,15 @@ const Customizer = ({ setStyles }: Props) => {
   })
 
   useEffect(() => {
-    setStyles({ module, innereye, outereye, format })
-  }, [module, innereye, outereye, format])
+    shouldGetData && setStyles({ imageURI, module, innereye, outereye, format })
+  }, [shouldGetData])
 
   return (
     <div className={stl.customizer}>
       <div className={stl.preview}>
         <Image
           src="/qr-code.png"
-          width={200}
+          width={250}
           height={250}
           alt="preview-image"
         />
@@ -94,6 +105,9 @@ const Customizer = ({ setStyles }: Props) => {
           title="Logo"
           expand={expand.logo}
           list={logos}
+          isLogo={true}
+          imageURI={imageURI}
+          setImageURI={setImageURI}
           handleOnClick={() =>
             setExpand({
               modules: false,
@@ -103,7 +117,10 @@ const Customizer = ({ setStyles }: Props) => {
             })
           }
         />
-        <RadioInput format={format} setFormat={setFormat} />
+        <div className={stl.btnContainer}>
+          <Button title="Download" icon={<DownloadIcon />} width="100%" />
+        </div>
+        {/* <RadioInput format={format} setFormat={setFormat} /> */}
       </div>
     </div>
   )

@@ -12,9 +12,9 @@ import stl from './Form.module.scss'
 
 interface Props {
   title: string
-  initialVals: Object
+  initialVals: { text: string }
   setValue: (arg: string) => void
-  generate: (arg: any) => void
+  generate: (arg: string) => void
 }
 
 const CustomForm = ({ title, initialVals, setValue, generate }: Props) => {
@@ -39,18 +39,14 @@ const CustomForm = ({ title, initialVals, setValue, generate }: Props) => {
         validateOnBlur={true}
         onSubmit={(values, actions) => {
           actions.resetForm()
-          //@ts-ignore
-          setValue(values?.text)
-          //@ts-ignore
-          generate(values?.text)
+          setValue(values.text)
+          generate(values.text)
         }}
       >
-        <Form
-          className={clsx(stl.form, title === 'VCARD' ? stl.vcardForm : '')}
-        >
-          {getForms(title)?.map((field: any, i: number) => (
+        <Form className={clsx(stl.form, title === 'VCARD' && stl.vcardForm)}>
+          {getForms(title)?.map(field => (
             <Input
-              key={i}
+              key={field.id}
               id={field.id}
               placeholder={field.placeholder}
               label={field.label}

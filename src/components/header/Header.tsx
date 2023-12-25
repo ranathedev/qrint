@@ -37,7 +37,7 @@ const Header = () => {
   ]
 
   return (
-    <nav className={clsx(stl.nav, isVisible ? stl.expandNav : '')}>
+    <nav className={clsx(stl.nav, isVisible && stl.expandNav)}>
       <div className={stl.container}>
         <Link href="/" className={stl.logo}>
           <span className={stl.logoName}>QRint</span>
@@ -57,13 +57,13 @@ const Header = () => {
         </div>
         <div className={stl.navList}>
           <ul>
-            {list.map((item: any, i: number) => (
-              <li key={i}>
+            {list.map(item => (
+              <li key={item.title}>
                 <Link
                   href={item.link}
                   className={clsx(
                     stl.link,
-                    router.pathname === item.link ? stl.active : ''
+                    router.pathname === item.link && stl.active
                   )}
                 >
                   {item.title}

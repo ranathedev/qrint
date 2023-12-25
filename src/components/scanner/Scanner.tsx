@@ -4,8 +4,8 @@ import Image from 'next/image'
 import stl from './Scanner.module.scss'
 
 interface Props {
-  file?: any
-  src?: string
+  file?: File
+  src: string
 }
 
 const Scanner = ({ file, src }: Props) => {
@@ -21,7 +21,7 @@ const Scanner = ({ file, src }: Props) => {
     <div className={stl.scanner}>
       <div className={stl.container}>
         <Image
-          src={(file && URL.createObjectURL(file)) || (src && src)}
+          src={(file && URL.createObjectURL(file)) || src}
           width={330}
           height={340}
           alt="image"
@@ -31,6 +31,10 @@ const Scanner = ({ file, src }: Props) => {
       <div className={stl.text}>Scanning the Image...</div>
     </div>
   )
+}
+
+Scanner.defaultProps = {
+  src: '',
 }
 
 export default Scanner

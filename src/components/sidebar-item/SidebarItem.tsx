@@ -10,8 +10,8 @@ interface Props {
   title: string
   handleOnClick: (arg: string) => void
   customClass?: string
-  isCollapsed: Boolean
-  isActive: Boolean
+  isCollapsed: boolean
+  isActive: boolean
 }
 
 const SidebarItem = ({
@@ -27,11 +27,11 @@ const SidebarItem = ({
     <div
       onMouseOver={() => setShowTooltip(true)}
       onMouseOut={() => setShowTooltip(false)}
-      className={clsx(stl.sidebarItem, isActive ? stl.active : '', customClass)}
+      className={clsx(stl.sidebarItem, isActive && stl.active, customClass)}
       onClick={() => handleOnClick(title)}
     >
       <span className={stl.icon}>{getIcons(title)}</span>
-      {isCollapsed ? '' : <span className={stl.text}>{title}</span>}
+      {!isCollapsed && <span className={stl.text}>{title}</span>}
       <Tooltip isVisible={isCollapsed && showTooltip} text={title} />
     </div>
   )
@@ -39,7 +39,7 @@ const SidebarItem = ({
 
 SidebarItem.defaultProps = {
   title: 'Text message',
-  handleOnClick: (title: string) => console.log(title),
+  handleOnClick: () => {},
   isCollapsed: true,
 }
 

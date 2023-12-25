@@ -1,5 +1,4 @@
-import React, { useState } from 'react'
-import Image from 'next/image'
+import React, { useEffect, useState } from 'react'
 import clsx from 'clsx'
 
 import Tooltip from 'components/tooltip'
@@ -10,31 +9,49 @@ import stl from './Dropdown.module.scss'
 
 interface Props {
   title: string
-  list: Array<Object>
-  handleItemClick?: (arg1: string, arg2: string) => void
-  handleOnClick?: any
-  expand: Boolean
-  colorPicker: Boolean
+  list: Array<{ name: string; icon?: React.ReactNode; src?: string }>
+  handleItemClick: (arg1: string, arg2: string) => void
+  handleOnClick: () => void
+  expand: boolean
+  isLogo: boolean
+  colorPicker: boolean
+  imageURI?: string
+  setImageURI: (arg: string) => void
 }
 
 const Dropdown = ({
   title,
   list,
   handleOnClick,
+  handleItemClick,
   expand,
+  isLogo,
   colorPicker,
+  imageURI,
+  setImageURI,
 }: Props) => {
   const [showTooltip, setShowTooltip] = useState(false)
   const [color, setColor] = useState('#000000')
   const [shape, setShape] = useState('default')
 
-  // useEffect(() => {
-  //   handleItemClick(shape, color);
-  // }, [color, shape]);
+  useEffect(() => {
+    handleItemClick(shape, color)
+  }, [color, shape])
+
+  const onItemClick = (name: string) => {
+    if (isLogo) {
+      if (imageURI === name) setImageURI('')
+      else setImageURI(name)
+    } else setShape(name)
+  }
 
   return (
     <div
-      className={clsx(stl.dropDown, expand ? stl.expand : '')}
+      className={clsx(
+        stl.dropDown,
+        expand && stl.expand,
+        !colorPicker && stl.noColorPicker
+      )}
       onClick={handleOnClick}
     >
       <div className={stl.header}>
@@ -42,7 +59,6 @@ const Dropdown = ({
         <span className={stl.colorPicker}>
           {colorPicker && (
             <input
-              //@ts-ignore
               onMouseOver={() => setShowTooltip(expand)}
               onMouseOut={() => setShowTooltip(false)}
               className={stl.input}
@@ -63,22 +79,18 @@ const Dropdown = ({
         </span>
       </div>
       <div className={stl.container}>
-        {list.map((item: any, i: number) => (
+        {list.map(item => (
           <div
             style={{ color }}
-            id={`${i}`}
-            className={stl.imgContainer}
-            key={i}
-            onClick={() => setShape(item.name)}
-          >
-            {(item.icon && item.icon) || (
-              <Image
-                src={item.src}
-                width={60}
-                height={60}
-                alt={item.name + '-image'}
-              />
+            id={item.name}
+            className={clsx(
+              stl.imgContainer,
+              shape === item.name || (imageURI === item.name && stl.active)
             )}
+            key={item.name}
+            onClick={() => onItemClick(item.name)}
+          >
+            {item.icon}
           </div>
         ))}
       </div>
@@ -98,6 +110,9 @@ Dropdown.defaultProps = {
   ],
   expand: false,
   colorPicker: true,
+  isLogo: false,
+  handleItemClick: () => {},
+  setImageURI: () => {},
 }
 
 export default Dropdown

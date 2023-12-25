@@ -13,16 +13,11 @@ import Image from 'next/image'
 interface Props {
   title: string
   setValue: (arg: string) => void
-  // generate: (arg: any) => void
+  onGenerate: () => void
   // src: string
 }
 
-const InputContainer = ({
-  title,
-  setValue,
-}: //  generate,
-//  src
-Props) => {
+const InputContainer = ({ title, setValue, onGenerate }: Props) => {
   const [src, setSrc] = useState('')
 
   const generate = (val: string) => {
@@ -32,9 +27,7 @@ Props) => {
       qr.make()
       const url = qr.createDataURL(20, 20)
       setSrc(url)
-    } else {
-      alert("Value shouldn't be empty")
-    }
+    } else alert("Value shouldn't be empty")
   }
 
   const downloadImage = () => {
@@ -46,16 +39,18 @@ Props) => {
       document.body.appendChild(a)
       a.click()
       document.body.removeChild(a)
-    } else {
-      console.log('Download canceled: No filename provided.')
-    }
+    } else alert('Download canceled: No filename provided.')
   }
 
   return (
     <div className={stl.inputContainer}>
       <CustomForm
-        generate={generate}
+        generate={val =>
+          // val !== '' ? onGenerate() : alert("Value shouldn't be empty")
+          generate(val)
+        }
         title={title}
+        // @ts-ignore
         initialVals={getInitVals(title)}
         setValue={setValue}
       />
@@ -63,7 +58,7 @@ Props) => {
         <>
           <div className={stl.imgContainer}>
             <div className={stl.divider} />
-            <Image src={src} width={250} height={250} alt="qrcode-image" />
+            <Image src={src} width={225} height={225} alt="qrcode-image" />
           </div>
           <div className={stl.btnContainer}>
             <Button

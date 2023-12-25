@@ -38,27 +38,27 @@ const AuthForm = ({ method, initVals, setMethod }: Props) => {
               title="Continue with"
               icon={<GoogleIcon />}
               variant="signup"
-              handleOnClick={() => console.log('Continue with Google...')}
+              handleOnClick={() => alert('Working on this...')}
             />
             <Button
               title="Continue with"
               icon={<GithubIcon />}
               variant="signup"
-              handleOnClick={() => console.log('Continue with Github...')}
+              handleOnClick={() => alert('Working on this...')}
             />
           </div>
           <div className={stl.divider}></div>
           <Formik
             initialValues={initVals}
             onSubmit={(values, actions) => {
-              console.log(values)
+              alert('Working on this...')
               actions.resetForm()
             }}
           >
             <Form>
-              {getFields(method).map((item, i) => (
+              {getFields(method).map(item => (
                 <Input
-                  key={i}
+                  key={item.id}
                   width="100%"
                   placeholder={item.placeholder}
                   label={item.label}

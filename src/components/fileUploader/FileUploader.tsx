@@ -14,23 +14,15 @@ import stl from './FileUploader.module.scss'
 
 const FileUploader = () => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null)
-  const [src, setSrc] = useState(null)
-  const [data, setData] = useState(null)
+  const [src, setSrc] = useState('')
+  const [data, setData] = useState('')
   const [showCamera, setShowCamera] = useState(false)
 
-  const formData = new FormData()
-
   useEffect(() => {
-    if (selectedFile) {
-      scanWithFile()
-    }
+    selectedFile && scanWithFile(selectedFile)
   }, [selectedFile])
 
-  useEffect(() => {
-    if (src) {
-      scanWithURL()
-    }
-  }, [src])
+  const formData = new FormData()
 
   const dataURLtoFile = async (dataurl: string) => {
     try {
@@ -41,15 +33,14 @@ const FileUploader = () => {
       const blob = await response.blob()
       const u8arr = new Uint8Array(await new Response(blob).arrayBuffer())
       const file = new File([u8arr], 'image.png', { type: 'image/png' })
-      setSelectedFile(file)
+      scanWithFile(file)
     } catch (error) {
       console.error('Fetch error:', error)
     }
   }
 
-  const scanWithFile = async () => {
-    //@ts-ignore
-    formData.append('file', selectedFile)
+  const scanWithFile = async (file: Blob | string) => {
+    formData.append('file', file)
 
     await axios
       .post(`https://api.qrserver.com/v1/read-qr-code/`, formData, {
@@ -59,12 +50,8 @@ const FileUploader = () => {
       })
       .then(response => {
         const data = response.data[0].symbol[0].data
-        if (!data) {
-          //@ts-ignore
-          setData('No QR-Code Found in the Image.')
-        } else {
-          setData(data)
-        }
+        if (!data) setData('No QR-Code Found in the Image.')
+        else setData(data)
       })
       .catch(error => {
         console.log(error)
@@ -73,33 +60,34 @@ const FileUploader = () => {
     setSelectedFile(null)
   }
 
-  const scanWithURL = async () => {
-    //@ts-ignore
+  const scanWithURL = async (src: string) => {
     const encodedURL = encodeURI(src)
     await axios
       .post(`http://api.qrserver.com/v1/read-qr-code/?fileurl=${encodedURL}`)
       .then(response => {
         const data = response.data[0].symbol[0].data
-        if (!data) {
-          //@ts-ignore
-          setData('No QR-Code Found in the Image.')
-        } else setData(data)
+        if (!data) setData('No QR-Code Found in the Image.')
+        else setData(data)
       })
       .catch(error => {
         console.error(error)
       })
-    setSrc(null)
+    setSrc('')
   }
 
   const handleKeyDown = (e: any) => {
-    if (e.key === 'Enter')
+    if (e.key === 'Enter') {
       isImageUrl(e.target.value)
         .then(isImage => {
-          isImage ? setSrc(e.target.value) : setSrc(null)
+          if (isImage) {
+            scanWithURL(e.target.value)
+            setSrc(e.target.value)
+          }
         })
         .catch(() => {
-          console.log('Not an Image')
+          alert('Entered URL is not of Image')
         })
+    }
   }
 
   const handleUploadBtn = () => {
@@ -109,11 +97,8 @@ const FileUploader = () => {
 
   const handleFile = (e: any) => {
     const file = e.target.files[0]
-    if (file.size < 1048576) {
-      setSelectedFile(file)
-    } else {
-      console.log('Not an Image')
-    }
+    if (file.size < 1048576) setSelectedFile(file)
+    else alert('File size should be less than 1 MiB')
   }
 
   const isImageUrl = (url: string) => {
@@ -129,15 +114,12 @@ const FileUploader = () => {
           const blob = this.response
           const reader = new FileReader()
           reader.onloadend = function () {
-            const dataUrl = reader.result
-            //@ts-ignore
-            const mimeType = dataUrl.split(',')[0].split(':')[1]
+            const dataUrl = reader.result as string
+            const mimeType = dataUrl?.split(',')[0].split(':')[1]
             resolve(mimeType.startsWith('image/'))
           }
           reader.readAsDataURL(blob)
-        } else {
-          reject(new Error(`Request failed with status ${this.status}`))
-        }
+        } else reject(new Error(`Request failed with status ${this.status}`))
       }
       xhr.send()
     })
@@ -149,12 +131,11 @@ const FileUploader = () => {
   }
 
   return (
-    (data !== null && (
-      //@ts-ignore
-      <ReaderRes handleBackBtn={() => setData(null)} data={data} />
+    (data !== '' && (
+      <ReaderRes handleBackBtn={() => setData('')} data={data} />
     )) ||
     (selectedFile !== null && <Scanner file={selectedFile} />) ||
-    (src !== null && <Scanner src={src} />) || (
+    (src !== '' && <Scanner src={src} />) || (
       <div className={stl.fileUploader}>
         <div className={stl.other}>
           <input
@@ -189,7 +170,7 @@ const FileUploader = () => {
             handleOnClick={() => setShowCamera(true)}
           />
         </div>
-        <div className={clsx(stl.wrapper, showCamera ? stl.showWrapper : '')} />
+        <div className={clsx(stl.wrapper, showCamera && stl.showWrapper)} />
       </div>
     )
   )

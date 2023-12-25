@@ -10,7 +10,7 @@ import ExpandIcon from 'assets/expand.svg'
 import stl from './Sidebar.module.scss'
 
 interface Props {
-  setTitle: (arg: any) => void
+  setTitle: (arg: string) => void
   title: string
 }
 
@@ -20,17 +20,14 @@ const Sidebar = ({ setTitle, title }: Props) => {
 
   useEffect(() => {
     const ele = document.getElementById('header')
-    if (collapse) {
-      setTimeout(() => ele?.classList.add(stl.isCollapsed), 200)
-    } else {
-      ele?.classList.remove(stl.isCollapsed)
-    }
+    if (collapse) setTimeout(() => ele?.classList.add(stl.isCollapsed), 200)
+    else ele?.classList.remove(stl.isCollapsed)
   }, [collapse])
 
   const types = ['Text', 'GeoLoc', 'SMS', 'WiFi', 'VCARD', 'Email', 'Call']
 
   return (
-    <div className={clsx(stl.sidebar, collapse ? stl.collapse : '')}>
+    <div className={clsx(stl.sidebar, collapse && stl.collapse)}>
       <div id="header" className={stl.header}>
         {collapse ? '' : <span className={stl.title}>Types</span>}
         <span
@@ -49,9 +46,9 @@ const Sidebar = ({ setTitle, title }: Props) => {
         />
       </div>
       <div className={stl.container}>
-        {types.map((type: string, i: number) => (
+        {types.map(type => (
           <SidebarItem
-            key={i}
+            key={type}
             customClass={stl.item}
             title={type}
             handleOnClick={item => setTitle(item)}

@@ -38,7 +38,7 @@
   .aboutContainer {
     @extend .flexCol;
     align-items: center;
-    gap: 2.5rem;
+    gap: 1rem;
     @extend .full;
     padding: 6.25rem 1rem 1rem;
     overflow: scroll;
@@ -173,10 +173,6 @@
 @media screen and (max-width: 600px) {
   .generator .container {
     padding-top: 1rem;
-
-    .row {
-      // margin-left: 80px;
-    }
   }
 
   .aboutPage .aboutContainer .techContainer {

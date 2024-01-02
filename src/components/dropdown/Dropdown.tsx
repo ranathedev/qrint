@@ -15,6 +15,7 @@ interface Props {
   expand: boolean
   isLogo: boolean
   colorPicker: boolean
+  reset: boolean
   imageURI?: string
   setImageURI: (arg: string) => void
 }
@@ -26,6 +27,7 @@ const Dropdown = ({
   handleItemClick,
   expand,
   isLogo,
+  reset,
   colorPicker,
   imageURI,
   setImageURI,
@@ -33,6 +35,10 @@ const Dropdown = ({
   const [showTooltip, setShowTooltip] = useState(false)
   const [color, setColor] = useState('#000000')
   const [shape, setShape] = useState('default')
+
+  useEffect(() => {
+    reset ? setColor('#000000') : setShape('default')
+  }, [reset])
 
   useEffect(() => {
     handleItemClick(shape, color)
@@ -85,7 +91,7 @@ const Dropdown = ({
             id={item.name}
             className={clsx(
               stl.imgContainer,
-              shape === item.name || (imageURI === item.name && stl.active)
+              shape === item.name || imageURI === item.name ? stl.active : ''
             )}
             key={item.name}
             onClick={() => onItemClick(item.name)}

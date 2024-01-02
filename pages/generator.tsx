@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import Customizer from 'components/customizer'
 import Footer from 'components/footer'
 import Header from 'components/header'
-import InputContainer from 'components/input-container'
-import Sidebar from 'components/sidebar'
+// import InputContainer from 'components/input-container'
+// import Sidebar from 'components/sidebar'
 
 import stl from './index.module.scss'
 
@@ -13,7 +13,6 @@ interface Styles {
   module: { color: string; shape: string }
   innereye: { color: string; shape: string }
   outereye: { color: string; shape: string }
-  format: string
 }
 
 interface Data {
@@ -30,24 +29,18 @@ interface Data {
 }
 
 const Generator = () => {
-  const [value, setValue] = useState('')
-  const [shouldGetData, setShouldGetData] = useState(false)
-  const [btnLabel, setLabel] = useState('Generate QRCode')
   const [src, setSrc] = useState('')
-  // const [styles, setStyles] = useState({
-  //   imageURI: '',
-  //   module: { color: 'black', shape: 'default' },
-  //   innereye: { color: 'black', shape: 'default' },
-  //   outereye: { color: 'black', shape: 'default' },
-  //   format: 'png',
-  // })
+  const [isLoading, setIsLoading] = useState(false)
 
-  const generateQRCode = async (styles: Styles) => {
-    // console.log(styles)
-    // console.log(value)
+  useEffect(() => {
+    console.log(isLoading ? 'Loading started...' : 'Loading is finished...')
+  }, [isLoading])
+
+  const generateQRCode = async (styles: Styles, val: string) => {
+    setIsLoading(true)
 
     const data: Data = {
-      data: value,
+      data: val,
       style: {
         module: { color: styles.module.color, shape: styles.module.shape },
         inner_eye: {
@@ -60,8 +53,8 @@ const Generator = () => {
         },
         background: { color: 'white' },
       },
-      size: { width: 400, quiet_zone: 4, error_correction: 'M' },
-      output: { format: styles.format },
+      size: { width: 1000, quiet_zone: 4, error_correction: 'M' },
+      output: { format: 'png' },
     }
 
     if (styles.imageURI !== '') {
@@ -73,35 +66,37 @@ const Generator = () => {
 
     console.log(data)
 
-    // fetch('https://qrcode3.p.rapidapi.com/qrcode/text', {
-    //   method: 'POST',
-    //   headers: {
-    //     'content-type': 'application/json',
-    //     'x-rapidapi-key': process.env.X_RAPIDAPI_KEY,
-    //   },
-    //   body: JSON.stringify(data),
-    // }).then(response => {
-    //   if (response.status >= 400) {
-    //     response.text().then(text => alert('API Error:\n\n' + text))
-    //     return
-    //   }
+    fetch('https://qrcode3.p.rapidapi.com/qrcode/text', {
+      method: 'POST',
+      // @ts-ignore
+      headers: {
+        'content-type': 'application/json',
+        'x-rapidapi-key': process.env.X_RAPIDAPI_KEY,
+      },
+      body: JSON.stringify(data),
+    }).then(response => {
+      if (response.status >= 400) {
+        response.text().then(text => alert('API Error:\n\n' + text))
+        return
+      }
 
-    //   response.blob().then(blob => {
-    //     const reader = new FileReader()
-    //     reader.readAsDataURL(blob)
-    //     reader.onloadend = () => {
-    //       const imgUrl = reader.result
-    //       setSrc(imgUrl)
-    //       console.log('Reader Result:', reader.result)
-    //     }
-    //   }).catch(err=> console.log(err))
-    // })
+      response
+        .blob()
+        .then(blob => {
+          const reader = new FileReader()
+          reader.readAsDataURL(blob)
+          reader.onloadend = () => {
+            const imgUrl = reader.result as string
+            setSrc(imgUrl)
+          }
+        })
+        .catch(err => console.error(err))
 
-    // alert('Coming Soon')
-    setShouldGetData(false)
+      setIsLoading(false)
+    })
   }
 
-  const getStyles = (styles: Styles) => generateQRCode(styles)
+  const getStyles = (styles: Styles, val: string) => generateQRCode(styles, val)
 
   return (
     <div className={stl.generator}>
@@ -113,12 +108,13 @@ const Generator = () => {
             title={title}
             setValue={setValue}
             onGenerate={() => setShouldGetData(true)}
-            // src={src}
+            src={src}
           /> */}
           <Customizer
-            setStyles={getStyles}
-            shouldGetData={shouldGetData}
-            btnLabel={btnLabel}
+            sendData={getStyles}
+            src={src}
+            setSrc={setSrc}
+            isLoading={isLoading}
           />
         </div>
       </div>

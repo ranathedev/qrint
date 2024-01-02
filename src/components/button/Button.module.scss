@@ -1,4 +1,4 @@
-@import "styles/common";
+@import 'styles/common';
 
 .btn {
   @extend .clearStl;
@@ -64,12 +64,12 @@
   }
 }
 
-.darkBtn {
-  background: #2563eb;
+// .darkBtn {
+//   background: #2563eb;
 
-  @media (hover: hover) {
-    &:hover {
-      background-color: #1d4ed8;
-    }
-  }
-}
+//   @media (hover: hover) {
+//     &:hover {
+//       background-color: #1d4ed8;
+//     }
+//   }
+// }

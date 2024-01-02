@@ -12,16 +12,35 @@ import stl from './Header.module.scss'
 const Header = () => {
   const [isVisible, setIsVisible] = useState(false)
   const [width, setWidth] = useState(1000)
+  const [showNav, setShowNav] = useState(true)
 
   const router = useRouter()
+
+  let lastScrollPos = window.scrollY
 
   useEffect(() => {
     function measureWidth() {
       setWidth(document.body.clientWidth)
     }
+
+    function handleScroll() {
+      const currentScrollPos = window.scrollY
+
+      if (currentScrollPos > lastScrollPos) setShowNav(false)
+      else if (currentScrollPos < lastScrollPos) setShowNav(true)
+
+      lastScrollPos = currentScrollPos
+    }
+
     measureWidth()
+
     window.addEventListener('resize', measureWidth)
-    return () => window.removeEventListener('resize', measureWidth)
+    window.addEventListener('scroll', handleScroll)
+
+    return () => {
+      window.removeEventListener('resize', measureWidth)
+      window.removeEventListener('scroll', handleScroll)
+    }
   }, [])
 
   useEffect(() => {
@@ -37,7 +56,14 @@ const Header = () => {
   ]
 
   return (
-    <nav className={clsx(stl.nav, isVisible && stl.expandNav)}>
+    <nav
+      className={clsx(
+        stl.nav,
+        isVisible && stl.expandNav,
+        showNav ? stl.showNav : stl.hideNav
+      )}
+      aria-hidden={!showNav}
+    >
       <div className={stl.container}>
         <Link href="/" className={stl.logo}>
           <span className={stl.logoName}>QRint</span>

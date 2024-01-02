@@ -20,6 +20,7 @@ const FileUploader = () => {
 
   useEffect(() => {
     selectedFile && scanWithFile(selectedFile)
+    // eslint-disable-next-line
   }, [selectedFile])
 
   const formData = new FormData()
@@ -53,9 +54,7 @@ const FileUploader = () => {
         if (!data) setData('No QR-Code Found in the Image.')
         else setData(data)
       })
-      .catch(error => {
-        console.log(error)
-      })
+      .catch(error => console.error(error))
 
     setSelectedFile(null)
   }

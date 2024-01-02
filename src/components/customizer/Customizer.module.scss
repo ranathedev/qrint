@@ -17,6 +17,7 @@
   .preview {
     @extend .flexCenter;
     height: 40%;
+    min-height: 250px;
 
     .placeholder {
       @extend .flexCenter;

@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
-import qrcode from 'qrcode-generator'
 
 import { modules, innereyes, outereyes, logos } from 'lib/customizerData'
 import Dropdown from 'components/dropdown'
+import Spinner from 'components/spinner'
 import Button from 'components/button'
-// import RadioInput from 'components/radio-inputs'
 
 import DownloadIcon from 'assets/download.svg'
 import QRCodeIcon from 'assets/generate-qrcode.svg'
@@ -14,22 +13,24 @@ import ResetIcon from 'assets/reset.svg'
 import stl from './Customizer.module.scss'
 
 interface Props {
-  setStyles: (arg: {
-    imageURI: string
-    module: { color: string; shape: string }
-    innereye: { color: string; shape: string }
-    outereye: { color: string; shape: string }
-    format: string
-  }) => void
-  shouldGetData: boolean
-  btnLabel: string
+  sendData: (
+    arg1: {
+      imageURI: string
+      module: { color: string; shape: string }
+      innereye: { color: string; shape: string }
+      outereye: { color: string; shape: string }
+    },
+    arg2: string
+  ) => void
+  isLoading: boolean
+  src: string
+  setSrc: (arg: string) => void
 }
 
-const Customizer = ({ setStyles, shouldGetData, btnLabel }: Props) => {
-  const [src, setSrc] = useState('')
+const Customizer = ({ sendData, isLoading, src, setSrc }: Props) => {
+  const [resetVals, setResetVals] = useState(false)
   const [value, setValue] = useState('')
-  const [format, setFormat] = useState('png')
-  const [module, setModules] = useState({
+  const [module, setModule] = useState({
     shape: 'default',
     color: '#ff0000',
   })
@@ -49,21 +50,6 @@ const Customizer = ({ setStyles, shouldGetData, btnLabel }: Props) => {
     logo: false,
   })
 
-  useEffect(() => {
-    shouldGetData && setStyles({ imageURI, module, innereye, outereye, format })
-  }, [shouldGetData])
-
-  const generate = (val: string) => {
-    if (val !== '') {
-      var qr = qrcode(0, 'H')
-      qr.addData(val)
-      qr.make()
-      const url = qr.createDataURL(20, 20)
-      setSrc(url)
-      setValue('')
-    } else alert("Value shouldn't be empty")
-  }
-
   const downloadImage = () => {
     const a = document.createElement('a')
     a.href = src
@@ -73,11 +59,45 @@ const Customizer = ({ setStyles, shouldGetData, btnLabel }: Props) => {
     document.body.removeChild(a)
   }
 
+  useEffect(() => {
+    if (resetVals) {
+      setValue('')
+      setSrc('')
+      setImageURI('')
+      setModule({
+        shape: 'default',
+        color: '#ff0000',
+      })
+      setInnerEye({
+        shape: 'default',
+        color: '#ff0000',
+      })
+      setOuterEye({
+        shape: 'default',
+        color: '#ff0000',
+      })
+      setExpand({
+        modules: true,
+        innereye: false,
+        outereye: false,
+        logo: false,
+      })
+    }
+    // eslint-disable-next-line
+  }, [resetVals])
+
+  const handleReset = () => {
+    setResetVals(true)
+    setTimeout(() => setResetVals(false), 1500)
+  }
+
   return (
     <div className={stl.customizer}>
       <div className={stl.preview}>
         {src !== '' ? (
           <Image src={src} width={250} height={250} alt="generated-qrcode" />
+        ) : isLoading ? (
+          <Spinner />
         ) : (
           <div className={stl.placeholder}>
             <span>Your QRCode will appear here.</span>
@@ -92,12 +112,13 @@ const Customizer = ({ setStyles, shouldGetData, btnLabel }: Props) => {
         value={value}
         onChange={e => setValue(e.target.value)}
       />
-      {/* <div className={stl.container}>
+      <div className={stl.container}>
         <Dropdown
           title="Modules"
           expand={expand.modules}
           list={modules}
-          handleItemClick={(shape, color) => setModules({ shape, color })}
+          reset={resetVals}
+          handleItemClick={(shape, color) => setModule({ shape, color })}
           handleOnClick={() =>
             setExpand({
               modules: true,
@@ -111,6 +132,7 @@ const Customizer = ({ setStyles, shouldGetData, btnLabel }: Props) => {
           title="Inner Eye"
           expand={expand.innereye}
           list={innereyes}
+          reset={resetVals}
           handleItemClick={(shape, color) => setInnerEye({ shape, color })}
           handleOnClick={() =>
             setExpand({
@@ -125,6 +147,7 @@ const Customizer = ({ setStyles, shouldGetData, btnLabel }: Props) => {
           title="Outer Eye"
           expand={expand.outereye}
           list={outereyes}
+          reset={resetVals}
           handleItemClick={(shape, color) => setOuterEye({ shape, color })}
           handleOnClick={() =>
             setExpand({
@@ -141,6 +164,7 @@ const Customizer = ({ setStyles, shouldGetData, btnLabel }: Props) => {
           expand={expand.logo}
           list={logos}
           isLogo={true}
+          reset={resetVals}
           imageURI={imageURI}
           setImageURI={setImageURI}
           handleOnClick={() =>
@@ -152,14 +176,15 @@ const Customizer = ({ setStyles, shouldGetData, btnLabel }: Props) => {
             })
           }
         />
-      </div> */}
-      {/* <RadioInput format={format} setFormat={setFormat} /> */}
+      </div>
       <div className={stl.btnContainer}>
         <Button
-          title={src === '' ? btnLabel : 'Download'}
+          title={src === '' ? 'Generate QRCode' : 'Download'}
           icon={src === '' ? <QRCodeIcon /> : <DownloadIcon />}
           handleOnClick={() => {
-            src === '' ? generate(value) : downloadImage()
+            src === ''
+              ? sendData({ imageURI, module, innereye, outereye }, value)
+              : downloadImage()
           }}
         />
         {src !== '' && (
@@ -167,10 +192,7 @@ const Customizer = ({ setStyles, shouldGetData, btnLabel }: Props) => {
             title="Reset"
             variant="danger"
             icon={<ResetIcon />}
-            handleOnClick={() => {
-              setValue('')
-              setSrc('')
-            }}
+            handleOnClick={handleReset}
           />
         )}
       </div>

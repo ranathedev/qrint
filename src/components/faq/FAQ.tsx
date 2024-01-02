@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import clsx from 'clsx'
 
 import ArrowIcon from 'assets/arrow-down.svg'
@@ -9,23 +9,14 @@ interface Props {
   customClass?: string
   title: string
   answer: string
-  isExpanded: boolean
-  setIsExpanded: (arg: string) => void
 }
 
-const FAQ = ({
-  customClass,
-  title,
-  answer,
-  isExpanded,
-  setIsExpanded,
-}: Props) => {
+const FAQ = ({ customClass, title, answer }: Props) => {
+  const [expand, setExpand] = useState(false)
+
   return (
-    <div className={clsx(stl.faq, isExpanded && stl.expand, customClass)}>
-      <div
-        className={clsx(stl.header, isExpanded && stl.headerExpand)}
-        onClick={() => setIsExpanded(title)}
-      >
+    <div className={clsx(stl.faq, expand && stl.expand, customClass)}>
+      <div className={stl.header} onClick={() => setExpand(!expand)}>
         <h3>{title}</h3>
         <span>
           <ArrowIcon />

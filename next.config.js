@@ -4,13 +4,13 @@ module.exports = {
   reactStrictMode: true,
   images: { unoptimized: true },
   env: {
-    X_RapidAPI_Key: process.env.X_RapidAPI_Key,
+    X_RAPIDAPI_KEY: process.env.X_RAPIDAPI_KEY,
   },
-  webpack: (config) => {
+  webpack: config => {
     config.module.rules.push({
       test: /\.svg$/,
-      use: ["@svgr/webpack"],
-    });
-    return config;
+      use: ['@svgr/webpack'],
+    })
+    return config
   },
-};
+}

@@ -15,6 +15,7 @@ interface Props {
   expand: boolean
   isLogo: boolean
   colorPicker: boolean
+  reset: boolean
   imageURI?: string
   setImageURI: (arg: string) => void
 }
@@ -26,6 +27,7 @@ const Dropdown = ({
   handleItemClick,
   expand,
   isLogo,
+  reset,
   colorPicker,
   imageURI,
   setImageURI,
@@ -35,7 +37,12 @@ const Dropdown = ({
   const [shape, setShape] = useState('default')
 
   useEffect(() => {
+    reset ? setColor('#000000') : setShape('default')
+  }, [reset])
+
+  useEffect(() => {
     handleItemClick(shape, color)
+    // eslint-disable-next-line
   }, [color, shape])
 
   const onItemClick = (name: string) => {
@@ -85,7 +92,7 @@ const Dropdown = ({
             id={item.name}
             className={clsx(
               stl.imgContainer,
-              shape === item.name || (imageURI === item.name && stl.active)
+              shape === item.name || imageURI === item.name ? stl.active : ''
             )}
             key={item.name}
             onClick={() => onItemClick(item.name)}

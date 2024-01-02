@@ -16,9 +16,9 @@ const Header = () => {
 
   const router = useRouter()
 
-  let lastScrollPos = window.scrollY
-
   useEffect(() => {
+    let lastScrollPos = window.scrollY
+
     function measureWidth() {
       setWidth(document.body.clientWidth)
     }
@@ -69,10 +69,10 @@ const Header = () => {
           <span className={stl.logoName}>QRint</span>
         </Link>
         <div className={stl.right}>
-          {/* <Button
+          <Button
             title="Sign Up"
             handleOnClick={() => (location.href = '/auth')}
-          /> */}
+          />
           <button
             className={stl.expandBtn}
             onClick={() => setIsVisible(!isVisible)}

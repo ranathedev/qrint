@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 
 import Customizer from 'components/customizer'
 import Footer from 'components/footer'
@@ -32,10 +32,6 @@ const Generator = () => {
   const [src, setSrc] = useState('')
   const [isLoading, setIsLoading] = useState(false)
 
-  useEffect(() => {
-    console.log(isLoading ? 'Loading started...' : 'Loading is finished...')
-  }, [isLoading])
-
   const generateQRCode = async (styles: Styles, val: string) => {
     setIsLoading(true)
 
@@ -63,8 +59,6 @@ const Generator = () => {
         modules: styles.imageURI !== '',
       }
     }
-
-    console.log(data)
 
     fetch('https://qrcode3.p.rapidapi.com/qrcode/text', {
       method: 'POST',

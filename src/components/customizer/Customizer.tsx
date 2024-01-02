@@ -83,6 +83,7 @@ const Customizer = ({ sendData, isLoading, src, setSrc }: Props) => {
         logo: false,
       })
     }
+    // eslint-disable-next-line
   }, [resetVals])
 
   const handleReset = () => {

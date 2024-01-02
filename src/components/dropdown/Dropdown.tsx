@@ -42,6 +42,7 @@ const Dropdown = ({
 
   useEffect(() => {
     handleItemClick(shape, color)
+    // eslint-disable-next-line
   }, [color, shape])
 
   const onItemClick = (name: string) => {

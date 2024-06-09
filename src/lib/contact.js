@@ -13,17 +13,17 @@ const moreContact = [
   },
   {
     name: 'facebook',
-    url: 'https://linkzar.fly.dev/facebook',
+    url: 'https://proxar.ranaintizar.com/me/facebook',
     icon: <FacebookIcon />,
   },
   {
     name: 'twitter',
-    url: 'https://linkzar.fly.dev/twitter',
+    url: 'https://proxar.ranaintizar.com/me/twitter',
     icon: <TwitterIcon />,
   },
   {
     name: 'linkedIn',
-    url: 'https://linkzar.fly.dev/linkedin',
+    url: 'https://proxar.ranaintizar.com/me/linkedin',
     icon: <LinkedInIcon />,
   },
 ]

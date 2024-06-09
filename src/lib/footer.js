@@ -7,27 +7,27 @@ import LinktreeIcon from 'assets/linktree.svg'
 const socials = [
   {
     name: 'facebook',
-    link: 'https://linkzar.fly.dev/facebook',
+    link: 'https://proxar.ranaintizar.com/me/facebook',
     icon: <FacebookIcon />,
   },
   {
     name: 'linkedin',
-    link: 'https://linkzar.fly.dev/linkedin',
+    link: 'https://proxar.ranaintizar.com/me/linkedin',
     icon: <LinkedInIcon />,
   },
   {
     name: 'twitter',
-    link: 'https://linkzar.fly.dev/twitter',
+    link: 'https://proxar.ranaintizar.com/me/twitter',
     icon: <TwitterIcon />,
   },
   {
     name: 'github',
-    link: 'https://linkzar.fly.dev/github',
+    link: 'https://proxar.ranaintizar.com/me/github',
     icon: <GithubIcon />,
   },
   {
     name: 'linktree',
-    link: 'https://linkzar.fly.dev/linktree',
+    link: 'https://proxar.ranaintizar.com/me/linktree',
     icon: <LinktreeIcon />,
   },
 ]

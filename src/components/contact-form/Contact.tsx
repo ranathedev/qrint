@@ -1,18 +1,31 @@
-import React from 'react'
-import clsx from 'clsx'
+import React, { useState } from 'react'
+import Link from 'next/link'
 import { motion } from 'framer-motion'
+import clsx from 'clsx'
 
 import moreContact from 'lib/contact'
+
+import sendDiscordMessage from 'lib/discord'
 
 import stl from './Contact.module.scss'
 
 const Contact = () => {
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [msg, setMsg] = useState('')
+
   const inputInit = { y: 100, opacity: 0 }
   const inputAnimation = { y: 0, opacity: 1 }
   const inputTrans = { type: 'spring', stiffness: 40, duration: 0.1 }
   const btnInit = { y: -1000 }
   const btnAnimation = { y: 0 }
   const btnTrans = { type: 'spring', stiffness: 40 }
+
+  const sendMessage = async () => {
+    const response = await sendDiscordMessage(name, email, msg)
+    if (response) alert('Message sent!')
+    else alert('Message not sent!')
+  }
 
   return (
     <div className={stl.contact}>
@@ -25,10 +38,12 @@ const Contact = () => {
           className={stl.inputContainer}
         >
           <input
+            required
             className={stl.input}
             type="text"
             name="name"
             placeholder="What should we call you?"
+            onChange={e => setName(e.target.value)}
           />
           <span className={stl.focusInput}></span>
         </motion.div>
@@ -43,9 +58,11 @@ const Contact = () => {
         >
           <input
             className={stl.input}
-            type="text"
+            required
+            type="email"
             name="email"
             placeholder="What's your email?"
+            onChange={e => setEmail(e.target.value)}
           />
           <span className={stl.focusInput}></span>
         </motion.div>
@@ -56,16 +73,16 @@ const Contact = () => {
           className={stl.inputContainer}
         >
           <textarea
+            required
             className={stl.input}
             name="message"
             placeholder="Tell us how we can assist you."
+            onChange={e => setMsg(e.target.value)}
           />
           <span className={stl.focusInput}></span>
         </motion.div>
         <div className={stl.btnContainer}>
-          <button onClick={() => alert('Working on this feature...')}>
-            Send Message
-          </button>
+          <button onClick={sendMessage}>Send Message</button>
         </div>
       </motion.div>
       <div className={stl.contactMore}>
@@ -73,6 +90,7 @@ const Contact = () => {
           const value = 0.6 + i * 0.3
           return (
             <motion.div
+              title={item.name}
               initial={btnInit}
               animate={btnAnimation}
               transition={{
@@ -82,12 +100,13 @@ const Contact = () => {
               key={i}
               className={stl.item}
             >
-              <span
+              <Link
                 className={clsx(stl.icon, stl[item.name])}
-                onClick={() => window.open(item.url, '_blank')}
+                href={item.url}
+                target="_blank"
               >
                 {item.icon}
-              </span>
+              </Link>
             </motion.div>
           )
         })}

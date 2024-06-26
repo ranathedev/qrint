@@ -1,18 +1,18 @@
-import React from "react";
+import React from 'react'
 
-import Button from "components/button";
+import Button from 'components/button'
 
-import stl from "./Intro.module.scss";
+import stl from './Intro.module.scss'
 
 const Intro = () => {
   return (
     <div
       className={stl.intro}
       style={{
-        backgroundImage: "url(/background.jpg)",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-        backgroundSize: "cover",
+        backgroundImage: 'url(/background.jpg)',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
       }}
     >
       <div className={stl.overlay}></div>
@@ -23,13 +23,13 @@ const Intro = () => {
           experiences. Explore hidden content, access exclusive offers, and
           discover endless possibilities with a simple scan.
         </p>
-        <Button
+        {/* <Button
           title="Sign Up"
           handleOnClick={() => (location.href = "/auth")}
-        />
+        /> */}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Intro;
+export default Intro

@@ -45,6 +45,7 @@ const Contact = () => {
             required
             className={stl.input}
             type="text"
+            value={name}
             name="name"
             placeholder="What should we call you?"
             onChange={e => setName(e.target.value)}
@@ -63,6 +64,7 @@ const Contact = () => {
           <input
             className={stl.input}
             required
+            value={email}
             type="email"
             name="email"
             placeholder="What's your email?"
@@ -79,6 +81,7 @@ const Contact = () => {
           <textarea
             required
             className={stl.input}
+            value={msg}
             name="message"
             placeholder="Tell us how we can assist you."
             onChange={e => setMsg(e.target.value)}

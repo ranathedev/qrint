@@ -5,7 +5,7 @@ import MailIcon from 'assets/mail.svg'
 import TwitterIcon from 'assets/twitter.svg'
 
 const moreContact = [
-  { name: 'phone', url: 'tel:+923227625049', icon: <PhoneIcon /> },
+  { name: 'whatsapp', url: 'https://wa.me/923227625049', icon: <PhoneIcon /> },
   {
     name: 'email',
     url: 'mailto:intizaralirana2@gmail.com',
@@ -22,7 +22,7 @@ const moreContact = [
     icon: <TwitterIcon />,
   },
   {
-    name: 'linkedIn',
+    name: 'linkedin',
     url: 'https://proxar.ranaintizar.com/me/linkedin',
     icon: <LinkedInIcon />,
   },

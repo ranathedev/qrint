@@ -23,8 +23,12 @@ const Contact = () => {
 
   const sendMessage = async () => {
     const response = await sendDiscordMessage(name, email, msg)
-    if (response) alert('Message sent!')
-    else alert('Message not sent!')
+    if (response) {
+      alert('Message sent!')
+      setName('')
+      setEmail('')
+      setMsg('')
+    } else alert('Message not sent!')
   }
 
   return (
